@@ -1,0 +1,214 @@
+:root {
+    --neonblack: #191825;
+    --dancingScript: "Dancing Script";
+    --fontAwesome: "Font Awesome";
+    --robot: "Roboto";
+    --panel-top: #0f1220;
+    --panel-bottom: #2b0f2b;
+    --panel-border: rgba(255,255,255,0.045);
+    --panel-shadow: 0 12px 32px rgba(11,8,18,0.7);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--neonblack);
+}
+
+.navbar {
+    transition: 1s;
+}
+
+.navbar .navbar-brand {
+    color: rgb(233, 154, 8);
+    font-size: 2.5rem;
+    font-family: var(--robot);
+}
+
+.navbar-toggler {
+    color: white;
+    border: none;
+    outline: none;
+    font-size: 30px;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar .nav-link {
+    color: rgb(8, 212, 195);
+    font-size: 18px;
+}
+
+.sticky .nav-link,
+.sticky .navbar-brand {
+    color: white !important;
+}
+
+@media(max-width:992px) {
+    .navbar .navbar-nav {
+        background-color: rgb(44, 49, 148);
+        border-radius: 20px;
+    }
+    .navbar .nav-link {
+        color: white;
+        padding-left: 2rem;
+    }
+}
+
+.header-content {
+    max-width: 500px;
+}
+
+#element {
+    font-size: 2rem;
+    font-family: var(--robot);
+}
+
+.about-section {
+    padding-top: 120px;
+}
+
+.btn-dark {
+    width: 155px;
+    height: 50px;
+    border: 2px solid red;
+    outline: none;
+    border-radius: 20px;
+    background-color: transparent;
+    color: white;
+    transition: 0.3s ease;
+}
+
+.btn-dark:hover {
+    background-color: red;
+    transform: translateY(-2px);
+}
+
+.p-4 {
+    border: 3px solid white;
+    border-radius: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#project .section-card,
+#project .p-4.bg-dark,
+#contact .p-4.bg-dark,
+#contact .section-card {
+    background: linear-gradient(135deg, var(--panel-top) 0%, var(--panel-bottom) 100%);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--panel-shadow);
+    color: #f3f6f9;
+    border-radius: 20px;
+}
+
+#project .section-card:hover,
+#contact .p-4.bg-dark:hover,
+#contact .section-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(70, 57, 109, 0.45);
+}
+
+#project .section-card a,
+#contact .p-4.bg-dark a,
+#contact .section-card a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#project .section-card::before,
+#contact .p-4.bg-dark::before {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+    margin-bottom: 0.6rem;
+    border-radius: 2px;
+}
+
+#contact form label {
+    color: #ffffff;
+    font-weight: 500;
+}
+
+#contact form .form-control {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    transition: 0.2s ease;
+}
+
+#contact form .form-control:focus {
+    border-color: red;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#contact .invalid-feedback {
+    color: #ff7070;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+#contact .p-4.bg-dark,
+#contact .section-card {
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, var(--panel-top) 0%, var(--panel-bottom) 100%);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--panel-shadow);
+    color: #fff;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+#contact .p-4.bg-dark:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(70, 57, 109, 0.45);
+}
+
+#contact button.btn-dark {
+    width: 155px;
+    height: 50px;
+    border: 2px solid red;
+    background: transparent;
+    color: white;
+    border-radius: 20px;
+    transition: 0.3s ease;
+}
+
+#contact button.btn-dark:hover {
+    background-color: red;
+    transform: translateY(-3px);
+}
+
+#contact form.p-4.bg-dark {
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, var(--panel-top) 0%, var(--panel-bottom) 100%);
+    border: 1px solid var(--panel-border);
+    box-shadow: var(--panel-shadow);
+}
+
+@media(max-width:768px) {
+    #about .row {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+    #about img {
+        max-width: 100%;
+        height: auto;
+    }
+    .header-content {
+        max-width: 100%;
+    }
+    #project .row,
+    #gallery .row {
+        margin: 0;
+    }
+}
