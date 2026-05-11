@@ -4,7 +4,7 @@ A responsive personal portfolio website built with HTML, CSS, Bootstrap, and Jav
 
 ## Live Demo
 
-Hosted via GitHub Pages: `https://mustabshiratech.github.io/portfolio-website`
+Hosted via GitHub Pages: `https://mustabshiranasir.github.io/portfolio-website`
 
 ## About
 
