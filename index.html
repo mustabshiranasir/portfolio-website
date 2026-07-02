@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description"
+    content="A modern portfolio website built using HTML, CSS, and JavaScript. Clean design, responsive layout, and smooth animations.">
+  <title>Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- my css -->
+  <link rel="stylesheet" href="style.css">
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- animation css link-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body>
+  <!-- tsParticles Background -->
+  <div id="tsparticles"></div>
+
+  <!-- navbar start -->
+  <nav class="navbar navbar-expand-lg my-3 sticky-top" id="navbar">
+    <div class="container">
+      <a class="navbar-brand" href="#">Mustabshira</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fa-sharp fa-solid fa-bars-staggered"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#project">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- navbar end -->
+  <!-- Header section start -->
+  <header class="text-white py-5 my-3 text-center">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+      <div class="row w-100 justify-content-center">
+        <div class="col-12 col-md-10 wow animate__animated animate__fadeInUp">
+          <h1 class="display-4 fw-bold">Welcome to My Portfolio</h1>
+          <p class="lead fw-bold my-3">I am Mustabshira Nasir — a <span style="color: var(--color-light);"
+              id="element"></span></p>
+          <p class="mx-auto fs-5 mt-4" style="max-width: 700px; color: #ddd;">
+            A dedicated Computer Science professional with a strong foundation in full-stack web development, database
+            architecture, and mobile applications. Committed to delivering scalable and user-centric digital solutions.
+          </p>
+          <div class="d-flex justify-content-center gap-3 mt-5 mb-4">
+            <a href="#about"><button class="btn btn-dark text-uppercase px-4">View More</button></a>
+            <a href="#contact"><button class="btn btn-orange text-uppercase px-4">Hire Me</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--  header section end -->
+  <!--  about section start -->
+  <section id="about" class="about-section text-center py-5">
+    <div class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 wow animate__animated animate__fadeInUp">
+          <h2 class="text-white mb-4">About <span style="color: var(--color-light);">Me</span></h2>
+          <p class="text-white fs-5 lh-lg mb-5" style="color: #ddd !important;">
+            I am a 6th-semester BS Computer Science student at COMSATS University Islamabad (Attock Campus).
+            My technical expertise spans across full-stack web development, mobile application design, and robust
+            database architecture.
+            I am highly motivated to leverage my skills to solve complex problems and contribute effectively to
+            innovative projects in a professional environment.
+          </p>
+          <a href="Mustabshira_Nasir_Resume_.docx" download class="btn btn-dark text-uppercase px-5 py-2">Download
+            Resume</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--   about section end -->
+  <!-- Projects Section Start -->
+  <section id="project" class="text-white text-center py-5 my-5">
+    <div class="container">
+      <h2 class="mb-5">Professional Projects</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0" style="color: var(--color-light);">Smart Campus Canteen App</h4>
+              <a href="https://github.com/mustabshiranasir/smart-campus-canteen-app" target="_blank"
+                class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-muted mb-2"><small>React Native | Node.js | Express | MongoDB</small></p>
+            <p>Developed a full-stack mobile application for digital food ordering, featuring real-time tracking, secure
+              JWT authentication, and MongoDB ACID transactions.</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
+            style="animation-delay: 0.2s;">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0" style="color: var(--color-light);">Library Management System</h4>
+              <a href="https://github.com/mustabshiranasir/library-management-system" target="_blank"
+                class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-muted mb-2"><small>MySQL | HTML | CSS | JavaScript</small></p>
+            <p>Architected a 3NF normalized database comprising 16 tables. Implemented 22 complex analytical SQL queries
+              and designed an interactive HTML/JS dashboard.</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
+            style="animation-delay: 0.1s;">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0" style="color: var(--color-light);">Crochet E-Commerce Website</h4>
+              <a href="https://github.com/mustabshiranasir/crochet-ecommerce-website" target="_blank"
+                class="project-link"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-muted mb-2"><small>HTML | CSS | JavaScript</small></p>
+            <p>Built a responsive multi-page e-commerce front-end with product categorizations, a sticky navigation bar,
+              and interactive wishlist functionality.</p>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
+            style="animation-delay: 0.3s;">
+            <div class="d-flex justify-content-between align-items-start mb-3">
+              <h4 class="mb-0" style="color: var(--color-light);">Personal Portfolio Website</h4>
+              <a href="https://github.com/mustabshiranasir/portfolio-website" target="_blank" class="project-link"><i
+                  class="fab fa-github"></i></a>
+            </div>
+            <p class="text-muted mb-2"><small>HTML | CSS | Bootstrap | JavaScript</small></p>
+            <p>Engineered a responsive single-page portfolio highlighting professional experience, featuring scroll
+              animations, modular components, and optimal performance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Projects Section End -->
+  <!-- Skills Section -->
+  <section id="skills" class="text-white text-center py-5 my-5">
+    <div class="container">
+      <h2 class="mb-5">Technical Skills</h2>
+      <div class="row justify-content-center g-4">
+        <div class="col-md-6 wow animate__animated animate__fadeInUp">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
+            style="border-color: var(--color-light) !important;">
+            <h5 class="text-uppercase mb-4" style="color: rgb(185, 21, 76);">Programming Languages</h5>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <span class="badge bg-secondary fs-6 py-2 px-3">Python</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Java</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">C/C++</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">JavaScript</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 wow animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
+            style="border-color: var(--color-light)  !important;">
+            <h5 class="text-uppercase mb-4" style="color: rgb(185, 21, 76);">Web & Mobile Development</h5>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <span class="badge bg-secondary fs-6 py-2 px-3">HTML</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">CSS</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Bootstrap</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">React Native</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Expo</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 wow animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
+            style="border-color: var(--color-light)  !important;">
+            <h5 class="text-uppercase mb-4" style="color: rgb(185, 21, 76);">Databases</h5>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <span class="badge bg-secondary fs-6 py-2 px-3">MySQL</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">MongoDB</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">SQL</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Database Design</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Mongoose ODM</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 wow animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
+          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
+            style="border-color: var(--color-light) !important;">
+            <h5 class="text-uppercase mb-4" style="color: var(--color-light);">Backend & Tools</h5>
+            <div class="d-flex flex-wrap justify-content-center gap-2">
+              <span class="badge bg-secondary fs-6 py-2 px-3">Node.js</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Express</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">REST APIs</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">JWT</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">Git</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">GitHub</span>
+              <span class="badge bg-secondary fs-6 py-2 px-3">VS Code</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="text-white py-5 my-5">
+    <div class="container">
+      <h2 class="mb-5 text-center">Professional Experience</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
+            style="border-color: var(--color-light) !important;">
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+              <h4 class="mb-0">Software / IT Intern</h4>
+              <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">July 2025 - August 2025</span>
+            </div>
+            <h5 class="text-muted mb-4">Pakistan Aeronautical Complex (PAC), Kamra</h5>
+            <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
+              <li>Worked within the technology division of a national-level aircraft manufacturing facility.</li>
+              <li>Gained hands-on exposure to industrial-scale IT infrastructure and professional-grade systems.</li>
+              <li>Developed a comprehensive understanding of professional workplace standards, protocols, and team
+                collaboration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact section start -->
+  <section id="contact" class="text-white py-5 my-5 ">
+    <div class="container">
+      <h2 class="mb-4 text-center">Contact Me</h2>
+      <div class="row g-4 align-items-start">
+        <!-- Contact card / info -->
+        <div class="col-12 col-lg-5 animate__animated animate__backInLeft">
+          <div class="p-4 bg-dark rounded shadow-sm h-100">
+            <h5 class="mb-3">Get in touch</h5>
+            <p class="mb-2"><i class="fa-solid fa-envelope me-2"></i><a href="mailto:fa23-bcs-063@cuiatk.edu.pk"
+                class="text-white text-decoration-none">fa23-bcs-063@cuiatk.edu.pk</a>
+            </p>
+            <p class="mb-2"><i class="fa-solid fa-phone me-2"></i><a href="tel:+923028948502"
+                class="text-white text-decoration-none">+92 302 8948502</a>
+            </p>
+            <p class="mb-3"><i class="fa-solid fa-location-dot me-2"></i>Fatehjang, Attock</p>
+
+            <h6 class="mt-3">Follow</h6>
+            <div class="d-flex gap-3 mt-2">
+              <a href="#" class="text-white fs-4" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="https://x.com/063Bcs" target="_blank" class="text-white fs-4" aria-label="Twitter"><i
+                  class="fab fa-x-twitter"></i></a>
+              <a href="https://www.linkedin.com/in/mustabshira-nasir02" target="_blank" class="text-white fs-4"
+                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="https://github.com/mustabshiranasir" target="_blank" class="text-white fs-4"
+                aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+
+            <hr class="my-4 border-secondary">
+            <!-- Map removed -->
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="col-12 col-lg-7 animate__animated animate__backInRight">
+          <form onsubmit="sendMail(event)" class="p-4 bg-dark rounded shadow-sm" novalidate aria-label="Contact Form">
+            <div class="row g-3">
+
+              <!-- Name -->
+              <div class="col-md-6">
+                <label for="contactName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="contactName" name="name" required aria-required="true"
+                  aria-invalid="false" aria-describedby="nameError">
+                <div id="nameError" class="invalid-feedback">Please enter your name.</div>
+              </div>
+
+              <!-- Email -->
+              <div class="col-md-6">
+                <label for="contactEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contactEmail" name="email" required aria-required="true"
+                  aria-invalid="false" aria-describedby="emailError">
+                <div id="emailError" class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+
+              <!-- Subject -->
+              <div class="col-12">
+                <label for="contactSubject" class="form-label">Subject</label>
+                <input type="text" class="form-control" id="contactSubject" name="subject" required aria-required="true"
+                  aria-invalid="false" aria-describedby="subjectError">
+                <div id="subjectError" class="invalid-feedback">Please provide a subject.</div>
+              </div>
+
+              <!-- Message -->
+              <div class="col-12">
+                <label for="contactMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="contactMessage" name="message" rows="6" required aria-required="true"
+                  aria-invalid="false" aria-describedby="messageError"></textarea>
+                <div id="messageError" class="invalid-feedback">Please write a message.</div>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="col-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-orange text-uppercase">Hire Me</button>
+              </div>
+
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- Contact section end -->
+
+  <!-- typing lib -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script>
+    var typed = new Typed('#element', {
+      strings: ['Software Engineer', 'Full-Stack Developer', 'Computer Science Student'],
+      typeSpeed: 60, backSpeed: 40, loop: true,
+    });
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <!-- animated lib link-->
+  <script src="js/wow/WOW.js"></script>
+  <script>new WOW().init();</script>
+  <!--my javascript file-->
+  <script src="js/index.js"></script>
+  <script>
+    function sendMail(event) {
+      event.preventDefault();
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const subject = document.getElementById('contactSubject').value;
+      const message = document.getElementById('contactMessage').value;
+
+      if (!name || !email || !subject || !message) {
+        alert("Please fill all the fields.");
+        return;
+      }
+
+      const mailtoLink = `mailto:fa23-bcs-063@cuiatk.edu.pk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+      window.location.href = mailtoLink;
+    }
+  </script>
+  </script>
+  <!-- tsParticles Library -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      background: {
+        color: {
+          value: "#2C3E50", /* Dark slate background */
+        },
+      },
+      particles: {
+        number: {
+          value: 50,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ["#BDC3C7", "#7F8C8D", "#ECF0F1"] /* Theme colors for particles */
+        },
+        shape: {
+          type: "circle",
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 3,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 0.1,
+            sync: false
+          }
+        },
+        links: {
+          enable: true,
+          distance: 150,
+          color: "#7F8C8D",
+          opacity: 0.4,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: "none",
+          random: true,
+          straight: false,
+          outModes: {
+            default: "out"
+          },
+          attract: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200
+          }
+        }
+      },
+      interactivity: {
+        detectsOn: "canvas",
+        events: {
+          onHover: {
+            enable: true,
+            mode: "grab"
+          },
+          onClick: {
+            enable: true,
+            mode: "push"
+          },
+          resize: true
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: {
+              opacity: 1
+            }
+          },
+          push: {
+            particles_nb: 4
+          }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+</body>
+
+</html>
