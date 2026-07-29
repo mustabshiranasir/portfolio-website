@@ -410,29 +410,3 @@ footer {
         max-width: 1140px;
     }
 }
-
-/* About section profile photo */
-.about-img-wrapper {
-    position: relative;
-    max-width: 260px;
-    margin: 0 auto;
-    border-radius: 50%;
-    padding: 8px;
-    border: 3px solid var(--color-border);
-    box-shadow: var(--panel-shadow);
-    background: var(--color-panel);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.about-img-wrapper:hover {
-    transform: scale(1.04) rotate(1deg);
-    border-color: var(--color-light);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
-}
-
-.profile-img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border-radius: 50%;
-}
