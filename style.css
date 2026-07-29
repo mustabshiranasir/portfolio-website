@@ -76,7 +76,9 @@ body {
 .btn-dark,
 .btn-orange,
 .btn-outline-light {
-    width: 160px;
+    min-width: 140px;
+    width: auto;
+    padding: 0 24px;
     height: 50px;
     border: 2px solid var(--color-light);
     outline: none;
@@ -102,7 +104,9 @@ body {
 }
 
 .btn-light {
-    width: 160px;
+    min-width: 140px;
+    width: auto;
+    padding: 0 24px;
     height: 50px;
     border: 2px solid var(--color-light);
     border-radius: 20px;
@@ -117,6 +121,12 @@ body {
     background-color: var(--color-light);
     color: var(--color-bg) !important;
     transform: translateY(-3px);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
 }
 
 .p-4.bg-dark {
@@ -185,5 +195,22 @@ body {
         padding: 20px;
         border-radius: 20px;
         margin-top: 10px;
+    }
+}
+
+@media(max-width:576px) {
+    .display-4 {
+        font-size: 2.2rem;
+    }
+    header p.lead {
+        font-size: 1.1rem;
+    }
+    .hero-btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .hero-btn-group a,
+    .hero-btn-group button {
+        width: 100% !important;
     }
 }
