@@ -130,16 +130,16 @@ body {
     pointer-events: none;
     z-index: 999999;
     transform: translate(-50%, -50%) scale(0);
-    animation: themeBurstExpand 0.65s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    box-shadow: 0 0 80px rgba(255, 255, 255, 0.3);
+    animation: themeBurstExpand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes themeBurstExpand {
     0% {
         transform: translate(-50%, -50%) scale(0);
-        opacity: 0.95;
+        opacity: 1;
     }
-    50% {
+    70% {
         opacity: 1;
     }
     100% {

@@ -174,7 +174,7 @@
             if (burst && burst.parentNode) {
                 burst.parentNode.removeChild(burst);
             }
-        }, 650);
+        }, 1200);
     }
 
     // Apply saved theme immediately on load
@@ -202,13 +202,83 @@
         });
     }
 
+    // Dynamic navbar scroll visibility & sticky class toggling
+    function initNavbarScroll() {
+        const navbar = document.getElementById('navbar');
+        if (!navbar) return;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+
+            // 1. Manage active sticky styles (bg & shadow)
+            if (currentScrollY > 50) {
+                navbar.classList.add('sticky');
+            } else {
+                navbar.classList.remove('sticky');
+            }
+
+            // 2. Collapse mobile menu drawer if open when scrolling
+            const menuToggle = document.getElementById('navbarSupportedContent');
+            if (menuToggle && menuToggle.classList.contains('show')) {
+                if (window.bootstrap && window.bootstrap.Collapse) {
+                    const bsCollapse = window.bootstrap.Collapse.getOrCreateInstance(menuToggle);
+                    if (bsCollapse) bsCollapse.hide();
+                } else {
+                    menuToggle.classList.remove('show');
+                    const toggler = document.querySelector('.navbar-toggler');
+                    if (toggler) {
+                        toggler.setAttribute('aria-expanded', 'false');
+                        toggler.classList.add('collapsed');
+                    }
+                }
+            }
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         applyTheme(savedTheme);
         initScrollToTop();
+        initNavbarScroll();
 
         const toggleBtn = document.getElementById('theme-toggle');
         if (toggleBtn) {
             toggleBtn.addEventListener('click', (e) => toggleTheme(e));
+        }
+
+        // Scroll to top when clicking on the hamburger toggler button
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        if (navbarToggler) {
+            navbarToggler.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Close collapsed menu when nav link is clicked
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        const menuToggle = document.getElementById('navbarSupportedContent');
+        if (menuToggle) {
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (menuToggle.classList.contains('show')) {
+                        if (window.bootstrap && window.bootstrap.Collapse) {
+                            const bsCollapse = window.bootstrap.Collapse.getOrCreateInstance(menuToggle);
+                            if (bsCollapse) {
+                                bsCollapse.hide();
+                            }
+                        } else {
+                            menuToggle.classList.remove('show');
+                            const toggler = document.querySelector('.navbar-toggler');
+                            if (toggler) {
+                                toggler.setAttribute('aria-expanded', 'false');
+                                toggler.classList.add('collapsed');
+                            }
+                        }
+                    }
+                });
+            });
         }
 
         // Add button shatter click listener

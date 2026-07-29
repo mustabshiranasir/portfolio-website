@@ -31,10 +31,15 @@
   <nav class="navbar navbar-expand-lg my-3 sticky-top" id="navbar">
     <div class="container">
       <a class="navbar-brand" href="#">Mustabshira</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"><i class="fa-sharp fa-solid fa-bars-staggered"></i></span>
-      </button>
+      <div class="d-flex align-items-center gap-2 order-lg-last ms-lg-3">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme">
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-sharp fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
@@ -54,11 +59,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
-          </li>
-          <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
-            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme">
-              <i class="fa-solid fa-moon" id="theme-icon"></i>
-            </button>
           </li>
         </ul>
       </div>
