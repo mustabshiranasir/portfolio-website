@@ -12,14 +12,15 @@
   <!-- my css -->
   <link rel="stylesheet" href="style.css">
   <!-- font awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <!-- animation css link-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- my js -->
+  <script src="js/index.js"></script>
 </head>
 
 <body>
@@ -35,7 +36,7 @@
         <span class="navbar-toggler-icon"><i class="fa-sharp fa-solid fa-bars-staggered"></i></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="#">Home</a>
           </li>
@@ -54,6 +55,11 @@
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
           </li>
+          <li class="nav-item mt-2 mt-lg-0 ms-lg-2">
+            <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle light/dark theme">
+              <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -67,7 +73,7 @@
           <h1 class="display-4 fw-bold">Welcome to My Portfolio</h1>
           <p class="lead fw-bold my-3">I am Mustabshira Nasir — a <span style="color: var(--color-light);"
               id="element"></span></p>
-          <p class="mx-auto fs-5 mt-4" style="max-width: 700px; color: #ddd;">
+          <p class="mx-auto fs-5 mt-4 hero-description" style="max-width: 700px;">
             Motivated Computer Science student at COMSATS University Islamabad (Attock Campus) with hands-on experience in full-stack web development, database design, and mobile app development. Currently interning as a Software & AI Intern at ClickTake Technologies. Completed a prior technical internship at PAC Kamra.
           </p>
           <div class="d-flex justify-content-center gap-3 mt-5 mb-4 hero-btn-group">
@@ -85,7 +91,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8 wow animate__animated animate__fadeInUp">
           <h2 class="text-white mb-4">About <span style="color: var(--color-light);">Me</span></h2>
-          <p class="text-white fs-5 lh-lg mb-5" style="color: #ddd !important;">
+          <p class="text-white fs-5 lh-lg mb-5">
             I am a BS Computer Science student at COMSATS University Islamabad (Attock Campus), currently in my 7th semester.
             My technical expertise spans across full-stack web development, mobile application design, and robust
             database architecture. I am currently interning as a Software & AI Intern at ClickTake Technologies, having completed a prior technical internship at PAC Kamra.
@@ -404,7 +410,7 @@
   <!-- Contact section end -->
 
   <!-- Footer section start -->
-  <footer class="text-center text-white py-4 mt-5" style="background: rgba(0, 0, 0, 0.2); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+  <footer class="text-center text-white py-4 mt-5">
     <div class="container">
       <p class="mb-0 text-muted">&copy; 2026 Mustabshira Nasir. All rights reserved.</p>
     </div>
@@ -426,8 +432,6 @@
   <!-- animated lib link-->
   <script src="js/wow/WOW.js"></script>
   <script>new WOW().init();</script>
-  <!--my javascript file-->
-  <script src="js/index.js"></script>
   <script>
     function sendMail(event) {
       event.preventDefault();
@@ -445,100 +449,12 @@
       window.location.href = mailtoLink;
     }
   </script>
-  </script>
   <!-- tsParticles Library -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
   <script>
-    tsParticles.load("tsparticles", {
-      background: {
-        color: {
-          value: "#2C3E50", /* Dark slate background */
-        },
-      },
-      particles: {
-        number: {
-          value: 50,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: ["#BDC3C7", "#7F8C8D", "#ECF0F1"] /* Theme colors for particles */
-        },
-        shape: {
-          type: "circle",
-        },
-        opacity: {
-          value: 0.5,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 3,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        links: {
-          enable: true,
-          distance: 150,
-          color: "#7F8C8D",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1.5,
-          direction: "none",
-          random: true,
-          straight: false,
-          outModes: {
-            default: "out"
-          },
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200
-          }
-        }
-      },
-      interactivity: {
-        detectsOn: "canvas",
-        events: {
-          onHover: {
-            enable: true,
-            mode: "grab"
-          },
-          onClick: {
-            enable: true,
-            mode: "push"
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 140,
-            links: {
-              opacity: 1
-            }
-          },
-          push: {
-            particles_nb: 4
-          }
-        }
-      },
-      retina_detect: true
-    });
+    if (window.loadParticlesForTheme) {
+      window.loadParticlesForTheme(document.documentElement.getAttribute('data-theme') || 'dark');
+    }
   </script>
 </body>
 
