@@ -1,5 +1,8 @@
 # Mustabshira Nasir - Developer Portfolio 🚀
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=for-the-badge&logo=github)](https://mustabshiranasir.github.io/portfolio-website/)
+[![GitHub Repo](https://img.shields.io/badge/GitHub-Repository-blue?style=for-the-badge&logo=github)](https://github.com/mustabshiranasir/portfolio-website)
+
 Welcome to my personal developer portfolio website! This repository showcases my background, technical skills, software projects, professional experience, and contact information in a clean, modern, and fully responsive web interface.
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)

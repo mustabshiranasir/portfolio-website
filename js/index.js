@@ -181,13 +181,60 @@
     const savedTheme = getSavedTheme();
     document.documentElement.setAttribute('data-theme', savedTheme);
 
+    // Scroll to top button functionality
+    function initScrollToTop() {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        if (!scrollTopBtn) return;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('show');
+            } else {
+                scrollTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         applyTheme(savedTheme);
+        initScrollToTop();
 
         const toggleBtn = document.getElementById('theme-toggle');
         if (toggleBtn) {
             toggleBtn.addEventListener('click', (e) => toggleTheme(e));
         }
+
+        // Add button shatter click listener
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // If we are currently performing the shatter action, let the event pass through naturally
+                if (this.dataset.shattering === 'true') {
+                    return;
+                }
+                
+                // If it is a submit button, validate form first before intercepting
+                if (this.type === 'submit') {
+                    const form = this.closest('form');
+                    if (form && !form.checkValidity()) {
+                        // Let the browser show validation tooltip naturally
+                        return;
+                    }
+                }
+                
+                this.dataset.shattering = 'true';
+                e.preventDefault();
+                e.stopPropagation();
+                shatterButton(this, e);
+            });
+        });
     });
 
     window.addEventListener('load', () => {
@@ -195,4 +242,212 @@
     });
 
     window.loadParticlesForTheme = updateParticlesTheme;
+
+    // Contact Form Validation & Feedback Handler
+    window.sendMail = function (event) {
+        if (event) event.preventDefault();
+        const nameEl = document.getElementById('contactName');
+        const emailEl = document.getElementById('contactEmail');
+        const subjectEl = document.getElementById('contactSubject');
+        const messageEl = document.getElementById('contactMessage');
+        const alertEl = document.getElementById('formAlert');
+
+        const name = nameEl ? nameEl.value.trim() : '';
+        const email = emailEl ? emailEl.value.trim() : '';
+        const subject = subjectEl ? subjectEl.value.trim() : '';
+        const message = messageEl ? messageEl.value.trim() : '';
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name || !email || !subject || !message) {
+            if (alertEl) {
+                alertEl.className = 'alert alert-danger mb-3';
+                alertEl.textContent = 'Please fill out all required fields before submitting.';
+            }
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+            if (alertEl) {
+                alertEl.className = 'alert alert-danger mb-3';
+                alertEl.textContent = 'Please enter a valid email address.';
+            }
+            return;
+        }
+
+        if (alertEl) {
+            alertEl.className = 'alert alert-success mb-3';
+            alertEl.textContent = 'Thank you! Opening Gmail to compose the message...';
+        }
+
+        setTimeout(() => {
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=fa23-bcs-063@cuiatk.edu.pk&su=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
+            window.open(gmailLink, '_blank');
+        }, 800);
+    };
+
+    function shatterButton(button, e) {
+        const isLink = button.tagName === 'A' || button.closest('a');
+        const isSubmit = button.type === 'submit';
+        
+        const rect = button.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(button);
+        const bgColor = computedStyle.backgroundColor;
+        const borderColor = computedStyle.borderColor;
+        const textColor = computedStyle.color;
+        
+        // Build a palette of colors for the particles
+        const colors = [];
+        if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)' && bgColor !== 'transparent') {
+            colors.push(bgColor);
+        }
+        if (borderColor && borderColor !== 'rgba(0, 0, 0, 0)' && borderColor !== 'transparent') {
+            colors.push(borderColor);
+        }
+        if (textColor && textColor !== 'rgba(0, 0, 0, 0)' && textColor !== 'transparent') {
+            colors.push(textColor);
+        }
+        if (colors.length === 0) {
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            colors.push(isLight ? '#0f172a' : '#ecf0f1');
+        }
+        
+        // Create full-screen Canvas overlay
+        const canvas = document.createElement('canvas');
+        canvas.style.position = 'fixed';
+        canvas.style.top = '0';
+        canvas.style.left = '0';
+        canvas.style.width = '100%';
+        canvas.style.height = '100%';
+        canvas.style.pointerEvents = 'none';
+        canvas.style.zIndex = '999999';
+        document.body.appendChild(canvas);
+        
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        
+        const ctx = canvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        
+        // Smoothly shrink and fade the button, maintaining any 3D hover rotation
+        const currentTransform = computedStyle.transform && computedStyle.transform !== 'none' ? computedStyle.transform : '';
+        button.style.pointerEvents = 'none';
+        button.style.transition = 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.35s ease';
+        button.style.transform = `${currentTransform} scale(0.6)`;
+        button.style.opacity = '0';
+        
+        // Generate particles
+        const particles = [];
+        const particleCount = 120;
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        for (let i = 0; i < particleCount; i++) {
+            const px = rect.left + Math.random() * rect.width;
+            const py = rect.top + Math.random() * rect.height;
+            const size = Math.random() * 5 + 2.5; // Tiny square sizes (2.5px to 7.5px)
+            
+            const angle = Math.atan2(py - centerY, px - centerX) + (Math.random() - 0.5) * 0.6;
+            const speed = Math.random() * 5.5 + 2.5;
+            
+            const vx = Math.cos(angle) * speed + (Math.random() - 0.5) * 1.5;
+            const vy = Math.sin(angle) * speed - (Math.random() * 4 + 2); // Initial upward boost
+            
+            particles.push({
+                x: px,
+                y: py,
+                vx: vx,
+                vy: vy,
+                size: size,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                rotation: Math.random() * Math.PI * 2,
+                vRotation: (Math.random() - 0.5) * 0.25,
+                gravity: 0.22,
+                friction: 0.965,
+                alpha: 1.0,
+                fadeSpeed: Math.random() * 0.015 + 0.012
+            });
+        }
+        
+        let animationFrameId;
+        let startTime = Date.now();
+        let actionExecuted = false;
+        
+        function executeAction() {
+            if (isSubmit) {
+                // Trigger natural button click now that dataset.shattering is 'true'
+                button.click();
+            } else if (isLink) {
+                const link = button.tagName === 'A' ? button : button.closest('a');
+                // Trigger natural link click
+                link.click();
+            }
+        }
+        
+        function animate() {
+            const elapsed = Date.now() - startTime;
+            
+            // Trigger target redirection at the peak of the shatter (300ms)
+            if (elapsed >= 300 && !actionExecuted) {
+                actionExecuted = true;
+                executeAction();
+            }
+            
+            ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+            
+            let alive = false;
+            
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                if (p.alpha <= 0) continue;
+                
+                alive = true;
+                
+                // Physics updates
+                p.vx *= p.friction;
+                p.vy = p.vy * p.friction + p.gravity;
+                p.x += p.vx;
+                p.y += p.vy;
+                p.rotation += p.vRotation;
+                p.alpha -= p.fadeSpeed;
+                
+                if (p.alpha < 0) p.alpha = 0;
+                
+                // Draw square particle
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate(p.rotation);
+                ctx.globalAlpha = p.alpha;
+                ctx.fillStyle = p.color;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+                ctx.restore();
+            }
+            
+            if (alive) {
+                animationFrameId = requestAnimationFrame(animate);
+            } else {
+                // Cleanup canvas
+                if (canvas.parentNode) {
+                    canvas.parentNode.removeChild(canvas);
+                }
+                cancelAnimationFrame(animationFrameId);
+                
+                // Gracefully fade the button back into view after completion
+                setTimeout(() => {
+                    delete button.dataset.shattering; // reset state to allow click next time
+                    button.style.transform = '';
+                    button.style.opacity = '';
+                    button.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+                    
+                    setTimeout(() => {
+                        button.style.transition = '';
+                        button.style.pointerEvents = '';
+                    }, 400);
+                }, 500);
+            }
+        }
+        
+        animate();
+    }
 })();

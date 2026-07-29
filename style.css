@@ -111,7 +111,8 @@ body {
     justify-content: center;
     cursor: pointer;
     font-size: 1.1rem;
-    transition: all 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, color 0.3s ease;
+    transform: scale(1);
     outline: none;
     padding: 0;
 }
@@ -147,6 +148,16 @@ body {
     }
 }
 
+.btn-flip-wrapper {
+    display: inline-block;
+    perspective: 400px;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
 .btn-dark,
 .btn-orange,
 .btn-outline-light {
@@ -161,19 +172,20 @@ body {
     color: var(--color-light);
     font-weight: 600;
     text-transform: uppercase;
-    transition: 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform: perspective(400px) rotateY(0deg);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
 }
 
-.btn-dark:hover,
-.btn-orange:hover,
-.btn-outline-light:hover {
+.btn-flip-wrapper:hover .btn-dark,
+.btn-flip-wrapper:hover .btn-orange,
+.btn-flip-wrapper:hover .btn-outline-light {
     background-color: var(--color-light);
     color: var(--color-bg) !important;
-    transform: translateY(-3px);
+    transform: perspective(400px) translateY(-3px) rotateY(180deg);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
@@ -188,14 +200,29 @@ body {
     color: var(--color-light);
     font-weight: 600;
     text-transform: uppercase;
-    transition: 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform: perspective(400px) rotateY(0deg);
 }
 
-.btn-light:hover {
+.btn-flip-wrapper:hover .btn-light {
     background-color: var(--color-light);
     color: var(--color-bg) !important;
-    transform: translateY(-3px);
+    transform: perspective(400px) translateY(-3px) rotateY(180deg);
 }
+
+/* Counter-rotate button text and icons so they remain readable and don't spin 360 degrees */
+.btn span,
+.btn i {
+    display: inline-block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotateY(0deg);
+}
+
+.btn-flip-wrapper:hover .btn span,
+.btn-flip-wrapper:hover .btn i {
+    transform: rotateY(-180deg);
+}
+
 
 .skills-grid {
     display: grid;
@@ -270,21 +297,83 @@ footer {
     transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-@media(max-width:992px) {
-    .navbar-collapse {
-        background: var(--color-panel);
-        padding: 20px;
-        border-radius: 20px;
-        margin-top: 10px;
-    }
+/* Scroll to Top Button */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-panel);
+    border: 2px solid var(--color-light);
+    color: var(--color-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s, visibility 0.3s, background 0.4s, border-color 0.4s;
+    box-shadow: var(--panel-shadow);
 }
 
-@media(max-width:576px) {
-    .display-4 {
-        font-size: 2.2rem;
+.scroll-top-btn.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+    background: var(--color-light);
+    color: var(--color-bg);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Project Card Thumbnails */
+.project-card-img-wrapper {
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 1.2rem;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    background: #090d16;
+    border: 2px solid var(--color-border);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.project-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+}
+
+.project-card-img-wrapper:hover .project-card-img {
+    transform: scale(1.05);
+}
+
+/* --- DAY 6 MEDIA QUERIES (Breakpoints: Mobile 375-480px, Tablet 768px, Desktop 1024px+) --- */
+
+/* Mobile Breakpoint (~375px - 480px) */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
     }
-    header p.lead {
-        font-size: 1.1rem;
+    .display-4 {
+        font-size: 1.8rem;
+    }
+    .navbar .navbar-brand {
+        font-size: 1.7rem;
     }
     .hero-btn-group {
         flex-direction: column;
@@ -294,4 +383,56 @@ footer {
     .hero-btn-group button {
         width: 100% !important;
     }
+    .scroll-top-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 42px;
+        height: 42px;
+    }
+}
+
+/* Tablet Breakpoint (~768px) */
+@media screen and (min-width: 481px) and (max-width: 991px) {
+    .display-4 {
+        font-size: 2.3rem;
+    }
+    .navbar-collapse {
+        background: var(--color-panel);
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 10px;
+    }
+}
+
+/* Desktop Breakpoint (~1024px+) */
+@media screen and (min-width: 1024px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* About section profile photo */
+.about-img-wrapper {
+    position: relative;
+    max-width: 260px;
+    margin: 0 auto;
+    border-radius: 50%;
+    padding: 8px;
+    border: 3px solid var(--color-border);
+    box-shadow: var(--panel-shadow);
+    background: var(--color-panel);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-img-wrapper:hover {
+    transform: scale(1.04) rotate(1deg);
+    border-color: var(--color-light);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+.profile-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
 }
