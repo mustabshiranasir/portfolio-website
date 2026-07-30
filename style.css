@@ -670,11 +670,11 @@ footer {
     top: 0 !important;
     bottom: 0 !important;
     height: 100vh !important;
-    background: linear-gradient(145deg, #0F172A, #1E3A5F) !important;
+    background: linear-gradient(145deg, #1E2A38, #2C3E50) !important;
 }
 
 [data-theme="light"] .offcanvas {
-    background: linear-gradient(145deg, #F0F9FF, #DBEAFE) !important;
+    background: linear-gradient(145deg, #FFFFFF, #E2EAF2) !important;
 }
 
 @media (max-width: 768px) {
