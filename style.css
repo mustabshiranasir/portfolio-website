@@ -675,15 +675,28 @@ img {
 }
 
 .skill-badge {
-    min-width: 90px;
-    border-radius: 16px !important;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px !important;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 !important;
 }
 .skill-badge i {
+    font-size: 2rem;
     line-height: 1;
 }
 .skill-badge .small {
     font-size: 0.7rem;
-    line-height: 1.2;
+    line-height: 1.15;
+    text-align: center;
+    max-width: 85px;
+}
+.skill-badges-row {
+    gap: 1rem;
 }
 
 #contact form .form-control {
@@ -1126,14 +1139,16 @@ footer {
     }
 
     #skills .skill-badge {
-        min-width: 70px;
-        padding: 10px 8px !important;
+        width: 75px;
+        height: 75px;
+        padding: 0 !important;
     }
     #skills .skill-badge i {
-        font-size: 1.3rem !important;
+        font-size: 1.5rem !important;
     }
     #skills .skill-badge .small {
-        font-size: 0.6rem !important;
+        font-size: 0.55rem !important;
+        max-width: 65px;
     }
 
     #experience h4,
