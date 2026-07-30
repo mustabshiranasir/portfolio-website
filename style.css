@@ -604,6 +604,18 @@ img {
     border-color: var(--color-light);
 }
 
+.skill-badge {
+    min-width: 90px;
+    border-radius: 16px !important;
+}
+.skill-badge i {
+    line-height: 1;
+}
+.skill-badge .small {
+    font-size: 0.7rem;
+    line-height: 1.2;
+}
+
 #contact form .form-control {
     background: var(--input-bg);
     border: 1px solid var(--color-border);
@@ -1043,9 +1055,15 @@ footer {
         font-size: 0.85rem;
     }
 
-    #skills .badge {
-        font-size: 0.7rem !important;
-        padding: 3px 8px !important;
+    #skills .skill-badge {
+        min-width: 70px;
+        padding: 10px 8px !important;
+    }
+    #skills .skill-badge i {
+        font-size: 1.3rem !important;
+    }
+    #skills .skill-badge .small {
+        font-size: 0.6rem !important;
     }
 
     #experience h4,
