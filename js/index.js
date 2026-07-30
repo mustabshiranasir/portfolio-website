@@ -468,4 +468,31 @@
         
         animate();
     }
+
+    // Swipe to switch skill tabs
+    const skillTabContent = document.querySelector('#skills .tab-content');
+    if (skillTabContent) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        skillTabContent.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        skillTabContent.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) < 50) return;
+
+            const tabs = document.querySelectorAll('.skills-tabs .nav-link');
+            const active = document.querySelector('.skills-tabs .nav-link.active');
+            const idx = Array.from(tabs).indexOf(active);
+
+            if (diff > 0 && idx < tabs.length - 1) {
+                tabs[idx + 1].click();
+            } else if (diff < 0 && idx > 0) {
+                tabs[idx - 1].click();
+            }
+        }, { passive: true });
+    }
 })();
