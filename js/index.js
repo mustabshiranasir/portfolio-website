@@ -469,22 +469,14 @@
         animate();
     }
 
-    // Swipe / two-finger trackpad to switch skill tabs
+    // Swipe / drag / trackpad to switch skill tabs
     const skillTabContent = document.querySelector('#skills .tab-content');
     if (skillTabContent) {
-        let touchStartX = 0;
-
-        skillTabContent.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        skillTabContent.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
+        function switchTab(diff) {
             if (Math.abs(diff) < 50) return;
-
             const tabs = document.querySelectorAll('.skills-tabs .nav-link');
             const active = document.querySelector('.skills-tabs .nav-link.active');
             const idx = Array.from(tabs).indexOf(active);
-
             if (diff > 0 && idx < tabs.length - 1) {
                 skillTabContent.dataset.slideDir = 'next';
                 tabs[idx + 1].click();
@@ -492,24 +484,39 @@
                 skillTabContent.dataset.slideDir = 'prev';
                 tabs[idx - 1].click();
             }
+        }
+
+        // Touch swipe (mobile)
+        let touchStartX = 0;
+        skillTabContent.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        skillTabContent.addEventListener('touchend', e => {
+            switchTab(touchStartX - e.changedTouches[0].screenX);
         }, { passive: true });
 
-        // Two-finger trackpad swipe on desktop via wheel event
+        // Mouse drag (desktop)
+        let mouseStartX = 0;
+        let isMouseDown = false;
+        skillTabContent.addEventListener('mousedown', e => {
+            isMouseDown = true;
+            mouseStartX = e.screenX;
+        });
+        skillTabContent.addEventListener('mouseup', e => {
+            if (!isMouseDown) return;
+            isMouseDown = false;
+            switchTab(mouseStartX - e.screenX);
+        });
+        skillTabContent.addEventListener('mouseleave', () => {
+            isMouseDown = false;
+        });
+        skillTabContent.addEventListener('dragstart', e => e.preventDefault());
+
+        // Two-finger trackpad swipe (desktop)
         skillTabContent.addEventListener('wheel', e => {
             if (Math.abs(e.deltaX) < 30) return;
             e.preventDefault();
-
-            const tabs = document.querySelectorAll('.skills-tabs .nav-link');
-            const active = document.querySelector('.skills-tabs .nav-link.active');
-            const idx = Array.from(tabs).indexOf(active);
-
-            if (e.deltaX > 0 && idx < tabs.length - 1) {
-                skillTabContent.dataset.slideDir = 'next';
-                tabs[idx + 1].click();
-            } else if (e.deltaX < 0 && idx > 0) {
-                skillTabContent.dataset.slideDir = 'prev';
-                tabs[idx - 1].click();
-            }
+            switchTab(e.deltaX);
         }, { passive: false });
     }
 
