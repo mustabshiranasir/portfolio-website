@@ -626,9 +626,6 @@ img {
 }
 
 /* Slide-in animation for tab panes */
-#skills .tab-content {
-    user-select: none;
-}
 #skills .tab-pane.slide-in-right {
     animation: slideFromRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }

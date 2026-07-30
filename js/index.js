@@ -469,17 +469,16 @@
         animate();
     }
 
-    // Swipe / drag to switch skill tabs (touch + mouse)
+    // Swipe / two-finger trackpad to switch skill tabs
     const skillTabContent = document.querySelector('#skills .tab-content');
     if (skillTabContent) {
-        let startX = 0;
-        let endX = 0;
-        let isDragging = false;
+        let touchStartX = 0;
 
-        function handleSwipeEnd() {
-            if (!isDragging) return;
-            isDragging = false;
-            const diff = startX - endX;
+        skillTabContent.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        skillTabContent.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
             if (Math.abs(diff) < 50) return;
 
             const tabs = document.querySelectorAll('.skills-tabs .nav-link');
@@ -493,32 +492,25 @@
                 skillTabContent.dataset.slideDir = 'prev';
                 tabs[idx - 1].click();
             }
-        }
-
-        skillTabContent.addEventListener('touchstart', e => {
-            isDragging = true;
-            startX = e.changedTouches[0].screenX;
-        }, { passive: true });
-        skillTabContent.addEventListener('touchend', e => {
-            endX = e.changedTouches[0].screenX;
-            handleSwipeEnd();
         }, { passive: true });
 
-        skillTabContent.addEventListener('mousedown', e => {
-            isDragging = true;
-            startX = e.screenX;
-        });
-        skillTabContent.addEventListener('mouseup', e => {
-            endX = e.screenX;
-            handleSwipeEnd();
-        });
-        skillTabContent.addEventListener('mouseleave', () => {
-            if (isDragging) {
-                isDragging = false;
+        // Two-finger trackpad swipe on desktop via wheel event
+        skillTabContent.addEventListener('wheel', e => {
+            if (Math.abs(e.deltaX) < 30) return;
+            e.preventDefault();
+
+            const tabs = document.querySelectorAll('.skills-tabs .nav-link');
+            const active = document.querySelector('.skills-tabs .nav-link.active');
+            const idx = Array.from(tabs).indexOf(active);
+
+            if (e.deltaX > 0 && idx < tabs.length - 1) {
+                skillTabContent.dataset.slideDir = 'next';
+                tabs[idx + 1].click();
+            } else if (e.deltaX < 0 && idx > 0) {
+                skillTabContent.dataset.slideDir = 'prev';
+                tabs[idx - 1].click();
             }
-        });
-        // Prevent text selection during drag
-        skillTabContent.addEventListener('dragstart', e => e.preventDefault());
+        }, { passive: false });
     }
 
     // Apply slide direction on tab switch
