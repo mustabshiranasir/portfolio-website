@@ -469,19 +469,17 @@
         animate();
     }
 
-    // Swipe to switch skill tabs
+    // Swipe / drag to switch skill tabs (touch + mouse)
     const skillTabContent = document.querySelector('#skills .tab-content');
     if (skillTabContent) {
-        let touchStartX = 0;
-        let touchEndX = 0;
+        let startX = 0;
+        let endX = 0;
+        let isDragging = false;
 
-        skillTabContent.addEventListener('touchstart', e => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        skillTabContent.addEventListener('touchend', e => {
-            touchEndX = e.changedTouches[0].screenX;
-            const diff = touchStartX - touchEndX;
+        function handleSwipeEnd() {
+            if (!isDragging) return;
+            isDragging = false;
+            const diff = startX - endX;
             if (Math.abs(diff) < 50) return;
 
             const tabs = document.querySelectorAll('.skills-tabs .nav-link');
@@ -495,7 +493,32 @@
                 skillTabContent.dataset.slideDir = 'prev';
                 tabs[idx - 1].click();
             }
+        }
+
+        skillTabContent.addEventListener('touchstart', e => {
+            isDragging = true;
+            startX = e.changedTouches[0].screenX;
         }, { passive: true });
+        skillTabContent.addEventListener('touchend', e => {
+            endX = e.changedTouches[0].screenX;
+            handleSwipeEnd();
+        }, { passive: true });
+
+        skillTabContent.addEventListener('mousedown', e => {
+            isDragging = true;
+            startX = e.screenX;
+        });
+        skillTabContent.addEventListener('mouseup', e => {
+            endX = e.screenX;
+            handleSwipeEnd();
+        });
+        skillTabContent.addEventListener('mouseleave', () => {
+            if (isDragging) {
+                isDragging = false;
+            }
+        });
+        // Prevent text selection during drag
+        skillTabContent.addEventListener('dragstart', e => e.preventDefault());
     }
 
     // Apply slide direction on tab switch
