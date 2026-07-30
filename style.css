@@ -550,13 +550,18 @@ img {
     scroll-snap-type: x mandatory;
     justify-content: flex-start !important;
     padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.25) transparent;
 }
 .skills-tabs::-webkit-scrollbar {
-    height: 4px;
+    height: 3px;
+}
+.skills-tabs::-webkit-scrollbar-track {
+    background: transparent;
 }
 .skills-tabs::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.3);
-    border-radius: 4px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 3px;
 }
 .skills-tabs .nav-item {
     scroll-snap-align: start;
