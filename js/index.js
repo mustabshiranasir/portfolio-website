@@ -512,9 +512,13 @@
         });
         skillTabContent.addEventListener('dragstart', e => e.preventDefault());
 
-        // Two-finger trackpad swipe (desktop)
+        // Two-finger trackpad swipe (desktop) — debounced to avoid multi-fire
+        let lastWheelTime = 0;
         skillTabContent.addEventListener('wheel', e => {
             if (Math.abs(e.deltaX) < 30) return;
+            const now = Date.now();
+            if (now - lastWheelTime < 500) return;
+            lastWheelTime = now;
             e.preventDefault();
             switchTab(e.deltaX);
         }, { passive: false });
