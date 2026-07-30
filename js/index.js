@@ -177,9 +177,7 @@
         }, 1200);
     }
 
-    // Apply saved theme immediately on load
     const savedTheme = getSavedTheme();
-    document.documentElement.setAttribute('data-theme', savedTheme);
 
     // Scroll to top button functionality
     function initScrollToTop() {
@@ -210,27 +208,11 @@
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
 
-            // 1. Manage active sticky styles (bg & shadow)
+            // Manage active sticky styles (bg & shadow)
             if (currentScrollY > 50) {
                 navbar.classList.add('sticky');
             } else {
                 navbar.classList.remove('sticky');
-            }
-
-            // 2. Collapse mobile menu drawer if open when scrolling
-            const menuToggle = document.getElementById('navbarSupportedContent');
-            if (menuToggle && menuToggle.classList.contains('show')) {
-                if (window.bootstrap && window.bootstrap.Collapse) {
-                    const bsCollapse = window.bootstrap.Collapse.getOrCreateInstance(menuToggle);
-                    if (bsCollapse) bsCollapse.hide();
-                } else {
-                    menuToggle.classList.remove('show');
-                    const toggler = document.querySelector('.navbar-toggler');
-                    if (toggler) {
-                        toggler.setAttribute('aria-expanded', 'false');
-                        toggler.classList.add('collapsed');
-                    }
-                }
             }
         });
     }
@@ -245,44 +227,28 @@
             toggleBtn.addEventListener('click', (e) => toggleTheme(e));
         }
 
-        // Scroll to top when clicking on the hamburger toggler button
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        if (navbarToggler) {
-            navbarToggler.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-        // Close collapsed menu when nav link is clicked
+        // Close offcanvas drawer when nav link is clicked
         const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        const menuToggle = document.getElementById('navbarSupportedContent');
-        if (menuToggle) {
+        const offcanvasEl = document.getElementById('offcanvasNavbar');
+        if (offcanvasEl) {
             navLinks.forEach(link => {
                 link.addEventListener('click', () => {
-                    if (menuToggle.classList.contains('show')) {
-                        if (window.bootstrap && window.bootstrap.Collapse) {
-                            const bsCollapse = window.bootstrap.Collapse.getOrCreateInstance(menuToggle);
-                            if (bsCollapse) {
-                                bsCollapse.hide();
+                    if (offcanvasEl.classList.contains('show')) {
+                        if (window.bootstrap && window.bootstrap.Offcanvas) {
+                            const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+                            if (bsOffcanvas) {
+                                bsOffcanvas.hide();
                             }
                         } else {
-                            menuToggle.classList.remove('show');
-                            const toggler = document.querySelector('.navbar-toggler');
-                            if (toggler) {
-                                toggler.setAttribute('aria-expanded', 'false');
-                                toggler.classList.add('collapsed');
-                            }
+                            offcanvasEl.classList.remove('show');
                         }
                     }
                 });
             });
         }
 
-        // Add button shatter click listener
-        const buttons = document.querySelectorAll('.btn');
+        // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)
+        const buttons = document.querySelectorAll('.btn:not(.scroll-top-btn):not(.navbar-toggler):not(.btn-close-custom)');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
                 // If we are currently performing the shatter action, let the event pass through naturally
