@@ -242,21 +242,7 @@
         // Section shatter → emerge transition
         let isTransitioning = false;
 
-        function pageToDataUrl() {
-            const w = window.innerWidth;
-            const h = window.innerHeight;
-            const clone = document.body.cloneNode(true);
-            clone.querySelectorAll('script, canvas, #tsparticles').forEach(el => el.remove());
-            const content = clone.innerHTML;
-            const styles = Array.from(document.styleSheets).map(s => {
-                try { return Array.from(s.cssRules).map(r => r.cssText).join(''); }
-                catch (e) { return ''; }
-            }).join('');
-            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><style>${styles}body{margin:0;padding:0;overflow:hidden;}</style><foreignObject width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${w}px;height:${h}px;overflow:hidden;">${content}</div></foreignObject></svg>`;
-            return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
-        }
-
-        function buildGrid(dataUrl, startScattered) {
+        function buildGrid(baseUrl, startScattered) {
             const w = window.innerWidth;
             const h = window.innerHeight;
             const size = 75;
@@ -271,7 +257,13 @@
                     const pw = Math.min(size, w - x);
                     const ph = Math.min(size, h - y);
                     const piece = document.createElement('div');
-                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;background-image:url(${dataUrl});background-size:${w}px ${h}px;background-position:${-x}px ${-y}px;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);`;
+                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;overflow:hidden;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);`;
+
+                    const clone = baseUrl.cloneNode(true);
+                    clone.style.position = 'absolute';
+                    clone.style.left = `${-x}px`;
+                    clone.style.top = `${-y}px`;
+                    piece.appendChild(clone);
 
                     if (startScattered) {
                         const angle = Math.random() * Math.PI * 2;
@@ -286,18 +278,32 @@
             return fragment;
         }
 
+        function getViewSnapshot() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const snap = document.createElement('div');
+            snap.style.cssText = `position:absolute;left:0;top:0;width:${w}px;`;
+            for (const child of document.body.children) {
+                if (child.tagName === 'SCRIPT') continue;
+                if (child.id === 'tsparticles') continue;
+                if (child.tagName === 'CANVAS') continue;
+                snap.appendChild(child.cloneNode(true));
+            }
+            return snap;
+        }
+
         function doShatter(targetEl, cb) {
-            const dataUrl = pageToDataUrl();
+            const snapshot = getViewSnapshot();
             const overlay = document.createElement('div');
             overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
-            overlay.appendChild(buildGrid(dataUrl, false));
+            overlay.appendChild(buildGrid(snapshot, false));
             document.body.appendChild(overlay);
 
             // Pre-capture target behind overlay
             if (targetEl) {
                 const origY = window.scrollY;
                 targetEl.scrollIntoView();
-                emergeDataUrl = pageToDataUrl();
+                emergeSnapshot = getViewSnapshot();
                 window.scrollTo(0, origY);
             }
 
@@ -318,15 +324,15 @@
             setTimeout(() => { overlay.remove(); if (cb) cb(); }, 800);
         }
 
-        let emergeDataUrl = null;
+        let emergeSnapshot = null;
 
         function startEmerge() {
-            if (!emergeDataUrl) { emergeDataUrl = null; return; }
+            if (!emergeSnapshot) { emergeSnapshot = null; return; }
             const overlay = document.createElement('div');
             overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
-            overlay.appendChild(buildGrid(emergeDataUrl, true));
+            overlay.appendChild(buildGrid(emergeSnapshot, true));
             document.body.appendChild(overlay);
-            emergeDataUrl = null;
+            emergeSnapshot = null;
 
             requestAnimationFrame(() => {
                 for (const piece of overlay.children) {
