@@ -549,14 +549,14 @@ img {
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
     justify-content: flex-start !important;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
 }
 .skills-tabs::-webkit-scrollbar {
-    height: 4px;
+    height: 2px;
 }
 .skills-tabs::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.3);
-    border-radius: 4px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 2px;
 }
 .skills-tabs .nav-item {
     scroll-snap-align: start;
