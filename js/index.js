@@ -248,7 +248,7 @@
         }
 
         // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)
-        const buttons = document.querySelectorAll('.btn:not(.scroll-top-btn):not(.navbar-toggler):not(.btn-close-custom)');
+        const buttons = document.querySelectorAll('.btn:not(.scroll-top-btn):not(.navbar-toggler):not(.btn-close-custom), .skills-tabs .nav-link');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
                 // Skip if already shattering or if button is inside a form with validation
