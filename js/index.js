@@ -228,24 +228,80 @@
         }
 
         // Close offcanvas drawer when nav link is clicked
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        const offcanvasEl = document.getElementById('offcanvasNavbar');
-        if (offcanvasEl) {
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (offcanvasEl.classList.contains('show')) {
-                        if (window.bootstrap && window.bootstrap.Offcanvas) {
-                            const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
-                            if (bsOffcanvas) {
-                                bsOffcanvas.hide();
-                            }
-                        } else {
-                            offcanvasEl.classList.remove('show');
-                        }
+        function closeDrawer() {
+            const offcanvasEl = document.getElementById('offcanvasNavbar');
+            if (!offcanvasEl || !offcanvasEl.classList.contains('show')) return;
+            if (window.bootstrap && window.bootstrap.Offcanvas) {
+                const bsOffcanvas = window.bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+                if (bsOffcanvas) bsOffcanvas.hide();
+            } else {
+                offcanvasEl.classList.remove('show');
+            }
+        }
+
+        // Section shatter transition: viewport breaks into 1cm grid of flying squares
+        function shatterPage(cb) {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const size = 38;
+            const cols = Math.ceil(w / size);
+            const rows = Math.ceil(h / size);
+
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
+
+            const bg = getComputedStyle(document.body).backgroundColor;
+            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+            const borderColor = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
+
+            const fragment = document.createDocumentFragment();
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const piece = document.createElement('div');
+                    const x = c * size;
+                    const y = r * size;
+                    const pw = Math.min(size, w - x);
+                    const ph = Math.min(size, h - y);
+                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;background:${bg};border:0.5px solid ${borderColor};box-sizing:border-box;`;
+                    fragment.appendChild(piece);
+                }
+            }
+            overlay.appendChild(fragment);
+            document.body.appendChild(overlay);
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    for (const piece of overlay.children) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const dist = 150 + Math.random() * 400;
+                        const rot = (Math.random() - 0.5) * 540;
+                        const delay = Math.random() * 0.1;
+                        piece.style.transition = `all 0.55s cubic-bezier(0.55,0,0.1,1) ${delay}s`;
+                        piece.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist - 80}px) rotate(${rot}deg) scale(0.7)`;
+                        piece.style.opacity = '0';
                     }
                 });
             });
+
+            setTimeout(() => {
+                overlay.remove();
+                if (cb) cb();
+            }, 750);
         }
+
+        // Intercept nav-link clicks for shatter transition
+        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                e.preventDefault();
+                closeDrawer();
+                shatterPage(() => {
+                    const target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
 
         // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)
         const buttons = document.querySelectorAll('.btn:not(.scroll-top-btn):not(.navbar-toggler):not(.btn-close-custom), .skills-tabs .nav-link');
