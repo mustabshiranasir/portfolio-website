@@ -934,9 +934,18 @@ footer {
     .btn-outline-light,
     .btn-light {
         min-width: 100px;
+        max-width: 160px;
         padding: 0 14px;
         height: 40px;
         font-size: 12px;
+    }
+
+    .btn-flip-wrapper {
+        max-width: fit-content;
+    }
+
+    .hero-btn-group {
+        flex-wrap: nowrap !important;
     }
 
     .navbar-brand {
