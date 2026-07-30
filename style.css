@@ -106,25 +106,13 @@ img {
 }
 
 .gradient-text-blue {
-    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+    background: linear-gradient(135deg, #60A5FA, #A78BFA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-purple {
-    background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-[data-theme="light"] .gradient-text-blue {
-    background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-[data-theme="light"] .gradient-text-purple {
-    background: linear-gradient(135deg, #9333ea 0%, #2563eb 100%);
+    background: linear-gradient(135deg, #F472B6, #60A5FA);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
