@@ -283,6 +283,28 @@ img {
 .orbit-item i.fa-terminal { color: #22c55e; }
 .orbit-item i.fa-layer-group { color: #3b82f6; }
 
+/* Skill Badge Icon Colors — matching orbit colors */
+.badge i.fa-python { color: #3776ab; }
+.badge i.fa-java { color: #007396; }
+.badge i.fa-js { color: #f7df1e; }
+.badge i.fa-code { color: #a855f7; }
+.badge i.fa-html5 { color: #e34f26; }
+.badge i.fa-css3-alt { color: #1572b6; }
+.badge i.fa-bootstrap { color: #7952b3; }
+.badge i.fa-react { color: #61dafb; }
+.badge i.fa-wand-magic-sparkles { color: #06b6d4; }
+.badge i.fa-mobile-screen { color: #10b981; }
+.badge i.fa-database { color: #38bdf8; }
+.badge i.fa-node-js { color: #68a063; }
+.badge i.fa-bolt { color: #facc15; }
+.badge i.fa-plug { color: #f59e0b; }
+.badge i.fa-lock { color: #ef4444; }
+.badge i.fa-cloud { color: #06b6d4; }
+.badge i.fa-github { color: #e2e8f0; }
+.badge i.fa-git-alt { color: #f05032; }
+.badge i.fa-fire { color: #ffca28; }
+.badge i.fa-code-branch { color: #8b5cf6; }
+
 /* Counter Rotate Children so Icons Stay Upright While Orbiting */
 .ring-1 .orbit-item { animation: counterRotate 16s linear infinite; }
 .ring-2 .orbit-item { animation: counterRotateReverse 24s linear infinite; }
