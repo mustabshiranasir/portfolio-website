@@ -1139,8 +1139,8 @@ footer {
         flex-wrap: wrap;
     }
 
-    /* Horizontal scroll for skill badges on mobile */
-    #skills .tab-pane .d-flex {
+    /* Horizontal scroll for skill tab headings on mobile */
+    .skills-tabs {
         flex-wrap: nowrap !important;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -1148,14 +1148,14 @@ footer {
         justify-content: flex-start !important;
         padding-bottom: 8px;
     }
-    #skills .tab-pane .d-flex::-webkit-scrollbar {
+    .skills-tabs::-webkit-scrollbar {
         height: 4px;
     }
-    #skills .tab-pane .d-flex::-webkit-scrollbar-thumb {
+    .skills-tabs::-webkit-scrollbar-thumb {
         background: rgba(255,255,255,0.3);
         border-radius: 4px;
     }
-    #skills .tab-pane .skill-badge {
+    .skills-tabs .nav-item {
         scroll-snap-align: start;
         flex-shrink: 0;
     }
