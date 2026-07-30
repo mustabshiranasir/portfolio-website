@@ -239,10 +239,126 @@
             }
         }
 
-        // Close offcanvas drawer when nav link is clicked & let smooth scroll handle navigation
+        // Section shatter → emerge transition
+        let isTransitioning = false;
+
+        function pageToDataUrl() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const clone = document.body.cloneNode(true);
+            clone.querySelectorAll('script, canvas, #tsparticles').forEach(el => el.remove());
+            const content = clone.innerHTML;
+            const styles = Array.from(document.styleSheets).map(s => {
+                try { return Array.from(s.cssRules).map(r => r.cssText).join(''); }
+                catch (e) { return ''; }
+            }).join('');
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}"><style>${styles}body{margin:0;padding:0;overflow:hidden;}</style><foreignObject width="${w}" height="${h}"><div xmlns="http://www.w3.org/1999/xhtml" style="width:${w}px;height:${h}px;overflow:hidden;">${content}</div></foreignObject></svg>`;
+            return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+        }
+
+        function buildGrid(dataUrl, startScattered) {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const size = 75;
+            const cols = Math.ceil(w / size);
+            const rows = Math.ceil(h / size);
+            const fragment = document.createDocumentFragment();
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const x = c * size;
+                    const y = r * size;
+                    const pw = Math.min(size, w - x);
+                    const ph = Math.min(size, h - y);
+                    const piece = document.createElement('div');
+                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;background-image:url(${dataUrl});background-size:${w}px ${h}px;background-position:${-x}px ${-y}px;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);`;
+
+                    if (startScattered) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const dist = 300 + Math.random() * 600;
+                        piece.style.opacity = '0';
+                        piece.style.transform = `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist-150}px) rotate(${(Math.random()-0.5)*720}deg) scale(0.3)`;
+                    }
+
+                    fragment.appendChild(piece);
+                }
+            }
+            return fragment;
+        }
+
+        function doShatter(targetEl, cb) {
+            const dataUrl = pageToDataUrl();
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
+            overlay.appendChild(buildGrid(dataUrl, false));
+            document.body.appendChild(overlay);
+
+            // Pre-capture target behind overlay
+            if (targetEl) {
+                const origY = window.scrollY;
+                targetEl.scrollIntoView();
+                emergeDataUrl = pageToDataUrl();
+                window.scrollTo(0, origY);
+            }
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    for (const piece of overlay.children) {
+                        const angle = Math.random() * Math.PI * 2;
+                        const dist = 200 + Math.random() * 500;
+                        const rot = (Math.random() - 0.5) * 540;
+                        const delay = Math.random() * 0.08;
+                        piece.style.transition = `all 0.6s cubic-bezier(0.55,0,0.1,1) ${delay}s`;
+                        piece.style.transform = `translate(${Math.cos(angle)*dist}px,${Math.sin(angle)*dist-120}px) rotate(${rot}deg) scale(0.4)`;
+                        piece.style.opacity = '0';
+                    }
+                });
+            });
+
+            setTimeout(() => { overlay.remove(); if (cb) cb(); }, 800);
+        }
+
+        let emergeDataUrl = null;
+
+        function startEmerge() {
+            if (!emergeDataUrl) { emergeDataUrl = null; return; }
+            const overlay = document.createElement('div');
+            overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
+            overlay.appendChild(buildGrid(emergeDataUrl, true));
+            document.body.appendChild(overlay);
+            emergeDataUrl = null;
+
+            requestAnimationFrame(() => {
+                for (const piece of overlay.children) {
+                    const delay = Math.random() * 0.1 + 0.05;
+                    piece.style.transition = `all 0.7s cubic-bezier(0.34,1.56,0.64,1) ${delay}s`;
+                    piece.style.transform = 'translate(0,0) rotate(0deg) scale(1)';
+                    piece.style.opacity = '1';
+                }
+            });
+
+            setTimeout(() => { overlay.remove(); }, 1000);
+        }
+
+        // Intercept nav-link clicks for shatter → emerge
         document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+                e.preventDefault();
+                if (isTransitioning) return;
+                isTransitioning = true;
                 closeDrawer();
+                const target = document.querySelector(href);
+                if (!target) { isTransitioning = false; return; }
+                const origY = window.scrollY;
+                target.scrollIntoView();
+                window.scrollTo(0, origY);
+                doShatter(target, () => {
+                    target.scrollIntoView();
+                    startEmerge();
+                    setTimeout(() => { isTransitioning = false; }, 1100);
+                });
             });
         });
 
