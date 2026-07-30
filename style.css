@@ -1138,6 +1138,27 @@ footer {
         gap: 0.4rem !important;
         flex-wrap: wrap;
     }
+
+    /* Horizontal scroll for skill badges on mobile */
+    #skills .tab-pane .d-flex {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        justify-content: flex-start !important;
+        padding-bottom: 8px;
+    }
+    #skills .tab-pane .d-flex::-webkit-scrollbar {
+        height: 4px;
+    }
+    #skills .tab-pane .d-flex::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.3);
+        border-radius: 4px;
+    }
+    #skills .tab-pane .skill-badge {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+    }
 }
 
 /* Small tablets (577px - 768px) */
