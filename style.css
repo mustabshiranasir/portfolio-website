@@ -553,25 +553,34 @@ img {
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     perspective: 400px;
-    transform: perspective(400px) rotateY(0deg);
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
 }
 .skills-tabs .nav-link:hover {
     color: var(--color-light);
     border-color: var(--color-light);
-    transform: perspective(400px) rotateY(180deg);
 }
 .skills-tabs .nav-link.active {
     background: var(--color-light) !important;
     border-color: var(--color-light) !important;
     color: #1e293b !important;
-    transform: perspective(400px) rotateY(0deg);
 }
 [data-theme="light"] .skills-tabs .nav-link.active {
     color: #fff !important;
     background: #334155 !important;
     border-color: #334155 !important;
+}
+.skills-tabs .nav-link .tab-flip-inner {
+    display: inline-block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: rotateY(0deg);
+}
+.skills-tabs .nav-link:hover .tab-flip-inner {
+    transform: rotateY(180deg);
+}
+.skills-tabs .nav-link.active .tab-flip-inner {
+    transform: rotateY(0deg);
 }
 .skills-tabs .nav-link .tab-flip-text {
     display: inline-block;
