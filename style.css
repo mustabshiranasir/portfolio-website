@@ -608,7 +608,6 @@ footer {
 
 /* --- Offcanvas Drawer Mobile Navigation Menu --- */
 .offcanvas {
-    background: var(--color-panel) !important;
     color: var(--color-light);
     border-left: 1px solid var(--color-border);
     backdrop-filter: blur(15px);
@@ -619,6 +618,11 @@ footer {
     top: 0 !important;
     bottom: 0 !important;
     height: 100vh !important;
+    background: linear-gradient(145deg, #34495E, #233240) !important;
+}
+
+[data-theme="light"] .offcanvas {
+    background: linear-gradient(145deg, #FFFFFF, #E2E8F0) !important;
 }
 
 .offcanvas-header {
