@@ -495,4 +495,11 @@
             }
         }, { passive: true });
     }
+
+    // Auto-scroll active tab heading into view on tab switch
+    document.querySelectorAll('.skills-tabs .nav-link').forEach(tab => {
+        tab.addEventListener('shown.bs.tab', () => {
+            tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+    });
 })();
