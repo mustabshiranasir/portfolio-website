@@ -365,11 +365,14 @@
         ctx.scale(dpr, dpr);
         
         // Smoothly shrink and fade the button, maintaining any 3D hover rotation
-        const currentTransform = computedStyle.transform && computedStyle.transform !== 'none' ? computedStyle.transform : '';
-        button.style.pointerEvents = 'none';
-        button.style.transition = 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.35s ease';
-        button.style.transform = `${currentTransform} scale(0.6)`;
-        button.style.opacity = '0';
+        // (skip for tab nav-links so active state stays visible immediately)
+        if (!button.classList.contains('nav-link')) {
+            const currentTransform = computedStyle.transform && computedStyle.transform !== 'none' ? computedStyle.transform : '';
+            button.style.pointerEvents = 'none';
+            button.style.transition = 'transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.35s ease';
+            button.style.transform = `${currentTransform} scale(0.6)`;
+            button.style.opacity = '0';
+        }
         
         // Generate particles
         const particles = [];
@@ -449,14 +452,16 @@
                 // Gracefully fade the button back into view after completion
                 setTimeout(() => {
                     delete button.dataset.shattering; // reset state to allow click next time
-                    button.style.transform = '';
-                    button.style.opacity = '';
-                    button.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
-                    
-                    setTimeout(() => {
-                        button.style.transition = '';
-                        button.style.pointerEvents = '';
-                    }, 400);
+                    if (!button.classList.contains('nav-link')) {
+                        button.style.transform = '';
+                        button.style.opacity = '';
+                        button.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+                        
+                        setTimeout(() => {
+                            button.style.transition = '';
+                            button.style.pointerEvents = '';
+                        }, 400);
+                    }
                 }, 500);
             }
         }
