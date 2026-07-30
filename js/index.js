@@ -489,12 +489,30 @@
             const idx = Array.from(tabs).indexOf(active);
 
             if (diff > 0 && idx < tabs.length - 1) {
+                skillTabContent.dataset.slideDir = 'next';
                 tabs[idx + 1].click();
             } else if (diff < 0 && idx > 0) {
+                skillTabContent.dataset.slideDir = 'prev';
                 tabs[idx - 1].click();
             }
         }, { passive: true });
     }
+
+    // Apply slide direction on tab switch
+    document.querySelectorAll('.skills-tabs .nav-link').forEach(tab => {
+        tab.addEventListener('shown.bs.tab', e => {
+            const targetId = e.target.getAttribute('data-bs-target');
+            if (!targetId) return;
+            const pane = document.querySelector(targetId);
+            if (!pane) return;
+            const dir = skillTabContent?.dataset.slideDir === 'prev' ? 'left' : 'right';
+            pane.classList.add('slide-in-' + dir);
+            setTimeout(() => {
+                pane.classList.remove('slide-in-right', 'slide-in-left');
+                if (skillTabContent) delete skillTabContent.dataset.slideDir;
+            }, 450);
+        });
+    });
 
     // Auto-scroll active tab heading into view on tab switch
     document.querySelectorAll('.skills-tabs .nav-link').forEach(tab => {

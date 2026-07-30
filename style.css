@@ -626,18 +626,19 @@ img {
 }
 
 /* Slide-in animation for tab panes */
-#skills .tab-pane.active {
-    animation: skillSlideIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+#skills .tab-pane.slide-in-right {
+    animation: slideFromRight 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-@keyframes skillSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(100%);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+#skills .tab-pane.slide-in-left {
+    animation: slideFromLeft 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+@keyframes slideFromRight {
+    from { opacity: 0; transform: translateX(100%); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromLeft {
+    from { opacity: 0; transform: translateX(-100%); }
+    to { opacity: 1; transform: translateX(0); }
 }
 
 .p-4.bg-dark {
