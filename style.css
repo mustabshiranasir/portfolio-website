@@ -31,6 +31,12 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    width: 100%;
 }
 
 body {
@@ -39,9 +45,14 @@ body {
     color: var(--color-text);
     position: relative;
     z-index: 0;
-    transition: background-color 0.4s ease, color 0.4s ease;
-    padding-top: 80px;
+    padding-top: 70px;
     overflow-x: hidden;
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 60px;
+    }
 }
 
 img {
@@ -127,7 +138,21 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: visible;
+    overflow: hidden;
+}
+
+@media (max-width: 576px) {
+    .tech-network-container {
+        max-width: 280px;
+        height: 280px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .tech-network-container {
+        max-width: 360px;
+        height: 360px;
+    }
 }
 
 .tech-orbit-core {
@@ -610,30 +635,19 @@ footer {
 .offcanvas {
     color: var(--color-light);
     border-left: 1px solid var(--color-border);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(15px);
     width: 280px !important;
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.35s ease, box-shadow 0.4s ease;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 1055 !important;
     position: fixed !important;
     top: 0 !important;
     bottom: 0 !important;
     height: 100vh !important;
-    opacity: 0;
-    box-shadow: none;
-    background: linear-gradient(160deg, #1E293B 0%, #2C3E50 100%) !important;
-}
-
-.offcanvas.show {
-    opacity: 1;
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(145deg, #34495E, #233240) !important;
 }
 
 [data-theme="light"] .offcanvas {
-    background: linear-gradient(160deg, #FFFFFF 0%, #E8EEF5 100%) !important;
-}
-
-[data-theme="light"] .offcanvas.show {
-    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #FFFFFF, #E2E8F0) !important;
 }
 
 .offcanvas-header {

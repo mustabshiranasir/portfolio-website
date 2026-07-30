@@ -251,23 +251,17 @@
         const buttons = document.querySelectorAll('.btn:not(.scroll-top-btn):not(.navbar-toggler):not(.btn-close-custom)');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
-                // If we are currently performing the shatter action, let the event pass through naturally
+                // Skip if already shattering or if button is inside a form with validation
                 if (this.dataset.shattering === 'true') {
                     return;
                 }
-                
-                // If it is a submit button, validate form first before intercepting
                 if (this.type === 'submit') {
                     const form = this.closest('form');
                     if (form && !form.checkValidity()) {
-                        // Let the browser show validation tooltip naturally
                         return;
                     }
                 }
-                
-                this.dataset.shattering = 'true';
-                e.preventDefault();
-                e.stopPropagation();
+                // Fire shatter effect without blocking navigation
                 shatterButton(this, e);
             });
         });
@@ -326,6 +320,10 @@
         const isLink = button.tagName === 'A' || button.closest('a');
         const isSubmit = button.type === 'submit';
         
+        // Mark as shattering to prevent re-entry, but don't prevent default navigation
+        button.dataset.shattering = 'true';
+        setTimeout(() => { delete button.dataset.shattering; }, 600);
+
         const rect = button.getBoundingClientRect();
         const computedStyle = window.getComputedStyle(button);
         const bgColor = computedStyle.backgroundColor;
@@ -407,29 +405,8 @@
         }
         
         let animationFrameId;
-        let startTime = Date.now();
-        let actionExecuted = false;
-        
-        function executeAction() {
-            if (isSubmit) {
-                // Trigger natural button click now that dataset.shattering is 'true'
-                button.click();
-            } else if (isLink) {
-                const link = button.tagName === 'A' ? button : button.closest('a');
-                // Trigger natural link click
-                link.click();
-            }
-        }
         
         function animate() {
-            const elapsed = Date.now() - startTime;
-            
-            // Trigger target redirection at the peak of the shatter (300ms)
-            if (elapsed >= 300 && !actionExecuted) {
-                actionExecuted = true;
-                executeAction();
-            }
-            
             ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
             
             let alive = false;
