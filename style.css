@@ -743,14 +743,9 @@ footer {
     }
 
     .hero-btn-group {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px !important;
-    }
-
-    .hero-btn-group a,
-    .hero-btn-group button {
-        width: 100% !important;
+        justify-content: center;
+        flex-wrap: nowrap;
+        gap: 10px !important;
     }
 
     /* Scaling Tech Orbit Constellation for small phone screens */
@@ -942,10 +937,6 @@ footer {
 
     .btn-flip-wrapper {
         max-width: fit-content;
-    }
-
-    .hero-btn-group {
-        flex-wrap: nowrap !important;
     }
 
     .navbar-brand {
