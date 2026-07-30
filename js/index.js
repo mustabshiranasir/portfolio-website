@@ -241,7 +241,11 @@
 
         // Close drawer when nav link is clicked — smooth scroll handles navigation
         document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-            link.addEventListener('click', () => closeDrawer());
+            link.addEventListener('click', function () {
+                this.classList.add('glass-click');
+                setTimeout(() => this.classList.remove('glass-click'), 400);
+                closeDrawer();
+            });
         });
 
         // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)

@@ -401,6 +401,18 @@ img {
     color: var(--color-light) !important;
 }
 
+.navbar .nav-link.glass-click {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    transition: background 0.4s ease-out, backdrop-filter 0.4s ease-out;
+}
+
+[data-theme="light"] .navbar .nav-link.glass-click {
+    background: rgba(15, 23, 42, 0.06) !important;
+}
+
 .sticky {
     background: var(--sticky-bg) !important;
     backdrop-filter: blur(10px);
