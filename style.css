@@ -41,6 +41,12 @@ body {
     z-index: 0;
     transition: background-color 0.4s ease, color 0.4s ease;
     padding-top: 80px;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 #tsparticles {
@@ -826,5 +832,194 @@ footer {
 
     .hero-heading {
         font-size: 3.8rem;
+    }
+}
+
+/* ============================================ */
+/* RESPONSIVE ENHANCEMENTS                      */
+/* ============================================ */
+
+/* Phones (max-width: 576px) */
+@media (max-width: 576px) {
+    .wow {
+        animation: none !important;
+        visibility: visible !important;
+    }
+
+    .animate__animated {
+        animation: none !important;
+        visibility: visible !important;
+    }
+
+    .navbar-toggler,
+    .navbar-toggler-icon,
+    .navbar-toggler-icon i {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .btn-dark,
+    .btn-orange,
+    .btn-outline-light,
+    .btn-light {
+        min-width: 100px;
+        padding: 0 14px;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem !important;
+    }
+
+    .display-4,
+    .hero-heading {
+        font-size: 1.6rem !important;
+    }
+
+    .lead,
+    .hero-subtitle {
+        font-size: 0.9rem !important;
+    }
+
+    header .fs-5,
+    .hero-description {
+        font-size: 0.85rem !important;
+    }
+
+    section h2 {
+        font-size: 1.3rem !important;
+    }
+
+    section.py-5.my-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    .about-section.py-5 {
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+
+    .about-section .container.my-5 {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+
+    #project .p-4,
+    #skills .p-4,
+    #experience .p-4,
+    #education .p-4,
+    #contact .p-4 {
+        padding: 1rem !important;
+    }
+
+    #project h4 {
+        font-size: 0.95rem;
+    }
+
+    #project p {
+        font-size: 0.8rem;
+    }
+
+    #skills h5 {
+        font-size: 0.85rem;
+    }
+
+    #skills .badge {
+        font-size: 0.7rem !important;
+        padding: 3px 8px !important;
+    }
+
+    #experience h4,
+    #education h4 {
+        font-size: 0.95rem;
+    }
+
+    #experience h5,
+    #education h5 {
+        font-size: 0.85rem;
+    }
+
+    #experience ul,
+    #education p {
+        font-size: 0.8rem;
+    }
+
+    #contact h5 {
+        font-size: 0.95rem;
+    }
+
+    #contact p,
+    #contact a {
+        font-size: 0.8rem;
+    }
+
+    #contact .fs-4 {
+        font-size: 1.1rem !important;
+    }
+
+    #contact form .form-control {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    #contact form .form-label {
+        font-size: 0.8rem;
+    }
+
+    .d-flex.gap-3.mt-5.mb-4 {
+        gap: 0.4rem !important;
+        flex-wrap: wrap;
+    }
+}
+
+/* Small tablets (577px - 768px) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .btn-dark,
+    .btn-orange,
+    .btn-outline-light,
+    .btn-light {
+        min-width: 120px;
+        padding: 0 18px;
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .nav-link {
+        font-size: 14px;
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem !important;
+    }
+
+    .hero-heading {
+        font-size: 2rem !important;
+    }
+
+    section h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+/* Medium tablets / small laptops (769px - 992px) */
+@media (min-width: 769px) and (max-width: 992px) {
+    .btn-dark,
+    .btn-orange,
+    .btn-outline-light,
+    .btn-light {
+        min-width: 130px;
+        height: 46px;
+    }
+
+    .hero-heading {
+        font-size: 2.5rem !important;
+    }
+
+    section h2 {
+        font-size: 1.75rem !important;
     }
 }
