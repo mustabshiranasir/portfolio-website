@@ -328,10 +328,31 @@ img {
 .item-3-8 { top: 38px; left: 38px; }
 
 .navbar {
-    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
     background: transparent;
     z-index: 1030;
 }
+
+@media (max-width: 768px) {
+    .navbar {
+        transition: none;
+    }
+
+    .offcanvas {
+        backdrop-filter: none;
+    }
+
+    .sticky {
+        backdrop-filter: none;
+    }
+
+    .offcanvas ~ .container,
+    .offcanvas ~ * {
+        transition: none;
+    }
+}
+
+
 
 .navbar .navbar-brand {
     color: var(--color-light);
@@ -363,6 +384,12 @@ img {
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
     z-index: 1030 !important;
+}
+
+@media (max-width: 768px) {
+    .sticky {
+        backdrop-filter: none;
+    }
 }
 
 .theme-toggle-btn {
@@ -637,7 +664,7 @@ footer {
     border-left: 1px solid var(--color-border);
     backdrop-filter: blur(15px);
     width: 280px !important;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease;
     z-index: 1055 !important;
     position: fixed !important;
     top: 0 !important;
@@ -648,6 +675,12 @@ footer {
 
 [data-theme="light"] .offcanvas {
     background: linear-gradient(145deg, #FFFFFF, #E2E8F0) !important;
+}
+
+@media (max-width: 768px) {
+    .offcanvas {
+        backdrop-filter: none;
+    }
 }
 
 .offcanvas-header {
@@ -885,6 +918,15 @@ footer {
     .navbar-toggler-icon i {
         animation: none !important;
         transition: none !important;
+    }
+
+    .scroll-top-btn {
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        transform: none;
+    }
+
+    .scroll-top-btn.show {
+        transform: none;
     }
 
     .btn-dark,
