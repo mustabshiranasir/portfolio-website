@@ -240,102 +240,35 @@
         }
 
         // Section shatter → emerge transition
-        let emergeDataUrl = null;
         let isTransitioning = false;
-        let loadingHtml2canvas = false;
-        const html2canvasQueue = [];
 
-        function ensureHtml2canvas(cb) {
-            if (typeof html2canvas !== 'undefined') { cb(); return; }
-            if (loadingHtml2canvas) { html2canvasQueue.push(cb); return; }
-            loadingHtml2canvas = true;
-            const script = document.createElement('script');
-            script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
-            script.onload = () => {
-                loadingHtml2canvas = false;
-                cb();
-                html2canvasQueue.forEach(f => f());
-                html2canvasQueue.length = 0;
-            };
-            document.head.appendChild(script);
+        function createPageSnapshot() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const snap = document.createElement('div');
+            snap.style.cssText = `position:absolute;left:0;top:0;width:${w}px;`;
+            // Clone visible body children (skip scripts, particles, canvases)
+            for (const child of document.body.children) {
+                if (child.tagName === 'SCRIPT') continue;
+                if (child.id === 'tsparticles') continue;
+                if (child.tagName === 'CANVAS') continue;
+                snap.appendChild(child.cloneNode(true));
+            }
+            return snap;
         }
 
         function doShatter(targetEl, cb) {
-            ensureHtml2canvas(() => {
-                html2canvas(document.body, { scale: 1, useCORS: true, allowTaint: false }).then(canvas => {
-                    const dataUrl = canvas.toDataURL();
-                    const w = window.innerWidth;
-                    const h = window.innerHeight;
-                    const size = 75;
-                    const cols = Math.ceil(w / size);
-                    const rows = Math.ceil(h / size);
-
-                    const overlay = document.createElement('div');
-                    overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
-
-                    const fragment = document.createDocumentFragment();
-                    for (let r = 0; r < rows; r++) {
-                        for (let c = 0; c < cols; c++) {
-                            const x = c * size;
-                            const y = r * size;
-                            const pw = Math.min(size, w - x);
-                            const ph = Math.min(size, h - y);
-                            const piece = document.createElement('div');
-                            piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;background-image:url(${dataUrl});background-size:${w}px ${h}px;background-position:${-x}px ${-y}px;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);`;
-                            fragment.appendChild(piece);
-                        }
-                    }
-                    overlay.appendChild(fragment);
-                    document.body.appendChild(overlay);
-
-                    // Pre-capture target section behind the shatter overlay (user doesn't see it scroll)
-                    if (targetEl) {
-                        const origY = window.scrollY;
-                        targetEl.scrollIntoView();
-                        setTimeout(() => {
-                            html2canvas(document.body, { scale: 1, useCORS: true, allowTaint: false }).then(c2 => {
-                                emergeDataUrl = c2.toDataURL();
-                                window.scrollTo(0, origY);
-                            }).catch(() => {});
-                        }, 150);
-                    }
-
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            for (const piece of overlay.children) {
-                                const angle = Math.random() * Math.PI * 2;
-                                const dist = 200 + Math.random() * 500;
-                                const rot = (Math.random() - 0.5) * 540;
-                                const delay = Math.random() * 0.08;
-                                piece.style.transition = `all 0.6s cubic-bezier(0.55,0,0.1,1) ${delay}s`;
-                                piece.style.transform = `translate(${Math.cos(angle) * dist}px, ${Math.sin(angle) * dist - 120}px) rotate(${rot}deg) scale(0.4)`;
-                                piece.style.opacity = '0';
-                            }
-                        });
-                    });
-
-                    setTimeout(() => {
-                        overlay.remove();
-                        if (cb) cb();
-                    }, 800);
-                }).catch(() => { fallbackShatter(targetEl, cb); });
-            });
-        }
-
-        function fallbackShatter(targetEl, cb) {
             const w = window.innerWidth;
             const h = window.innerHeight;
             const size = 75;
             const cols = Math.ceil(w / size);
             const rows = Math.ceil(h / size);
 
+            // Build grid overlay
             const overlay = document.createElement('div');
             overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none;';
 
-            const bg = getComputedStyle(document.body).backgroundColor;
-            const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-            const borderColor = isLight ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
-
+            const snapshot = createPageSnapshot();
             const fragment = document.createDocumentFragment();
             for (let r = 0; r < rows; r++) {
                 for (let c = 0; c < cols; c++) {
@@ -344,13 +277,30 @@
                     const pw = Math.min(size, w - x);
                     const ph = Math.min(size, h - y);
                     const piece = document.createElement('div');
-                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;background:${bg};border:0.5px solid ${borderColor};box-sizing:border-box;`;
+                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;overflow:hidden;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);`;
+                    // Each piece windows into a clone of the snapshot
+                    const clone = snapshot.cloneNode(true);
+                    clone.style.position = 'absolute';
+                    clone.style.left = `${-x}px`;
+                    clone.style.top = `${-y}px`;
+                    piece.appendChild(clone);
                     fragment.appendChild(piece);
                 }
             }
             overlay.appendChild(fragment);
             document.body.appendChild(overlay);
 
+            // Pre-capture target for emerge behind the overlay
+            if (targetEl) {
+                const origY = window.scrollY;
+                targetEl.scrollIntoView();
+                setTimeout(() => {
+                    emergeDataUrl = createPageSnapshot();
+                    window.scrollTo(0, origY);
+                }, 50);
+            }
+
+            // Animate shatter outward
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     for (const piece of overlay.children) {
@@ -371,6 +321,9 @@
             }, 800);
         }
 
+        // Emerge: new section appears via content squares flying in
+        let emergeDataUrl = null;
+
         function startEmerge() {
             if (!emergeDataUrl) { emergeDataUrl = null; return; }
             const w = window.innerWidth;
@@ -390,15 +343,26 @@
                     const pw = Math.min(size, w - x);
                     const ph = Math.min(size, h - y);
                     const piece = document.createElement('div');
+                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;overflow:hidden;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);opacity:0;`;
+                    // Each piece windows into a clone of the target snapshot
+                    const clone = emergeDataUrl.cloneNode(true);
+                    clone.style.position = 'absolute';
+                    clone.style.left = `${-x}px`;
+                    clone.style.top = `${-y}px`;
+                    piece.appendChild(clone);
+                    // Start position: scattered randomly
                     const startAngle = Math.random() * Math.PI * 2;
                     const startDist = 300 + Math.random() * 600;
-                    piece.style.cssText = `position:absolute;left:${x}px;top:${y}px;width:${pw}px;height:${ph}px;background-image:url(${emergeDataUrl});background-size:${w}px ${h}px;background-position:${-x}px ${-y}px;box-sizing:border-box;border:0.5px solid rgba(255,255,255,0.06);opacity:0;transform:translate(${Math.cos(startAngle)*startDist}px,${Math.sin(startAngle)*startDist-150}px) rotate(${(Math.random()-0.5)*720}deg) scale(0.3);`;
+                    piece.style.transform = `translate(${Math.cos(startAngle)*startDist}px,${Math.sin(startAngle)*startDist-150}px) rotate(${(Math.random()-0.5)*720}deg) scale(0.3)`;
                     fragment.appendChild(piece);
                 }
             }
             overlay.appendChild(fragment);
             document.body.appendChild(overlay);
 
+            emergeDataUrl = null;
+
+            // Animate emerge inward
             requestAnimationFrame(() => {
                 for (const piece of overlay.children) {
                     const delay = Math.random() * 0.1 + 0.05;
@@ -408,7 +372,6 @@
                 }
             });
 
-            emergeDataUrl = null;
             setTimeout(() => { overlay.remove(); }, 1000);
         }
 
