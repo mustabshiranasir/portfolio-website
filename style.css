@@ -106,25 +106,25 @@ img {
 }
 
 .gradient-text-blue {
-    background: linear-gradient(135deg, #7F8C8D, #ECF0F1);
+    background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .gradient-text-purple {
-    background: linear-gradient(135deg, #BDC3C7, #ECF0F1);
+    background: linear-gradient(135deg, #a855f7 0%, #3b82f6 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 [data-theme="light"] .gradient-text-blue {
-    background: linear-gradient(135deg, #475569, #0F172A);
+    background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 [data-theme="light"] .gradient-text-purple {
-    background: linear-gradient(135deg, #1E293B, #0F172A);
+    background: linear-gradient(135deg, #9333ea 0%, #2563eb 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -670,11 +670,11 @@ footer {
     top: 0 !important;
     bottom: 0 !important;
     height: 100vh !important;
-    background: linear-gradient(145deg, #34495E, #233240) !important;
+    background: linear-gradient(145deg, #0F172A, #1E3A5F) !important;
 }
 
 [data-theme="light"] .offcanvas {
-    background: linear-gradient(145deg, #FFFFFF, #E2E8F0) !important;
+    background: linear-gradient(145deg, #F0F9FF, #DBEAFE) !important;
 }
 
 @media (max-width: 768px) {
