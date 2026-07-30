@@ -568,7 +568,7 @@ img {
     transform: rotateY(0deg);
 }
 .skills-tabs .nav-link:hover .tab-flip-inner {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) scale(1.1);
     color: var(--color-light);
     border-color: var(--color-light);
 }
@@ -589,7 +589,7 @@ img {
     transform: rotateY(0deg);
 }
 .skills-tabs .nav-link:hover .tab-flip-text {
-    transform: rotateY(-180deg);
+    transform: rotateY(-180deg) scale(1.15);
 }
 .skills-tabs .nav-link.active .tab-flip-text {
     transform: rotateY(0deg);
