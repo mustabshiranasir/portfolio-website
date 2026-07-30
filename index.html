@@ -276,12 +276,31 @@
   <section id="skills" class="text-white text-center py-5 my-5">
     <div class="container">
       <h2 class="mb-5">Technical Skills</h2>
-      <div class="skills-grid">
-        <!-- Programming Languages -->
-        <article class="wow animate__animated animate__fadeInUp">
-          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
-            style="border-color: var(--color-light) !important;">
-            <h5 class="text-uppercase mb-4">Programming Languages</h5>
+      <!-- Nav tabs: headings in a row -->
+      <ul class="nav skills-tabs justify-content-center flex-wrap gap-2 mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#skills-lang" type="button" role="tab" aria-selected="true">Programming Languages</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skills-web" type="button" role="tab" aria-selected="false">Web Development</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skills-mobile" type="button" role="tab" aria-selected="false">Mobile Development</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skills-db" type="button" role="tab" aria-selected="false">Database</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skills-backend" type="button" role="tab" aria-selected="false">Backend</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" data-bs-toggle="tab" data-bs-target="#skills-tools" type="button" role="tab" aria-selected="false">Tools &amp; Platforms</button>
+        </li>
+      </ul>
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane fade show active" id="skills-lang" role="tabpanel">
+          <div class="p-4 bg-dark rounded shadow-sm border-top border-4" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap gap-2 justify-content-center">
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-python me-2"></i>Python</span>
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-java me-2"></i>Java</span>
@@ -289,12 +308,9 @@
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-js me-2"></i>JavaScript</span>
             </div>
           </div>
-        </article>
-        <!-- Web Development -->
-        <article class="wow animate__animated animate__fadeInUp" style="animation-delay: 0.1s;">
-          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
-            style="border-color: var(--color-light) !important;">
-            <h5 class="text-uppercase mb-4">Web Development</h5>
+        </div>
+        <div class="tab-pane fade" id="skills-web" role="tabpanel">
+          <div class="p-4 bg-dark rounded shadow-sm border-top border-4" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap gap-2 justify-content-center">
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-html5 me-2"></i>HTML</span>
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-css3-alt me-2"></i>CSS</span>
@@ -305,23 +321,17 @@
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-wand-magic-sparkles me-2"></i>Tailwind CSS</span>
             </div>
           </div>
-        </article>
-        <!-- Mobile Development -->
-        <article class="wow animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
-          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
-            style="border-color: var(--color-light) !important;">
-            <h5 class="text-uppercase mb-4">Mobile Development</h5>
+        </div>
+        <div class="tab-pane fade" id="skills-mobile" role="tabpanel">
+          <div class="p-4 bg-dark rounded shadow-sm border-top border-4" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap gap-2 justify-content-center">
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-react me-2"></i>React Native / Expo</span>
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-mobile-screen me-2"></i>Flutter (In Progress)</span>
             </div>
           </div>
-        </article>
-        <!-- Database -->
-        <article class="wow animate__animated animate__fadeInUp" style="animation-delay: 0.3s;">
-          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
-            style="border-color: var(--color-light) !important;">
-            <h5 class="text-uppercase mb-4">Database</h5>
+        </div>
+        <div class="tab-pane fade" id="skills-db" role="tabpanel">
+          <div class="p-4 bg-dark rounded shadow-sm border-top border-4" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap gap-2 justify-content-center">
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-database me-2"></i>MySQL</span>
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-database me-2"></i>SQL</span>
@@ -331,12 +341,9 @@
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-database me-2"></i>Mongoose ODM</span>
             </div>
           </div>
-        </article>
-        <!-- Backend -->
-        <article class="wow animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
-          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
-            style="border-color: var(--color-light) !important;">
-            <h5 class="text-uppercase mb-4">Backend</h5>
+        </div>
+        <div class="tab-pane fade" id="skills-backend" role="tabpanel">
+          <div class="p-4 bg-dark rounded shadow-sm border-top border-4" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap gap-2 justify-content-center">
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-node-js me-2"></i>Node.js</span>
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-bolt me-2"></i>Express</span>
@@ -345,12 +352,9 @@
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-cloud me-2"></i>Supabase Edge Functions</span>
             </div>
           </div>
-        </article>
-        <!-- Tools & Platforms -->
-        <article class="wow animate__animated animate__fadeInUp" style="animation-delay: 0.5s;">
-          <div class="p-4 bg-dark rounded shadow-sm h-100 border-top border-4"
-            style="border-color: var(--color-light) !important;">
-            <h5 class="text-uppercase mb-4">Tools & Platforms</h5>
+        </div>
+        <div class="tab-pane fade" id="skills-tools" role="tabpanel">
+          <div class="p-4 bg-dark rounded shadow-sm border-top border-4" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap gap-2 justify-content-center">
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-brands fa-github me-2"></i>GitHub</span>
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-code me-2"></i>VS Code</span>
@@ -362,7 +366,7 @@
               <span class="badge bg-secondary fs-6 py-2 px-3"><i class="fa-solid fa-code-branch me-2"></i>TanStack Router</span>
             </div>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
