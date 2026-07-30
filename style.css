@@ -568,7 +568,7 @@ img {
     transform: rotateY(0deg);
 }
 .skills-tabs .nav-link:hover .tab-flip-inner {
-    transform: rotateY(180deg) scale(1.1);
+    transform: rotateY(180deg);
     color: var(--color-light);
     border-color: var(--color-light);
 }
@@ -589,21 +589,19 @@ img {
     transform: rotateY(0deg) translateZ(0);
 }
 .skills-tabs .nav-link:hover .tab-flip-text {
-    transform: rotateY(-180deg) scale(1.35) translateZ(22px);
-    font-weight: 800 !important;
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+    transform: rotateY(-180deg);
 }
 .skills-tabs .nav-link.active .tab-flip-text {
     transform: rotateY(0deg);
 }
 
-/* Pane color change on tab hover */
-#skills:has([data-bs-target="#skills-lang"]:hover) #skills-lang .p-4 { border-color: #f7df1e !important; background: rgba(247, 223, 30, 0.06) !important; box-shadow: 0 0 30px rgba(247, 223, 30, 0.15); }
-#skills:has([data-bs-target="#skills-web"]:hover) #skills-web .p-4 { border-color: #e34f26 !important; background: rgba(227, 79, 38, 0.06) !important; box-shadow: 0 0 30px rgba(227, 79, 38, 0.15); }
-#skills:has([data-bs-target="#skills-mobile"]:hover) #skills-mobile .p-4 { border-color: #61dafb !important; background: rgba(97, 218, 251, 0.06) !important; box-shadow: 0 0 30px rgba(97, 218, 251, 0.15); }
-#skills:has([data-bs-target="#skills-db"]:hover) #skills-db .p-4 { border-color: #38bdf8 !important; background: rgba(56, 189, 248, 0.06) !important; box-shadow: 0 0 30px rgba(56, 189, 248, 0.15); }
-#skills:has([data-bs-target="#skills-backend"]:hover) #skills-backend .p-4 { border-color: #68a063 !important; background: rgba(104, 160, 99, 0.06) !important; box-shadow: 0 0 30px rgba(104, 160, 99, 0.15); }
-#skills:has([data-bs-target="#skills-tools"]:hover) #skills-tools .p-4 { border-color: #a855f7 !important; background: rgba(168, 85, 247, 0.06) !important; box-shadow: 0 0 30px rgba(168, 85, 247, 0.15); }
+/* Pane color change on tab hover — bold like the active button color */
+#skills:has([data-bs-target="#skills-lang"]:hover) #skills-lang .p-4 { border-color: #f7df1e !important; background: rgba(247, 223, 30, 0.12) !important; box-shadow: 0 0 35px rgba(247, 223, 30, 0.2); }
+#skills:has([data-bs-target="#skills-web"]:hover) #skills-web .p-4 { border-color: #e34f26 !important; background: rgba(227, 79, 38, 0.12) !important; box-shadow: 0 0 35px rgba(227, 79, 38, 0.2); }
+#skills:has([data-bs-target="#skills-mobile"]:hover) #skills-mobile .p-4 { border-color: #61dafb !important; background: rgba(97, 218, 251, 0.12) !important; box-shadow: 0 0 35px rgba(97, 218, 251, 0.2); }
+#skills:has([data-bs-target="#skills-db"]:hover) #skills-db .p-4 { border-color: #38bdf8 !important; background: rgba(56, 189, 248, 0.12) !important; box-shadow: 0 0 35px rgba(56, 189, 248, 0.2); }
+#skills:has([data-bs-target="#skills-backend"]:hover) #skills-backend .p-4 { border-color: #68a063 !important; background: rgba(104, 160, 99, 0.12) !important; box-shadow: 0 0 35px rgba(104, 160, 99, 0.2); }
+#skills:has([data-bs-target="#skills-tools"]:hover) #skills-tools .p-4 { border-color: #a855f7 !important; background: rgba(168, 85, 247, 0.12) !important; box-shadow: 0 0 35px rgba(168, 85, 247, 0.2); }
 
 .p-4.bg-dark {
     background: var(--color-panel) !important;
