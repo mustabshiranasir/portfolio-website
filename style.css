@@ -543,6 +543,25 @@ img {
 
 
 /* Skills Tab Navigation */
+.skills-tabs {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    justify-content: flex-start !important;
+    padding-bottom: 8px;
+}
+.skills-tabs::-webkit-scrollbar {
+    height: 4px;
+}
+.skills-tabs::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 4px;
+}
+.skills-tabs .nav-item {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
 .skills-tabs .nav-link {
     background: none !important;
     border: none !important;
@@ -1137,27 +1156,6 @@ footer {
     .d-flex.gap-3.mt-5.mb-4 {
         gap: 0.4rem !important;
         flex-wrap: wrap;
-    }
-
-    /* Horizontal scroll for skill tab headings on mobile */
-    .skills-tabs {
-        flex-wrap: nowrap !important;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        justify-content: flex-start !important;
-        padding-bottom: 8px;
-    }
-    .skills-tabs::-webkit-scrollbar {
-        height: 4px;
-    }
-    .skills-tabs::-webkit-scrollbar-thumb {
-        background: rgba(255,255,255,0.3);
-        border-radius: 4px;
-    }
-    .skills-tabs .nav-item {
-        scroll-snap-align: start;
-        flex-shrink: 0;
     }
 }
 
