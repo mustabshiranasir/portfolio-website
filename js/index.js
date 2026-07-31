@@ -309,24 +309,56 @@
         // GSAP infinite marquee for the info stats strip
         const marqueeTrack = document.querySelector('.info-grid-track');
         if (marqueeTrack && window.gsap) {
-            const totalWidth = marqueeTrack.scrollWidth / 2;
-            if (totalWidth > 0) {
-                const marqueeTween = gsap.to(marqueeTrack, {
-                    x: -totalWidth,
-                    duration: totalWidth / 60,
+            const firstSet = marqueeTrack.querySelector('.info-set');
+            const marqueeStrip = marqueeTrack.closest('.info-grid-strip');
+            let marqueeTween = null;
+            let loopWidth = 0;
+
+            const buildMarquee = () => {
+                const width = firstSet ? firstSet.offsetWidth : marqueeTrack.scrollWidth / 2;
+                if (width <= 0) return;
+
+                let startX = 0;
+                if (marqueeTween) {
+                    startX = loopWidth ? gsap.getProperty(marqueeTrack, 'x') % loopWidth : 0;
+                    marqueeTween.kill();
+                    marqueeTween = null;
+                }
+
+                loopWidth = width;
+                gsap.set(marqueeTrack, { x: startX });
+                marqueeTween = gsap.to(marqueeTrack, {
+                    x: startX - loopWidth,
+                    duration: loopWidth / 60,
                     ease: 'none',
                     repeat: -1,
                     modifiers: {
-                        x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+                        x: gsap.utils.unitize(x => parseFloat(x) % loopWidth)
                     }
                 });
+            };
 
-                const marqueeStrip = marqueeTrack.closest('.info-grid-strip');
-                if (marqueeStrip) {
-                    marqueeStrip.addEventListener('mouseenter', () => marqueeTween.timeScale(0.3));
-                    marqueeStrip.addEventListener('mouseleave', () => marqueeTween.timeScale(1));
-                }
+            buildMarquee();
+
+            if (marqueeStrip) {
+                marqueeStrip.addEventListener('mouseenter', () => {
+                    if (marqueeTween) gsap.to(marqueeTween, { timeScale: 0.3, duration: 0.5, ease: 'power2.out', overwrite: true });
+                });
+                marqueeStrip.addEventListener('mouseleave', () => {
+                    if (marqueeTween) gsap.to(marqueeTween, { timeScale: 1, duration: 0.5, ease: 'power2.out', overwrite: true });
+                });
             }
+
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(buildMarquee, 150);
+            });
+
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(() => setTimeout(buildMarquee, 100));
+            }
+            window.addEventListener('load', () => setTimeout(buildMarquee, 100));
         }
 
         // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)
