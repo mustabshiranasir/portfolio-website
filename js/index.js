@@ -259,8 +259,20 @@
         // Experience timeline scroll-progress line
         const timelineFill = document.querySelector('.timeline-line-fill');
         const timelineTrack = document.querySelector('.experience-timeline');
+        const timelineDots = document.querySelectorAll('.timeline-center-dot');
         if (timelineFill && timelineTrack) {
             let ticking = false;
+            const filledDots = new Set();
+
+            const positionDots = () => {
+                const trackRect = timelineTrack.getBoundingClientRect();
+                timelineDots.forEach(dot => {
+                    const card = dot.parentElement.querySelector('article');
+                    if (!card) return;
+                    const cardRect = card.getBoundingClientRect();
+                    dot.style.top = (cardRect.top - trackRect.top + cardRect.height / 2) + 'px';
+                });
+            };
 
             const updateTimeline = () => {
                 ticking = false;
@@ -269,6 +281,17 @@
                 const progress = (vh * 0.5 - rect.top) / rect.height;
                 const p = Math.min(1, Math.max(0, progress));
                 timelineFill.style.height = (p * 100) + '%';
+                positionDots();
+
+                // Fill dots once they cross the viewport center
+                const centerY = vh * 0.5;
+                timelineDots.forEach(dot => {
+                    if (filledDots.has(dot)) return;
+                    if (dot.getBoundingClientRect().top <= centerY) {
+                        dot.classList.add('filled');
+                        filledDots.add(dot);
+                    }
+                });
             };
 
             const onScroll = () => {
@@ -281,6 +304,29 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', onScroll);
             updateTimeline();
+        }
+
+        // GSAP infinite marquee for the info stats strip
+        const marqueeTrack = document.querySelector('.info-grid-track');
+        if (marqueeTrack && window.gsap) {
+            const totalWidth = marqueeTrack.scrollWidth / 2;
+            if (totalWidth > 0) {
+                const marqueeTween = gsap.to(marqueeTrack, {
+                    x: -totalWidth,
+                    duration: totalWidth / 60,
+                    ease: 'none',
+                    repeat: -1,
+                    modifiers: {
+                        x: gsap.utils.unitize(x => parseFloat(x) % totalWidth)
+                    }
+                });
+
+                const marqueeStrip = marqueeTrack.closest('.info-grid-strip');
+                if (marqueeStrip) {
+                    marqueeStrip.addEventListener('mouseenter', () => marqueeTween.timeScale(0.3));
+                    marqueeStrip.addEventListener('mouseleave', () => marqueeTween.timeScale(1));
+                }
+            }
         }
 
         // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)
