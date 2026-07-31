@@ -413,6 +413,64 @@ img {
     background: rgba(15, 23, 42, 0.06) !important;
 }
 
+.btn.glass-click {
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: background 0.4s ease-out;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="light"] .btn.glass-click {
+    background: rgba(15, 23, 42, 0.08) !important;
+    border-color: rgba(15, 23, 42, 0.2) !important;
+}
+
+/* Experience timeline scroll line */
+.experience-timeline {
+    position: relative;
+    padding-left: 34px;
+}
+
+.timeline-line-bg {
+    position: absolute;
+    left: 11px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(127, 140, 141, 0.3);
+    border-radius: 999px;
+}
+
+.timeline-line-fill {
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 4px;
+    height: 0;
+    background: linear-gradient(180deg, #64D9FD 0%, #7E57FD 25%, #ffffff 50%, #B04BFD 100%);
+    box-shadow: 0 0 20px rgba(126, 87, 253, 0.6);
+    border-radius: 999px;
+}
+
+[data-theme="light"] .timeline-line-bg {
+    background: rgba(15, 23, 42, 0.2);
+}
+
+@media (max-width: 575.98px) {
+    .experience-timeline {
+        padding-left: 22px;
+    }
+
+    .timeline-line-bg {
+        left: 7px;
+    }
+
+    .timeline-line-fill {
+        left: 6px;
+    }
+}
+
 .sticky {
     background: var(--sticky-bg) !important;
     backdrop-filter: blur(10px);

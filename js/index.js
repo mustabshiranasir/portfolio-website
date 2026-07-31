@@ -248,6 +248,41 @@
             });
         });
 
+        // Glass click effect on hero section buttons
+        document.querySelectorAll('.btn-flip-wrapper .btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                this.classList.add('glass-click');
+                setTimeout(() => this.classList.remove('glass-click'), 400);
+            });
+        });
+
+        // Experience timeline scroll-progress line
+        const timelineFill = document.querySelector('.timeline-line-fill');
+        const timelineTrack = document.querySelector('.experience-timeline');
+        if (timelineFill && timelineTrack) {
+            let ticking = false;
+
+            const updateTimeline = () => {
+                ticking = false;
+                const vh = window.innerHeight || document.documentElement.clientHeight;
+                const rect = timelineTrack.getBoundingClientRect();
+                const progress = (vh * 0.5 - rect.top) / rect.height;
+                const p = Math.min(1, Math.max(0, progress));
+                timelineFill.style.height = (p * 100) + '%';
+            };
+
+            const onScroll = () => {
+                if (!ticking) {
+                    ticking = true;
+                    requestAnimationFrame(updateTimeline);
+                }
+            };
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            updateTimeline();
+        }
+
         // Add button shatter click listener (excluding scroll-top-btn, navbar-toggler, and btn-close-custom)
         const buttons = document.querySelectorAll('.btn:not(.scroll-top-btn):not(.navbar-toggler):not(.btn-close-custom), .skills-tabs .nav-link');
         buttons.forEach(button => {
