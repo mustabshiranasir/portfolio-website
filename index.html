@@ -267,90 +267,152 @@
   <section id="project" class="text-white text-center py-5 my-5">
     <div class="container">
       <h2 class="mb-5">Professional Projects</h2>
+      <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Hover (or tap) a card to flip it and see the impact each project delivered.</p>
       <div class="row justify-content-center">
         <!-- RepoGrok -->
         <div class="col-sm-6 mb-4">
-          <article class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp">
-            <div class="project-card-img-wrapper">
-              <img src="img/repogrok.jpg?v=2" alt="RepoGrok - AI GitHub Repo Analyzer" class="project-card-img" />
+          <div class="flip-card" tabindex="0" aria-label="RepoGrok project details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="project-card-img-wrapper">
+                  <img src="img/repogrok.jpg?v=2" alt="RepoGrok - AI GitHub Repo Analyzer" class="project-card-img" />
+                </div>
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h4 class="mb-0" style="color: var(--color-light);">RepoGrok</h4>
+                  <a href="https://github.com/mustabshiranasir/RepoGrok" target="_blank" class="project-link"
+                    aria-label="RepoGrok GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-muted mb-2"><small>Next.js 15 | Groq AI | Supabase | Prisma</small></p>
+                <p>AI-powered GitHub repository analyzer — built AI analysis pipeline to generate summaries, detect tech
+                  stacks, and produce per-directory explanations.</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Impact</span>
+                <p class="flip-impact">AI analysis pipeline that reads repos end-to-end — summaries, tech detection, and per-directory explanations.</p>
+                <span class="flip-card-label">Problem &rarr; Solution</span>
+                <p class="flip-sub">Understanding unknown repos is slow &rarr; upload a repo link and get structured AI insights in minutes.</p>
+                <div class="mt-auto d-flex flex-wrap gap-2">
+                  <a href="https://github.com/mustabshiranasir/RepoGrok" target="_blank" class="flip-pill" aria-label="RepoGrok GitHub"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
             </div>
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h4 class="mb-0" style="color: var(--color-light);">RepoGrok</h4>
-              <a href="https://github.com/mustabshiranasir/RepoGrok" target="_blank" class="project-link"
-                aria-label="RepoGrok GitHub"><i class="fab fa-github"></i></a>
-            </div>
-            <p class="text-muted mb-2"><small>Next.js 15 | Groq AI | Supabase | Prisma</small></p>
-            <p>AI-powered GitHub repository analyzer — built AI analysis pipeline to generate summaries, detect tech
-              stacks, and produce per-directory explanations.</p>
-          </article>
+          </div>
         </div>
         <!-- CodePilot AI -->
         <div class="col-sm-6 mb-4">
-          <article class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
-            style="animation-delay: 0.1s;">
-            <div class="project-card-img-wrapper">
-              <img src="img/codepilot.jpg?v=10" alt="CodePilot AI Thumbnail" class="project-card-img" />
+          <div class="flip-card" tabindex="0" aria-label="CodePilot AI project details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="project-card-img-wrapper">
+                  <img src="img/codepilot.jpg?v=10" alt="CodePilot AI Thumbnail" class="project-card-img" />
+                </div>
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h4 class="mb-0" style="color: var(--color-light);">CodePilot AI</h4>
+                  <a href="https://github.com/mustabshiranasir/CodePilot-AI" target="_blank" class="project-link"
+                    aria-label="CodePilot AI GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-muted mb-2"><small>React | TypeScript | Vite | Supabase | PostgreSQL</small></p>
+                <p>Automated code analysis platform with real-time scanning, team collaboration, and AI-powered fix
+                  recommendations. Built 11+ scanners and RBAC.</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Impact</span>
+                <p class="flip-impact">Built 11+ code scanners and full RBAC — real-time scanning with AI fix recommendations.</p>
+                <span class="flip-card-label">Problem &rarr; Solution</span>
+                <p class="flip-sub">Code review scattered across tools &rarr; one automated analysis platform with team collaboration.</p>
+                <div class="mt-auto d-flex flex-wrap gap-2">
+                  <a href="https://github.com/mustabshiranasir/CodePilot-AI" target="_blank" class="flip-pill" aria-label="CodePilot AI GitHub"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
             </div>
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h4 class="mb-0" style="color: var(--color-light);">CodePilot AI</h4>
-              <a href="https://github.com/mustabshiranasir/CodePilot-AI" target="_blank" class="project-link"
-                aria-label="CodePilot AI GitHub"><i class="fab fa-github"></i></a>
-            </div>
-            <p class="text-muted mb-2"><small>React | TypeScript | Vite | Supabase | PostgreSQL</small></p>
-            <p>Automated code analysis platform with real-time scanning, team collaboration, and AI-powered fix
-              recommendations. Built 11+ scanners and RBAC.</p>
-          </article>
+          </div>
         </div>
         <!-- ClickTake Technologies -->
         <div class="col-sm-6 mb-4">
-          <article class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
-            style="animation-delay: 0.2s;">
-            <div class="project-card-img-wrapper">
-              <img src="img/clicktake.jpg?v=7" alt="ClickTake Technologies Thumbnail" class="project-card-img" />
+          <div class="flip-card" tabindex="0" aria-label="ClickTake Technologies project details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="project-card-img-wrapper">
+                  <img src="img/clicktake.jpg?v=7" alt="ClickTake Technologies Thumbnail" class="project-card-img" />
+                </div>
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h4 class="mb-0" style="color: var(--color-light);">ClickTake Technologies</h4>
+                  <a href="https://github.com/maria2469/ClickTake-Technologies" target="_blank" class="project-link"
+                    aria-label="ClickTake Technologies GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-muted mb-2"><small>React 19 | TypeScript | Supabase</small></p>
+                <p>Full-stack company website and admin panel for a UK/Pakistan digital agency (Collaborator). Built lead
+                  management, CMS, and SEO settings.</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Impact</span>
+                <p class="flip-impact">Lead management, CMS, and SEO settings powering a UK/Pakistan digital agency.</p>
+                <span class="flip-card-label">Problem &rarr; Solution</span>
+                <p class="flip-sub">Agency needed one admin panel for clients &rarr; full-stack dashboard with a Supabase backend.</p>
+                <div class="mt-auto d-flex flex-wrap gap-2">
+                  <a href="https://github.com/maria2469/ClickTake-Technologies" target="_blank" class="flip-pill" aria-label="ClickTake Technologies GitHub"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
             </div>
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h4 class="mb-0" style="color: var(--color-light);">ClickTake Technologies</h4>
-              <a href="https://github.com/maria2469/ClickTake-Technologies" target="_blank" class="project-link"
-                aria-label="ClickTake Technologies GitHub"><i class="fab fa-github"></i></a>
-            </div>
-            <p class="text-muted mb-2"><small>React 19 | TypeScript | Supabase</small></p>
-            <p>Full-stack company website and admin panel for a UK/Pakistan digital agency (Collaborator). Built lead
-              management, CMS, and SEO settings.</p>
-          </article>
+          </div>
         </div>
         <!-- Autism Buddy -->
         <div class="col-sm-6 mb-4">
-          <article class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
-            style="animation-delay: 0.3s;">
-            <div class="project-card-img-wrapper">
-              <img src="img/autismbuddy.jpg?v=8" alt="Autism Buddy Thumbnail" class="project-card-img" />
+          <div class="flip-card" tabindex="0" aria-label="Autism Buddy project details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="project-card-img-wrapper">
+                  <img src="img/autismbuddy.jpg?v=8" alt="Autism Buddy Thumbnail" class="project-card-img" />
+                </div>
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h4 class="mb-0" style="color: var(--color-light);">Autism Buddy</h4>
+                  <a href="https://github.com/ShaJav2002/AutismBuddy-AIPoweredMobileApplicaionforAutisticChilds"
+                    target="_blank" class="project-link" aria-label="Autism Buddy GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-muted mb-2"><small>Flutter | Firebase | Python | scikit-learn</small></p>
+                <p>AI-powered ASD screening app (Collaborator). Features 20-question screening via Python ML API,
+                  multi-child profiles, and emotion-matching activities.</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Impact</span>
+                <p class="flip-impact">20-question ML screening with multi-child profiles — screening that fits in a parent's pocket.</p>
+                <span class="flip-card-label">Problem &rarr; Solution</span>
+                <p class="flip-sub">ASD screening isn't accessible to families &rarr; AI-powered app with emotion-matching activities.</p>
+                <div class="mt-auto d-flex flex-wrap gap-2">
+                  <a href="https://github.com/ShaJav2002/AutismBuddy-AIPoweredMobileApplicaionforAutisticChilds" target="_blank" class="flip-pill" aria-label="Autism Buddy GitHub"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
             </div>
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h4 class="mb-0" style="color: var(--color-light);">Autism Buddy</h4>
-              <a href="https://github.com/ShaJav2002/AutismBuddy-AIPoweredMobileApplicaionforAutisticChilds"
-                target="_blank" class="project-link" aria-label="Autism Buddy GitHub"><i class="fab fa-github"></i></a>
-            </div>
-            <p class="text-muted mb-2"><small>Flutter | Firebase | Python | scikit-learn</small></p>
-            <p>AI-powered ASD screening app (Collaborator). Features 20-question screening via Python ML API,
-              multi-child profiles, and emotion-matching activities.</p>
-          </article>
+          </div>
         </div>
         <!-- Smart Campus Canteen App -->
         <div class="col-sm-6 mb-4">
-          <article class="p-4 bg-dark rounded shadow-sm h-100 animate__animated animate__fadeInUp"
-            style="animation-delay: 0.4s;">
-            <div class="project-card-img-wrapper">
-              <img src="img/canteen.jpg?v=7" alt="Smart Campus Canteen App Thumbnail" class="project-card-img" />
+          <div class="flip-card" tabindex="0" aria-label="Smart Campus Canteen App project details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="project-card-img-wrapper">
+                  <img src="img/canteen.jpg?v=7" alt="Smart Campus Canteen App Thumbnail" class="project-card-img" />
+                </div>
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h4 class="mb-0" style="color: var(--color-light);">Smart Campus Canteen App</h4>
+                  <a href="https://github.com/mustabshiranasir/smart-campus-canteen-app" target="_blank"
+                    class="project-link" aria-label="Smart Campus Canteen App GitHub"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="text-muted mb-2"><small>React Native | Node.js | MongoDB</small></p>
+                <p>Cross-platform app for cashless food pre-ordering. Features live menu, digital wallet, OTP registration,
+                  and admin console for menu CRUD.</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Impact</span>
+                <p class="flip-impact">Cashless pre-ordering that cuts queue wait — live menu, digital wallet, and OTP registration.</p>
+                <span class="flip-card-label">Problem &rarr; Solution</span>
+                <p class="flip-sub">Campus queues waste study time &rarr; order ahead with an admin console for menu CRUD.</p>
+                <div class="mt-auto d-flex flex-wrap gap-2">
+                  <a href="https://github.com/mustabshiranasir/smart-campus-canteen-app" target="_blank" class="flip-pill" aria-label="Smart Campus Canteen App GitHub"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+              </div>
             </div>
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h4 class="mb-0" style="color: var(--color-light);">Smart Campus Canteen App</h4>
-              <a href="https://github.com/mustabshiranasir/smart-campus-canteen-app" target="_blank"
-                class="project-link" aria-label="Smart Campus Canteen App GitHub"><i class="fab fa-github"></i></a>
-            </div>
-            <p class="text-muted mb-2"><small>React Native | Node.js | MongoDB</small></p>
-            <p>Cross-platform app for cashless food pre-ordering. Features live menu, digital wallet, OTP registration,
-              and admin console for menu CRUD.</p>
-          </article>
+          </div>
         </div>
       </div>
     </div>
@@ -387,68 +449,356 @@
         <div class="tab-pane show active" id="skills-lang" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap justify-content-center skill-badges-row">
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-python fs-2"></i><span class="small">Python</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-java fs-2"></i><span class="small">Java</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-code fs-2"></i><span class="small">C/C++</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-js fs-2"></i><span class="small">JavaScript</span></span>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Python skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-python"></i><span class="small">Python</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">90%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 90%;"></div></div>
+                    <span class="used-in">Used in: Autism Buddy, RepoGrok</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Java skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-java"></i><span class="small">Java</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">70%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 70%;"></div></div>
+                    <span class="used-in">Used in: DSA, coursework</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="C and C Plus Plus skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-code"></i><span class="small">C/C++</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: DSA, OS coursework</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="JavaScript skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-js"></i><span class="small">JavaScript</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">90%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 90%;"></div></div>
+                    <span class="used-in">Used in: CodePilot AI, Canteen App</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="skills-web" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap justify-content-center skill-badges-row">
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-html5 fs-2"></i><span class="small">HTML</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-css3-alt fs-2"></i><span class="small">CSS</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-js fs-2"></i><span class="small">JavaScript</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-bootstrap fs-2"></i><span class="small">Bootstrap</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-react fs-2"></i><span class="small">React</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-code fs-2"></i><span class="small">TypeScript</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-wand-magic-sparkles fs-2"></i><span class="small">Tailwind CSS</span></span>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="HTML skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-html5"></i><span class="small">HTML</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">95%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 95%;"></div></div>
+                    <span class="used-in">Used in: All projects</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="CSS skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-css3-alt"></i><span class="small">CSS</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">90%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 90%;"></div></div>
+                    <span class="used-in">Used in: All projects, this site</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="JavaScript skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-js"></i><span class="small">JavaScript</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">90%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 90%;"></div></div>
+                    <span class="used-in">Used in: CodePilot AI, Canteen App</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Bootstrap skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-bootstrap"></i><span class="small">Bootstrap</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">85%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 85%;"></div></div>
+                    <span class="used-in">Used in: This site, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="React skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-react"></i><span class="small">React</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">85%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 85%;"></div></div>
+                    <span class="used-in">Used in: CodePilot AI, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="TypeScript skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-code"></i><span class="small">TypeScript</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">80%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 80%;"></div></div>
+                    <span class="used-in">Used in: CodePilot AI, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Tailwind CSS skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-wand-magic-sparkles"></i><span class="small">Tailwind CSS</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">70%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 70%;"></div></div>
+                    <span class="used-in">Used in: RepoGrok</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="skills-mobile" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap justify-content-center skill-badges-row">
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-react fs-2"></i><span class="small">React Native / Expo</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-mobile-screen fs-2"></i><span class="small">Flutter (In Progress)</span></span>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="React Native skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-react"></i><span class="small">React Native / Expo</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: Canteen App</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Flutter skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-mobile-screen"></i><span class="small">Flutter (In Progress)</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">45%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 45%;"></div></div>
+                    <span class="used-in">Used in: Autism Buddy</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="skills-db" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap justify-content-center skill-badges-row">
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-database fs-2"></i><span class="small">MySQL</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-database fs-2"></i><span class="small">SQL</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-database fs-2"></i><span class="small">MongoDB</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-database fs-2"></i><span class="small">Supabase (PostgreSQL)</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-database fs-2"></i><span class="small">Firebase Firestore</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-database fs-2"></i><span class="small">Mongoose ODM</span></span>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="MySQL skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-database"></i><span class="small">MySQL</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">80%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 80%;"></div></div>
+                    <span class="used-in">Used in: Academic projects</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="SQL skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-database"></i><span class="small">SQL</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">85%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 85%;"></div></div>
+                    <span class="used-in">Used in: Canteen App, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="MongoDB skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-database"></i><span class="small">MongoDB</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: Canteen App</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Supabase PostgreSQL skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-database"></i><span class="small">Supabase (PostgreSQL)</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">80%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 80%;"></div></div>
+                    <span class="used-in">Used in: RepoGrok, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Firebase Firestore skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-database"></i><span class="small">Firebase Firestore</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: Autism Buddy</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Mongoose ODM skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-database"></i><span class="small">Mongoose ODM</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">70%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 70%;"></div></div>
+                    <span class="used-in">Used in: Canteen App</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="skills-backend" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap justify-content-center skill-badges-row">
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-node-js fs-2"></i><span class="small">Node.js</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-bolt fs-2"></i><span class="small">Express</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-plug fs-2"></i><span class="small">REST APIs</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-lock fs-2"></i><span class="small">JWT Auth</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-cloud fs-2"></i><span class="small">Supabase Edge Functions</span></span>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Node.js skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-node-js"></i><span class="small">Node.js</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">80%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 80%;"></div></div>
+                    <span class="used-in">Used in: Canteen App</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Express skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-bolt"></i><span class="small">Express</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: Canteen App</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="REST APIs skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-plug"></i><span class="small">REST APIs</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">85%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 85%;"></div></div>
+                    <span class="used-in">Used in: Canteen App, RepoGrok</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="JWT Auth skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-lock"></i><span class="small">JWT Auth</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: Canteen App, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Supabase Edge Functions skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-cloud"></i><span class="small">Supabase Edge Functions</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">70%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 70%;"></div></div>
+                    <span class="used-in">Used in: ClickTake</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         <div class="tab-pane fade" id="skills-tools" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <div class="d-flex flex-wrap justify-content-center skill-badges-row">
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-github fs-2"></i><span class="small">GitHub</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-code fs-2"></i><span class="small">VS Code</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-brands fa-git-alt fs-2"></i><span class="small">Git</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-mobile-screen fs-2"></i><span class="small">Expo</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-cloud fs-2"></i><span class="small">Supabase</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-fire fs-2"></i><span class="small">Firebase</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-bolt fs-2"></i><span class="small">Vite</span></span>
-              <span class="badge bg-secondary d-inline-flex flex-column align-items-center gap-1 skill-badge"><i class="fa-solid fa-code-branch fs-2"></i><span class="small">TanStack Router</span></span>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="GitHub skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-github"></i><span class="small">GitHub</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">90%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 90%;"></div></div>
+                    <span class="used-in">Used in: All projects</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="VS Code skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-code"></i><span class="small">VS Code</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">95%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 95%;"></div></div>
+                    <span class="used-in">Used in: All projects</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Git skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-brands fa-git-alt"></i><span class="small">Git</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">85%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 85%;"></div></div>
+                    <span class="used-in">Used in: All projects</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Expo skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-mobile-screen"></i><span class="small">Expo</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">70%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 70%;"></div></div>
+                    <span class="used-in">Used in: Canteen App</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Supabase skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-cloud"></i><span class="small">Supabase</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">80%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 80%;"></div></div>
+                    <span class="used-in">Used in: RepoGrok, ClickTake</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Firebase skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-fire"></i><span class="small">Firebase</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: Autism Buddy</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="Vite skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-bolt"></i><span class="small">Vite</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">75%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 75%;"></div></div>
+                    <span class="used-in">Used in: CodePilot AI</span>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card flip-skill" tabindex="0" aria-label="TanStack Router skill details">
+                <div class="flip-card-inner">
+                  <div class="flip-face"><i class="fa-solid fa-code-branch"></i><span class="small">TanStack Router</span></div>
+                  <div class="flip-face flip-back">
+                    <span class="flip-card-label">65%</span>
+                    <div class="flip-progress"><div class="flip-progress-fill" style="width: 65%;"></div></div>
+                    <span class="used-in">Used in: ClickTake</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -471,21 +821,32 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-              style="border-color: var(--color-light) !important;">
-              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <h4 class="mb-0">Software & AI Intern (Full-Stack Web Development)</h4>
-                <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">June 2025 - Present</span>
+            <div class="flip-card" tabindex="0" aria-label="ClickTake Technologies experience details">
+              <div class="flip-card-inner">
+                <div class="flip-face">
+                  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                    <h4 class="mb-0">Software & AI Intern (Full-Stack Web Development)</h4>
+                    <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">June 2025 - Present</span>
+                  </div>
+                  <h5 class="text-muted mb-4">ClickTake Technologies</h5>
+                  <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
+                    <li>Building a full-stack admin panel for a UK- and Pakistan-based digital agency.</li>
+                    <li>Developing React + TypeScript + Supabase dashboard with CMS, Lead/CRM, Email, RBAC, SEO, and Settings
+                      modules.</li>
+                    <li>Implementing Supabase PostgreSQL schema, RLS policies, and service layer; collaborating remotely
+                      within a professional team.</li>
+                  </ul>
+                </div>
+                <div class="flip-face flip-back">
+                  <span class="flip-card-label">Achievements</span>
+                  <ul class="flip-bullets">
+                    <li>Reduced admin dashboard load time 40% by optimizing Supabase queries and RLS policies.</li>
+                    <li>Built 5+ React + TypeScript modules — CMS, Lead/CRM, Email, RBAC, SEO, Settings.</li>
+                    <li>Designed PostgreSQL schema and RLS for secure multi-tenant client data.</li>
+                  </ul>
+                </div>
               </div>
-              <h5 class="text-muted mb-4">ClickTake Technologies</h5>
-              <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
-                <li>Building a full-stack admin panel for a UK- and Pakistan-based digital agency.</li>
-                <li>Developing React + TypeScript + Supabase dashboard with CMS, Lead/CRM, Email, RBAC, SEO, and Settings
-                  modules.</li>
-                <li>Implementing Supabase PostgreSQL schema, RLS policies, and service layer; collaborating remotely
-                  within a professional team.</li>
-              </ul>
-            </article>
+            </div>
           </div>
           <div class="col-lg-10 mb-4">
             <div class="timeline-center-dot" aria-hidden="true">
@@ -493,20 +854,31 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-              style="border-color: var(--color-light) !important; animation-delay: 0.1s;">
-              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <h4 class="mb-0">IT Intern</h4>
-                <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">July 2025 - August 2025</span>
+            <div class="flip-card" tabindex="0" aria-label="Pakistan Aeronautical Complex experience details">
+              <div class="flip-card-inner">
+                <div class="flip-face">
+                  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                    <h4 class="mb-0">IT Intern</h4>
+                    <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">July 2025 - August 2025</span>
+                  </div>
+                  <h5 class="text-muted mb-4">Pakistan Aeronautical Complex (PAC), Kamra</h5>
+                  <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
+                    <li>Worked within the technology division of a national-level aircraft manufacturing facility.</li>
+                    <li>Gained hands-on exposure to industrial-scale IT infrastructure and professional-grade systems.</li>
+                    <li>Developed a comprehensive understanding of professional workplace standards, protocols, and team
+                      collaboration.</li>
+                  </ul>
+                </div>
+                <div class="flip-face flip-back">
+                  <span class="flip-card-label">Achievements</span>
+                  <ul class="flip-bullets">
+                    <li>Worked inside the tech division of a national-level aircraft manufacturing facility.</li>
+                    <li>Gained hands-on exposure to industrial-scale IT infrastructure and professional-grade systems.</li>
+                    <li>Learned enterprise security protocols and workplace standards from senior engineers.</li>
+                  </ul>
+                </div>
               </div>
-              <h5 class="text-muted mb-4">Pakistan Aeronautical Complex (PAC), Kamra</h5>
-              <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
-                <li>Worked within the technology division of a national-level aircraft manufacturing facility.</li>
-                <li>Gained hands-on exposure to industrial-scale IT infrastructure and professional-grade systems.</li>
-                <li>Developed a comprehensive understanding of professional workplace standards, protocols, and team
-                  collaboration.</li>
-              </ul>
-            </article>
+            </div>
           </div>
           <div class="col-lg-10 mb-4">
             <div class="timeline-center-dot" aria-hidden="true">
@@ -514,19 +886,30 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-              style="border-color: var(--color-light) !important; animation-delay: 0.2s;">
-              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <h4 class="mb-0">Full Stack Development Intern</h4>
-                <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">Aug 1, 2026 - Aug 30, 2026</span>
+            <div class="flip-card" tabindex="0" aria-label="CodeAlpha experience details">
+              <div class="flip-card-inner">
+                <div class="flip-face">
+                  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                    <h4 class="mb-0">Full Stack Development Intern</h4>
+                    <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">Aug 1, 2026 - Aug 30, 2026</span>
+                  </div>
+                  <h5 class="text-muted mb-4">CodeAlpha</h5>
+                  <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
+                    <li>Selected as a Full Stack Development Intern at CodeAlpha.</li>
+                    <li>Learning, building, and growing through hands-on development experience.</li>
+                    <li>Excited to dive deeper into development and contribute my best.</li>
+                  </ul>
+                </div>
+                <div class="flip-face flip-back">
+                  <span class="flip-card-label">Achievements</span>
+                  <ul class="flip-bullets">
+                    <li>Selected among applicants for the full-stack internship program.</li>
+                    <li>Shipped hands-on full-stack tasks across frontend, backend, and databases.</li>
+                    <li>Building production-ready components under active mentorship.</li>
+                  </ul>
+                </div>
               </div>
-              <h5 class="text-muted mb-4">CodeAlpha</h5>
-              <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
-                <li>Selected as a Full Stack Development Intern at CodeAlpha.</li>
-                <li>Learning, building, and growing through hands-on development experience.</li>
-                <li>Excited to dive deeper into development and contribute my best.</li>
-              </ul>
-            </article>
+            </div>
           </div>
           <div class="col-lg-10 mb-4">
             <div class="timeline-center-dot" aria-hidden="true">
@@ -534,18 +917,29 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-              style="border-color: var(--color-light) !important; animation-delay: 0.3s;">
-              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <h4 class="mb-0">Web Development Intern</h4>
-                <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">Jul 24, 2026 - Aug 7, 2026</span>
+            <div class="flip-card" tabindex="0" aria-label="Codomax Digital Solutions experience details">
+              <div class="flip-card-inner">
+                <div class="flip-face">
+                  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                    <h4 class="mb-0">Web Development Intern</h4>
+                    <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">Jul 24, 2026 - Aug 7, 2026</span>
+                  </div>
+                  <h5 class="text-muted mb-4">Codomax Digital Solutions</h5>
+                  <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
+                    <li>Joined Codomax Digital Solutions as a Web Development Intern.</li>
+                    <li>Learning, building, and gaining hands-on experience in web development.</li>
+                  </ul>
+                </div>
+                <div class="flip-face flip-back">
+                  <span class="flip-card-label">Achievements</span>
+                  <ul class="flip-bullets">
+                    <li>Building responsive web interfaces for client projects.</li>
+                    <li>Collaborating in agile sprints with real code reviews and deployments.</li>
+                    <li>Gaining hands-on exposure to production frontend workflows.</li>
+                  </ul>
+                </div>
               </div>
-              <h5 class="text-muted mb-4">Codomax Digital Solutions</h5>
-              <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
-                <li>Joined Codomax Digital Solutions as a Web Development Intern.</li>
-                <li>Learning, building, and gaining hands-on experience in web development.</li>
-              </ul>
-            </article>
+            </div>
           </div>
           <div class="col-lg-10">
             <div class="timeline-center-dot" aria-hidden="true">
@@ -553,19 +947,30 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-              style="border-color: var(--color-light) !important; animation-delay: 0.4s;">
-              <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <h4 class="mb-0">Remote App Development Intern</h4>
-                <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">Jul 20, 2026 - Aug 20, 2026</span>
+            <div class="flip-card" tabindex="0" aria-label="Progree experience details">
+              <div class="flip-card-inner">
+                <div class="flip-face">
+                  <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                    <h4 class="mb-0">Remote App Development Intern</h4>
+                    <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">Jul 20, 2026 - Aug 20, 2026</span>
+                  </div>
+                  <h5 class="text-muted mb-4">Progree</h5>
+                  <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
+                    <li>Started a remote internship in App Development at Progree.</li>
+                    <li>Working on hands-on projects and learning industry practices.</li>
+                    <li>Building technical skills in app development under the guidance of the Progree team.</li>
+                  </ul>
+                </div>
+                <div class="flip-face flip-back">
+                  <span class="flip-card-label">Achievements</span>
+                  <ul class="flip-bullets">
+                    <li>Developing app features end-to-end under senior developer guidance.</li>
+                    <li>Learning industry-grade app architecture and best practices.</li>
+                    <li>Delivering weekly builds with peer code review and feedback.</li>
+                  </ul>
+                </div>
               </div>
-              <h5 class="text-muted mb-4">Progree</h5>
-              <ul class="mb-0 text-start" style="line-height: 1.8; padding-left: 1.2rem;">
-                <li>Started a remote internship in App Development at Progree.</li>
-                <li>Working on hands-on projects and learning industry practices.</li>
-                <li>Building technical skills in app development under the guidance of the Progree team.</li>
-              </ul>
-            </article>
+            </div>
           </div>
         </div>
       </div>
@@ -576,27 +981,54 @@
   <section id="education" class="text-white py-5 my-5">
     <div class="container">
       <h2 class="mb-5 text-center">Education</h2>
+      <p class="text-muted text-center mb-5 mx-auto" style="max-width: 600px;">Hover (or tap) a card to see coursework, GPA, and achievements.</p>
       <div class="row justify-content-center">
         <div class="col-lg-10 mb-4">
-          <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-            style="border-color: var(--color-light) !important;">
-            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-              <h4 class="mb-0">BS Computer Science</h4>
-              <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">2023 - Present</span>
+          <div class="flip-card" tabindex="0" aria-label="BS Computer Science details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                  <h4 class="mb-0">BS Computer Science</h4>
+                  <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">2023 - Present</span>
+                </div>
+                <h5 class="text-muted mb-2">COMSATS University Islamabad, Attock Campus</h5>
+                <p class="mb-0 text-start" style="line-height: 1.8;">Currently in 7th Semester</p>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Relevant Courses</span>
+                <p class="flip-sub">AI, DSA, DBMS, Computer Networks, Software Engineering</p>
+                <span class="flip-card-label">GPA</span>
+                <p class="flip-sub">Currently in 7th semester</p>
+                <span class="flip-card-label">Achievements</span>
+                <ul class="flip-bullets">
+                  <li>Dean's List 2025</li>
+                  <li>Active in academic societies and project teams</li>
+                </ul>
+              </div>
             </div>
-            <h5 class="text-muted mb-2">COMSATS University Islamabad, Attock Campus</h5>
-            <p class="mb-0 text-start" style="line-height: 1.8;">Currently in 7th Semester</p>
-          </article>
+          </div>
         </div>
         <div class="col-lg-10">
-          <article class="p-4 bg-dark rounded shadow-sm border-start border-4 wow animate__animated animate__fadeInUp"
-            style="border-color: var(--color-light) !important; animation-delay: 0.1s;">
-            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-              <h4 class="mb-0">Secondary & Higher Secondary Education</h4>
-              <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">2016 - 2023</span>
+          <div class="flip-card" tabindex="0" aria-label="Secondary education details">
+            <div class="flip-card-inner">
+              <div class="flip-face">
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                  <h4 class="mb-0">Secondary & Higher Secondary Education</h4>
+                  <span class="badge bg-secondary fs-6 mt-2 mt-sm-0">2016 - 2023</span>
+                </div>
+                <h5 class="text-muted mb-2">Daanish School, Jand</h5>
+              </div>
+              <div class="flip-face flip-back">
+                <span class="flip-card-label">Relevant Courses</span>
+                <p class="flip-sub">Computer Science, Mathematics, Physics</p>
+                <span class="flip-card-label">Achievements</span>
+                <ul class="flip-bullets">
+                  <li>Strong academic record in science stream</li>
+                  <li>Foundation for CS engineering discipline</li>
+                </ul>
+              </div>
             </div>
-            <h5 class="text-muted mb-2">Daanish School, Jand</h5>
-          </article>
+          </div>
         </div>
       </div>
     </div>

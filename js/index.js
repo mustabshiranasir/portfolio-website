@@ -267,7 +267,7 @@
             const positionDots = () => {
                 const trackRect = timelineTrack.getBoundingClientRect();
                 timelineDots.forEach(dot => {
-                    const card = dot.parentElement.querySelector('article');
+                    const card = dot.parentElement.querySelector('.flip-card');
                     if (!card) return;
                     const cardRect = card.getBoundingClientRect();
                     dot.style.top = (cardRect.top - trackRect.top + cardRect.height / 2) + 'px';
@@ -628,4 +628,14 @@
             tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         });
     });
+
+    // Flip cards: tap-to-flip on touch devices (links still clickable)
+    if (window.matchMedia('(hover: none)').matches) {
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.closest('a, button')) return;
+                card.classList.toggle('is-flipped');
+            });
+        });
+    }
 })();

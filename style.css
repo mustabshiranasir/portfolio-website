@@ -589,7 +589,7 @@ img {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .info-card-glow {
@@ -598,6 +598,7 @@ img {
     left: 0;
     right: 0;
     height: 160px;
+    z-index: 0;
     pointer-events: none;
     background: radial-gradient(85% 110% at 50% -5%, rgba(120, 60, 220, 0.6) 0%, rgba(90, 40, 180, 0.22) 40%, transparent 68%);
     opacity: 0.4;
@@ -605,6 +606,8 @@ img {
 }
 
 .info-card-label {
+    position: relative;
+    z-index: 1;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -612,6 +615,8 @@ img {
 }
 
 .info-card-stat {
+    position: relative;
+    z-index: 1;
     font-size: 36px;
     font-weight: 700;
     line-height: 1.1;
@@ -620,6 +625,8 @@ img {
 }
 
 .info-card-bottom {
+    position: relative;
+    z-index: 1;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.5);
     margin: 0;
@@ -630,6 +637,7 @@ img {
     border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-4px);
     box-shadow: 0 20px 40px -20px rgba(141, 89, 255, 0.3);
+    transition: border-color 0.3s ease;
 }
 
 .info-card:hover .info-card-glow {
@@ -642,12 +650,12 @@ img {
 }
 
 [data-theme="light"] .info-card {
-    background: rgba(180, 191, 246, 0.991);
-    border-color: rgba(15, 23, 42, 0.728);
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(15, 23, 42, 0.12);
 }
 
 [data-theme="light"] .info-card-glow {
-    background: radial-gradient(85% 110% at 50% -5%, rgba(98, 57, 118, 0.904) 0%, rgba(112, 89, 143, 0.831) 40%, transparent 68%);
+    background: radial-gradient(85% 110% at 50% -5%, rgba(141, 89, 255, 0.22) 0%, rgba(141, 89, 255, 0.08) 40%, transparent 68%);
 }
 
 [data-theme="light"] .info-card-label {
@@ -663,8 +671,8 @@ img {
 }
 
 [data-theme="light"] .info-card:hover {
-    border-color: rgba(15, 23, 42, 0.25);
-    box-shadow: 0 20px 40px -20px rgba(15, 23, 42, 0.3);
+    border-color: rgba(141, 89, 255, 0.35);
+    box-shadow: 0 20px 40px -16px rgba(141, 89, 255, 0.35);
 }
 
 @media (max-width: 640px) {
@@ -1105,6 +1113,200 @@ footer {
     transform: scale(1.05);
 }
 
+/* === 3D Flip Cards === */
+.flip-card {
+    perspective: 1400px;
+    width: 100%;
+    min-height: 260px;
+    cursor: pointer;
+    outline: none;
+}
+
+.flip-card-inner {
+    display: grid;
+    width: 100%;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-face {
+    grid-area: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-panel);
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    box-shadow: var(--panel-shadow);
+    padding: 1.5rem;
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+    gap: 0.9rem;
+}
+
+.flip-card:focus-within .flip-card-inner,
+.flip-card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+@media (hover: hover) {
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+}
+
+.flip-face h3,
+.flip-face h4 {
+    color: var(--color-light);
+    font-weight: 700;
+    margin: 0;
+}
+
+.flip-sub {
+    color: var(--color-muted);
+    margin: 0;
+}
+
+.flip-card-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--color-muted);
+}
+
+.flip-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-light) !important;
+    background: var(--badge-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.flip-pill:hover {
+    background: rgba(127, 140, 141, 0.2);
+    border-color: var(--color-light);
+    transform: translateY(-2px);
+}
+
+.flip-progress {
+    height: 8px;
+    background: var(--badge-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.flip-progress-fill {
+    height: 100%;
+    width: 50%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #8D59FF, #B26BFF);
+}
+
+.flip-bullets {
+    margin: 0;
+    padding-left: 1.1rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Project flip cards */
+#project .flip-card {
+    min-height: 380px;
+}
+
+#project .flip-impact {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-light);
+}
+
+/* Experience flip cards */
+#experience .flip-card {
+    min-height: 320px;
+}
+
+/* Skill flip cards */
+.flip-skill {
+    width: 120px;
+    min-height: 150px;
+    flex-shrink: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.flip-skill .flip-face {
+    border-radius: 20px;
+    padding: 0.9rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.flip-skill .flip-face i {
+    font-size: 2rem;
+    color: var(--color-light);
+}
+
+.flip-skill .flip-face .small {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    color: var(--color-muted);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.flip-skill .flip-back {
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.6rem;
+}
+
+.flip-skill .flip-back .flip-card-label {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+}
+
+.flip-skill .flip-back .flip-progress {
+    width: 100%;
+}
+
+.flip-skill .flip-back .used-in {
+    font-size: 0.66rem;
+    line-height: 1.35;
+    color: var(--color-muted);
+}
+
+/* Education flip cards */
+#education .flip-card {
+    min-height: 300px;
+}
+
+@media (max-width: 575.98px) {
+    #project .flip-card,
+    #experience .flip-card,
+    #education .flip-card {
+        min-height: 340px;
+    }
+}
+
 /* --- Offcanvas Drawer Mobile Navigation Menu --- */
 .offcanvas {
     color: var(--color-light);
@@ -1461,6 +1663,19 @@ footer {
     #skills .skill-card {
         max-width: 380px;
     }
+    #skills .flip-skill {
+        width: 95px;
+        min-height: 120px;
+    }
+    #skills .flip-skill .flip-face {
+        padding: 0.7rem;
+    }
+    #skills .flip-skill .flip-face i {
+        font-size: 1.5rem;
+    }
+    #skills .flip-skill .flip-face .small {
+        font-size: 0.6rem;
+    }
 
     #experience h4,
     #education h4 {
@@ -1502,6 +1717,12 @@ footer {
     .d-flex.gap-3.mt-5.mb-4 {
         gap: 0.4rem !important;
         flex-wrap: wrap;
+    }
+    /*small grid for small devices*/
+    .info-card {
+        width: 180px;
+        min-height: 160px;
+        padding: 16px;
     }
 }
 
