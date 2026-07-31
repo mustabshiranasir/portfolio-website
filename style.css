@@ -537,7 +537,7 @@ img {
 /* Info stats strip */
 .info-grid-strip {
     position: relative;
-    padding: 40px;
+    padding: 20px;
     overflow: hidden;
 }
 
