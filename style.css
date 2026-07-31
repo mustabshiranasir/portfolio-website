@@ -577,15 +577,15 @@ img {
 .info-card {
     position: relative;
     flex-shrink: 0;
-    width: 360px;
-    min-height: 290px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 220px;
+    min-height: 190px;
+    border: 1px solid rgba(118, 115, 115, 0.724);
     border-radius: 16px;
     padding: 24px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: #1B1E28;
+    background: #020b27;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     overflow: hidden;
@@ -642,12 +642,12 @@ img {
 }
 
 [data-theme="light"] .info-card {
-    background: rgba(255, 255, 255, 0.85);
-    border-color: rgba(15, 23, 42, 0.12);
+    background: rgba(180, 191, 246, 0.991);
+    border-color: rgba(15, 23, 42, 0.728);
 }
 
 [data-theme="light"] .info-card-glow {
-    background: radial-gradient(85% 110% at 50% -5%, rgba(51, 65, 85, 0.3) 0%, rgba(71, 85, 105, 0.12) 40%, transparent 68%);
+    background: radial-gradient(85% 110% at 50% -5%, rgba(98, 57, 118, 0.904) 0%, rgba(112, 89, 143, 0.831) 40%, transparent 68%);
 }
 
 [data-theme="light"] .info-card-label {
