@@ -1268,6 +1268,21 @@ footer {
     transform: translateY(-2px);
 }
 
+.flip-pill-deploy {
+    background: rgba(46, 204, 113, 0.12);
+    border-color: rgba(46, 204, 113, 0.45);
+}
+
+.flip-pill-deploy i {
+    color: #2ecc71;
+}
+
+.flip-pill-disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .flip-progress {
     height: 8px;
     background: var(--badge-bg);
@@ -1445,11 +1460,18 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Education flip cards - icon links top right */
-#education .flip-back {
+#experience .flip-back .flip-top-actions .flip-linkedin-pill,
+#experience .flip-back .flip-top-actions .flip-icon-link1 {
+    margin-top: 0;
+}
+
+/* Education & Experience flip cards - icon links top right */
+#education .flip-back,
+#experience .flip-back {
     position: relative;
 }
-#education .flip-back .flip-icon-group {
+#education .flip-back .flip-icon-group,
+#experience .flip-back .flip-icon-group {
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -1458,7 +1480,9 @@ footer {
     z-index: 10;
 }
 #education .flip-back .flip-icon-group .flip-icon-link1,
-#education .flip-back .flip-icon-group .flip-icon-link2 {
+#education .flip-back .flip-icon-group .flip-icon-link2,
+#experience .flip-back .flip-icon-group .flip-icon-link1,
+#experience .flip-back .flip-icon-group .flip-icon-link2 {
     position: static;
     margin-top: 0;
 }
@@ -1577,6 +1601,30 @@ footer {
 }
 .degree-status-overlay.visible {
     display: block;
+}
+.certificate-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 0.75rem;
+    font-size: 2rem;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    border-radius: 50%;
+}
+.certificate-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f59e0b !important;
+    font-weight: 500;
+}
+.certificate-status i {
+    color: #f59e0b;
+    animation: pulse 1.5s ease-in-out infinite;
 }
 @keyframes fadeIn {
     from { opacity: 0; transform: translate(-50%, -50%) scale(0.92); }
@@ -2033,7 +2081,11 @@ footer {
     }
 
     #contact .fs-4 {
-        font-size: 1.1rem !important;
+        font-size: 1.6rem !important;
+    }
+
+    #contact .d-flex.gap-3.mt-2 {
+        gap: 1rem !important;
     }
 
     #contact form .form-control {
@@ -2087,12 +2139,9 @@ footer {
 }
 
 /* Contact section social icons hover */
-#contact .d-flex.gap-3 a[aria-label="Email"]:hover,
-#contact .d-flex.gap-3 a[href*="mail.google.com"]:hover {
+#contact .d-flex.gap-3 a[aria-label="Email"]:hover {
+    color: #EA4335 !important;
     transform: translateY(-2px);
-}
-#contact .d-flex.gap-3 a[aria-label="Email"]:hover .contact-icon-img {
-    filter: none;
 }
 #contact .d-flex.gap-3 a[aria-label="WhatsApp"]:hover {
     color: #25D366 !important;

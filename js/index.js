@@ -651,16 +651,8 @@
                 if (skillTabContent) delete skillTabContent.dataset.slideDir;
             }, 450);
         });
-    });
-
-    // Auto-scroll active tab heading into view on tab switch
-    document.querySelectorAll('.skills-tabs .nav-link').forEach(tab => {
-        tab.addEventListener('shown.bs.tab', () => {
-            tab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        });
-    });
-
-// Flip cards: tap-to-flip on touch devices (links still clickable)
+});
+    // Flip cards: tap-to-flip on touch devices (links still clickable)
     if (window.matchMedia('(hover: none)').matches) {
         document.querySelectorAll('.flip-card').forEach(card => {
             card.addEventListener('click', (e) => {
@@ -679,7 +671,4 @@
             }
         });
     });
-});
-        });
-    }
 })();
