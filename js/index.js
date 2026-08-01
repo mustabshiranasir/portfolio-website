@@ -239,6 +239,8 @@
         let ticking = false;
         let isHoveringInteractive = false;
         let isPressed = false;
+        let idleTimer = null;
+        const IDLE_TIMEOUT = 2000;
 
         // Reveal the ice crystal cursor and hide the native pointer
         document.documentElement.classList.add('use-ice-cursor');
@@ -294,6 +296,18 @@
             }
         }
 
+        function showCursor() {
+            if (!cursor.classList.contains('visible')) cursor.classList.add('visible');
+        }
+
+        function resetIdleTimer() {
+            showCursor();
+            clearTimeout(idleTimer);
+            idleTimer = setTimeout(() => {
+                cursor.classList.add('hidden');
+            }, IDLE_TIMEOUT);
+        }
+
         function onPointerMove(e) {
             if (e.type === 'touchmove') {
                 const t = e.touches[0];
@@ -309,7 +323,6 @@
             const target = e.target;
 
             if (target && target.matches(editableSelector)) {
-                // Let the native text caret appear on form fields
                 if (!cursor.classList.contains('hidden')) cursor.classList.add('hidden');
             } else {
                 if (cursor.classList.contains('hidden')) cursor.classList.remove('hidden');
@@ -320,6 +333,8 @@
                 }
             }
 
+            resetIdleTimer();
+
             if (!ticking) {
                 ticking = true;
                 requestAnimationFrame(updatePosition);
@@ -328,10 +343,12 @@
 
         function onPointerDown() {
             isPressed = true;
+            resetIdleTimer();
             cursor.style.transform = computeTransform();
         }
         function onPointerUp() {
             isPressed = false;
+            resetIdleTimer();
             cursor.style.transform = computeTransform();
         }
 
@@ -344,8 +361,14 @@
         document.addEventListener('mousemove', onPointerMove, { passive: true });
         document.addEventListener('mousedown', onPointerDown);
         document.addEventListener('mouseup', onPointerUp);
-        document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
-        document.addEventListener('mouseenter', () => cursor.classList.add('visible'));
+        document.addEventListener('mouseleave', () => {
+            clearTimeout(idleTimer);
+            cursor.classList.remove('visible');
+        });
+        document.addEventListener('mouseenter', () => {
+            showCursor();
+            resetIdleTimer();
+        });
 
         // Touch events — show on touch, hide when finger lifts
         document.addEventListener('touchstart', () => {
