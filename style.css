@@ -37,6 +37,7 @@ html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
+    font-family: var(--font-primary);
 }
 
 body {
@@ -51,6 +52,11 @@ body {
     z-index: 0;
     padding-top: 70px;
     overflow-x: hidden;
+}
+
+button, input, select, textarea, optgroup {
+    font-family: inherit;
+    font-size: inherit;
 }
 
 @media (max-width: 576px) {
@@ -2078,6 +2084,28 @@ footer {
     section h2 {
         font-size: 1.5rem !important;
     }
+}
+
+/* Contact section social icons hover */
+#contact .d-flex.gap-3 a[aria-label="Email"]:hover,
+#contact .d-flex.gap-3 a[href*="mail.google.com"]:hover {
+    transform: translateY(-2px);
+}
+#contact .d-flex.gap-3 a[aria-label="Email"]:hover svg path,
+#contact .d-flex.gap-3 a[href*="mail.google.com"]:hover svg path {
+    filter: brightness(1.2);
+}
+#contact .d-flex.gap-3 a[aria-label="WhatsApp"]:hover {
+    color: #25D366 !important;
+    transform: translateY(-2px);
+}
+#contact .d-flex.gap-3 a[aria-label="LinkedIn"]:hover {
+    color: #0A66C2 !important;
+    transform: translateY(-2px);
+}
+#contact .d-flex.gap-3 a[aria-label="GitHub"]:hover {
+    color: #24292E !important;
+    transform: translateY(-2px);
 }
 
 /* Medium tablets / small laptops (769px - 992px) */
