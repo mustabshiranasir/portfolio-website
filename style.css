@@ -2642,13 +2642,13 @@ html.use-ice-cursor {
     }
 }
 
-/* Larger crystal on small screens for better visibility */
+/* Smaller crystal on small screens */
 @media (max-width: 576px) {
     :root {
-        --cursor-size: 22px;
+        --cursor-size: 12px;
     }
     .ice-trail {
-        width: 10px;
-        height: 10px;
+        width: 6px;
+        height: 6px;
     }
 }
