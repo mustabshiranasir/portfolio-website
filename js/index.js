@@ -240,7 +240,7 @@
         let isHoveringInteractive = false;
         let isPressed = false;
         let idleTimer = null;
-        const IDLE_TIMEOUT = 2000;
+        const IDLE_TIMEOUT = 100;
 
         // Reveal the ice crystal cursor and hide the native pointer
         document.documentElement.classList.add('use-ice-cursor');
