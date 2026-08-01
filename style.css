@@ -2532,6 +2532,8 @@ footer {
         opacity 0.18s ease,
         visibility 0.18s,
         border-color 0.22s ease,
+        border-radius 0.25s ease,
+        background 0.25s ease,
         box-shadow 0.22s ease,
         transform 0.08s ease;
     will-change: transform;
@@ -2552,10 +2554,14 @@ footer {
     opacity: 1;
 }
 
-/* Hover boost: brighter glow (scale/rotate driven by JS, glow here) */
+/* Hover boost: transforms into a hollow crystal ring (scale/rotate driven by JS) */
 #ice-cursor.interact {
+    clip-path: none;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid var(--cursor-border);
     box-shadow:
-        inset 0 0 3px 2px var(--cursor-highlight),
+        inset 0 0 3px 1px var(--cursor-highlight),
         0 0 7px 3px var(--cursor-glow-inner),
         0 0 18px 7px var(--cursor-glow-outer),
         0 0 0 8px var(--cursor-ring);
