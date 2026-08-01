@@ -272,9 +272,8 @@
         }
 
         function computeTransform() {
-            const scale = isPressed ? 0.8 : (isHoveringInteractive ? 1.25 : 1);
-            const rotate = isHoveringInteractive ? 3 : 0;
-            return `translate(${posX}px, ${posY}px) translate(-50%, -50%) scale(${scale}) rotate(${rotate}deg)`;
+            const scale = isPressed ? 0.85 : 1;
+            return `translate(${posX}px, ${posY}px) translate(-50%, -50%) scale(${scale})`;
         }
 
         function updatePosition() {
