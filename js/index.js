@@ -330,12 +330,25 @@
         posY = window.innerHeight / 2;
         cursor.style.transform = computeTransform();
 
+        // Mouse events
         document.addEventListener('mousemove', onPointerMove, { passive: true });
-        document.addEventListener('touchmove', onPointerMove, { passive: true });
         document.addEventListener('mousedown', onPointerDown);
         document.addEventListener('mouseup', onPointerUp);
-        document.addEventListener('touchstart', onPointerDown, { passive: true });
-        document.addEventListener('touchend', onPointerUp, { passive: true });
+        document.addEventListener('mouseleave', () => cursor.classList.remove('visible'));
+        document.addEventListener('mouseenter', () => cursor.classList.add('visible'));
+
+        // Touch events — show on touch, hide when finger lifts
+        document.addEventListener('touchstart', () => {
+            cursor.classList.add('visible');
+            isPressed = true;
+            cursor.style.transform = computeTransform();
+        }, { passive: true });
+        document.addEventListener('touchmove', onPointerMove, { passive: true });
+        document.addEventListener('touchend', () => {
+            isPressed = false;
+            cursor.style.transform = computeTransform();
+            cursor.classList.remove('visible');
+        }, { passive: true });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
