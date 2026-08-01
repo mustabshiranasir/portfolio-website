@@ -1928,26 +1928,38 @@ footer {
 /* Education flip cards */
 #education .flip-card {
     min-height: 300px;
+    height: 100%;
 }
 
-/* Reduce gap between education cards */
+#education .flip-card .flip-face {
+    min-height: 100%;
+}
+
+/* Make all education cards equal height */
+#education .experience-cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 #education .experience-cards .col-lg-10 {
     margin-bottom: 0.75rem !important;
+    display: flex;
 }
 
 #education .experience-cards .col-lg-10:last-child {
     margin-bottom: 0 !important;
 }
 
-@media (max-width: 575.98px) {
+/* Equal card height on larger screens */
+@media (min-width: 992px) {
     #education .experience-cards .col-lg-10 {
-        margin-bottom: 0.25rem !important;
+        flex: 1 0 calc(33.333% - 1rem);
+        max-width: calc(33.333% - 1rem);
+        margin-right: 1.5rem;
     }
-}
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-    #education .experience-cards .col-lg-10 {
-        margin-bottom: 0.625rem !important;
+    #education .experience-cards .col-lg-10:nth-child(3n) {
+        margin-right: 0;
     }
 }
 
