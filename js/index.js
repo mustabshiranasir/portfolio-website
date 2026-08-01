@@ -260,8 +260,8 @@
             trailPool.push(t);
         }
 
-        const LERP_DESKTOP = 0.18;
-        const LERP_MOBILE = 0.15;
+        const LERP_DESKTOP = 0.35;
+        const LERP_MOBILE = 0.30;
         const lerpFactor = isSmallScreen ? LERP_MOBILE : LERP_DESKTOP;
 
         function spawnTrail(x, y) {
