@@ -219,9 +219,8 @@
 
     // Ice Crystal Custom Cursor
     function initIceCursor() {
-        // Skip on reduced motion or coarse pointers (touch devices) for accessibility
+        // Skip on reduced motion for accessibility
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-        if (window.matchMedia('(pointer: coarse)').matches) return;
 
         const cursor = document.getElementById('ice-cursor');
         if (!cursor) return;
@@ -245,6 +244,29 @@
         document.documentElement.classList.add('use-ice-cursor');
         cursor.classList.add('visible');
 
+        // Trail light particles — pool of reusable glowing dots
+        const TRAIL_COUNT = 35;
+        const trailPool = [];
+        let trailIdx = 0;
+        for (let i = 0; i < TRAIL_COUNT; i++) {
+            const t = document.createElement('div');
+            t.className = 'ice-trail';
+            document.body.appendChild(t);
+            trailPool.push(t);
+        }
+
+        function spawnTrail(x, y) {
+            const el = trailPool[trailIdx];
+            trailIdx = (trailIdx + 1) % TRAIL_COUNT;
+            el.style.left = x + 'px';
+            el.style.top = y + 'px';
+            el.getAnimations().forEach(a => a.cancel());
+            el.animate([
+                { opacity: 0.55, transform: 'translate(-50%, -50%) scale(1)' },
+                { opacity: 0, transform: 'translate(-50%, -50%) scale(0.1)' }
+            ], { duration: 380, easing: 'ease-out', fill: 'forwards' });
+        }
+
         function lerp(current, target, factor) {
             return current + (target - current) * factor;
         }
@@ -267,9 +289,11 @@
                 const t = e.touches[0];
                 targetX = t.clientX;
                 targetY = t.clientY;
+                spawnTrail(targetX, targetY);
             } else {
                 targetX = e.clientX;
                 targetY = e.clientY;
+                spawnTrail(targetX, targetY);
             }
 
             const target = e.target;
@@ -310,6 +334,8 @@
         document.addEventListener('touchmove', onPointerMove, { passive: true });
         document.addEventListener('mousedown', onPointerDown);
         document.addEventListener('mouseup', onPointerUp);
+        document.addEventListener('touchstart', onPointerDown, { passive: true });
+        document.addEventListener('touchend', onPointerUp, { passive: true });
     }
 
     document.addEventListener('DOMContentLoaded', () => {

@@ -2496,21 +2496,23 @@ footer {
 /* === Ice Crystal Glass Cursor === */
 :root {
     --cursor-size: 16px;
-    --cursor-body: rgba(147, 197, 253, 0.88);
-    --cursor-border: rgba(175, 210, 255, 0.7);
-    --cursor-glow-inner: rgba(255, 255, 255, 0.75);
-    --cursor-glow-outer: rgba(147, 197, 253, 0.45);
-    --cursor-ring: rgba(147, 197, 253, 0.25);
-    --cursor-highlight: rgba(255, 255, 255, 0.95);
+    --cursor-body: rgba(170, 210, 255, 0.92);
+    --cursor-border: rgba(200, 225, 255, 0.8);
+    --cursor-glow-inner: rgba(255, 255, 255, 0.9);
+    --cursor-glow-outer: rgba(120, 180, 255, 0.55);
+    --cursor-ring: rgba(140, 190, 255, 0.3);
+    --cursor-highlight: rgba(255, 255, 255, 1);
+    --cursor-trail: rgba(140, 190, 255, 0.7);
 }
 
 [data-theme="light"] {
-    --cursor-body: rgba(30, 80, 160, 0.9);
-    --cursor-border: rgba(90, 150, 225, 0.75);
-    --cursor-glow-inner: rgba(255, 255, 255, 0.7);
-    --cursor-glow-outer: rgba(59, 130, 241, 0.4);
-    --cursor-ring: rgba(59, 130, 241, 0.28);
-    --cursor-highlight: rgba(255, 255, 255, 0.9);
+    --cursor-body: rgba(40, 95, 190, 0.92);
+    --cursor-border: rgba(100, 160, 235, 0.8);
+    --cursor-glow-inner: rgba(255, 255, 255, 0.85);
+    --cursor-glow-outer: rgba(60, 130, 230, 0.55);
+    --cursor-ring: rgba(60, 130, 230, 0.32);
+    --cursor-highlight: rgba(255, 255, 255, 0.95);
+    --cursor-trail: rgba(60, 130, 230, 0.65);
 }
 
 #ice-cursor {
@@ -2533,14 +2535,15 @@ footer {
         box-shadow 0.22s ease,
         transform 0.08s ease;
     will-change: transform;
+    animation: crystalShimmer 4s ease-in-out infinite;
     /* faceted crystal shard (diamond) */
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
     background: var(--cursor-body);
     border: 2px solid var(--cursor-border);
     box-shadow:
-        inset 0 0 2px 1px var(--cursor-highlight),
-        0 0 4px 1px var(--cursor-glow-inner),
-        0 0 8px 3px var(--cursor-glow-outer),
+        inset 0 0 3px 2px var(--cursor-highlight),
+        0 0 5px 2px var(--cursor-glow-inner),
+        0 0 10px 4px var(--cursor-glow-outer),
         0 0 0 0px var(--cursor-ring);
 }
 
@@ -2549,13 +2552,13 @@ footer {
     opacity: 1;
 }
 
-/* Hover boost: grow + brighter glow (scale/rotate driven by JS, glow stays here) */
+/* Hover boost: brighter glow (scale/rotate driven by JS, glow here) */
 #ice-cursor.interact {
     box-shadow:
-        inset 0 0 2px 1px var(--cursor-highlight),
-        0 0 6px 2px var(--cursor-glow-inner),
-        0 0 14px 6px var(--cursor-glow-outer),
-        0 0 0 7px var(--cursor-ring);
+        inset 0 0 3px 2px var(--cursor-highlight),
+        0 0 7px 3px var(--cursor-glow-inner),
+        0 0 18px 7px var(--cursor-glow-outer),
+        0 0 0 8px var(--cursor-ring);
 }
 
 #ice-cursor.hidden {
@@ -2563,18 +2566,64 @@ footer {
     opacity: 0;
 }
 
-/* White specular highlight on the facet */
+/* Subtle rotation oscillation for shiny facet-catch effect */
+@keyframes crystalShimmer {
+    0%, 100% { rotate: 0deg; }
+    25%      { rotate: 6deg; }
+    75%      { rotate: -6deg; }
+}
+
+/* Moving specular highlight across the crystal surface */
+#ice-cursor::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    background: linear-gradient(
+        135deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.7) 45%,
+        rgba(255, 255, 255, 0.9) 50%,
+        rgba(255, 255, 255, 0.7) 55%,
+        transparent 80%
+    );
+    background-size: 250% 250%;
+    animation: shimmerSweep 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+    0%   { background-position: 200% 200%; }
+    100% { background-position: -200% -200%; }
+}
+
+/* White specular highlight dot on the facet */
 #ice-cursor::after {
     content: "";
     position: absolute;
-    top: 3px;
-    left: 3px;
+    top: 2px;
+    left: 2px;
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: var(--cursor-highlight);
-    box-shadow: 0 0 3px 1px var(--cursor-highlight);
+    box-shadow: 0 0 4px 2px var(--cursor-highlight);
     pointer-events: none;
+}
+
+/* Trail light particles */
+.ice-trail {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999998;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--cursor-trail);
+    box-shadow:
+        0 0 6px 2px var(--cursor-trail),
+        0 0 12px 4px var(--cursor-glow-outer);
+    opacity: 0;
 }
 
 /* Hide the native cursor & reveal the ice crystal element */
@@ -2582,20 +2631,24 @@ html.use-ice-cursor {
     cursor: none;
 }
 
-/* Respect reduced motion / coarse pointers */
+/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
     html.use-ice-cursor {
         cursor: auto;
     }
-    #ice-cursor {
+    #ice-cursor,
+    .ice-trail {
         display: none;
     }
 }
-@media (pointer: coarse) {
-    html.use-ice-cursor {
-        cursor: auto;
+
+/* Larger crystal on small screens for better visibility */
+@media (max-width: 576px) {
+    :root {
+        --cursor-size: 22px;
     }
-    #ice-cursor {
-        display: none;
+    .ice-trail {
+        width: 10px;
+        height: 10px;
     }
 }
