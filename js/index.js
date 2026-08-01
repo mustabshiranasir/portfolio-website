@@ -256,11 +256,11 @@
             });
         });
 
-        // Experience timeline scroll-progress line
-        const timelineFill = document.querySelector('.timeline-line-fill');
-        const timelineTrack = document.querySelector('.experience-timeline');
-        const timelineDots = document.querySelectorAll('.timeline-center-dot');
-        if (timelineFill && timelineTrack) {
+        // Experience & Education timeline scroll-progress lines
+        document.querySelectorAll('.experience-timeline').forEach(timelineTrack => {
+            const timelineFill = timelineTrack.querySelector('.timeline-line-fill');
+            const timelineDots = timelineTrack.querySelectorAll('.timeline-center-dot');
+            if (!timelineFill || timelineDots.length === 0) return;
             let ticking = false;
             const filledDots = new Set();
 
@@ -283,7 +283,6 @@
                 timelineFill.style.height = (p * 100) + '%';
                 positionDots();
 
-                // Fill dots once they cross the viewport center
                 const centerY = vh * 0.5;
                 timelineDots.forEach(dot => {
                     if (filledDots.has(dot)) return;
@@ -304,7 +303,7 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             window.addEventListener('resize', onScroll);
             updateTimeline();
-        }
+        });
 
         // GSAP infinite marquee for the info stats strip
         const marqueeTrack = document.querySelector('.info-grid-track');
