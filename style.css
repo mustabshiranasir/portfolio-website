@@ -1497,12 +1497,11 @@ footer {
     border-color: var(--back-border);
 }
 
-.flip-card:focus-within .flip-card-inner,
 .flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
 }
 
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
     .flip-card:hover .flip-card-inner {
         transform: rotateY(180deg);
     }
@@ -1616,7 +1615,7 @@ footer {
     aspect-ratio: 1;
     max-width: 100px;
     margin: 0 auto;
-    background: var(--badge-bg);
+    background: var(--color-panel);
     border: 1px solid var(--color-border);
     border-radius: 20px;
     padding: 0;
@@ -1626,6 +1625,10 @@ footer {
     justify-content: center;
     text-align: center;
     gap: 6px;
+}
+
+.flip-skill .flip-face:not(.flip-back)::before {
+    display: none;
 }
 
 .flip-skill .flip-face:not(.flip-back) i {

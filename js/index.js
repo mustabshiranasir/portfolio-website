@@ -653,7 +653,7 @@
         });
 });
     // Flip cards: tap-to-flip on touch devices (links still clickable)
-    if (window.matchMedia('(hover: none)').matches) {
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
         document.querySelectorAll('.flip-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.closest('a, button')) return;
