@@ -2632,9 +2632,12 @@ footer {
     opacity: 0;
 }
 
-/* Hide the native cursor & reveal the ice crystal element */
-html.use-ice-cursor {
-    cursor: none;
+/* Hide the native cursor everywhere & reveal the ice crystal element */
+html.use-ice-cursor,
+html.use-ice-cursor *,
+html.use-ice-cursor *::before,
+html.use-ice-cursor *::after {
+    cursor: none !important;
 }
 
 /* Respect reduced motion */
