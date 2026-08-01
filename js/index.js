@@ -652,15 +652,39 @@
             }, 450);
         });
 });
-    // Flip cards: tap-to-flip on touch devices (links still clickable)
-    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
-        document.querySelectorAll('.flip-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('a, button')) return;
-                card.classList.toggle('is-flipped');
-            });
+    // Flip cards: tap-to-flip on touch, hover-to-flip on mouse (no sticky :hover)
+    const fineHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    document.querySelectorAll('.flip-card').forEach(card => {
+        let touchActive = false;
+        let hoverFlipped = false;
+        let lastPointerType = '';
+
+        card.addEventListener('pointerdown', e => { lastPointerType = e.pointerType; });
+        card.addEventListener('touchstart', () => { touchActive = true; }, { passive: true });
+        card.addEventListener('touchcancel', () => { touchActive = false; }, { passive: true });
+        card.addEventListener('touchend', () => { touchActive = false; }, { passive: true });
+
+        card.addEventListener('click', e => {
+            if (e.target.closest('a, button')) return;
+            if (fineHover && lastPointerType === 'mouse') return;
+            card.classList.toggle('is-flipped');
         });
-    }
+
+        if (fineHover) {
+            card.addEventListener('mouseenter', () => {
+                if (touchActive) return;
+                hoverFlipped = true;
+                card.classList.add('is-flipped');
+            });
+            card.addEventListener('mouseleave', () => {
+                if (hoverFlipped) {
+                    hoverFlipped = false;
+                    card.classList.remove('is-flipped');
+                }
+            });
+        }
+    });
 
     // Also handle flip on non-touch for accessibility
     document.querySelectorAll('.flip-card').forEach(card => {

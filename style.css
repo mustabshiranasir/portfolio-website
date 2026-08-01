@@ -205,7 +205,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    overflow: visible;
 }
 
 @media (max-width: 576px) {
@@ -1036,6 +1036,7 @@ img {
     border-radius: 50%;
     border: 1px solid var(--crystal-edge);
     font-size: 1.2rem;
+    text-decoration: none;
 }
 
 .flip-pill-deploy {
@@ -1499,12 +1500,6 @@ footer {
 
 .flip-card.is-flipped .flip-card-inner {
     transform: rotateY(180deg);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .flip-card:hover .flip-card-inner {
-        transform: rotateY(180deg);
-    }
 }
 
 .flip-face h3,
@@ -2104,8 +2099,8 @@ footer {
     }
 
     .ring-3 {
-        width: 280px;
-        height: 280px;
+        width: 260px;
+        height: 260px;
     }
 
     .orbit-item {
@@ -2114,7 +2109,11 @@ footer {
         font-size: 0.95rem;
     }
 
-    /* Adjust Ring Item Offsets for 280px diameter ring 3 */
+    /* Adjust Ring Item Offsets for 260px diameter ring 3 */
+    .item-3-1 { top: -16px; left: calc(50% - 16px); }
+    .item-3-3 { top: calc(50% - 16px); right: -16px; }
+    .item-3-5 { bottom: -16px; left: calc(50% - 16px); }
+    .item-3-7 { top: calc(50% - 16px); left: -16px; }
     .item-3-2 { top: 22px; right: 22px; }
     .item-3-4 { bottom: 22px; right: 22px; }
     .item-3-6 { bottom: 22px; left: 22px; }
