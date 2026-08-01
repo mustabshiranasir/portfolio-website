@@ -460,27 +460,46 @@ img {
     color: var(--color-muted);
     font-size: 16px;
     font-weight: 500;
-    transition: 0.3s;
+    transition: color 0.3s ease, background-color 0.3s ease;
     margin: 0 10px;
+    position: relative;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #c084fc, #7dd3fc);
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+    width: 100%;
+    left: 0;
 }
 
 .navbar .nav-link:hover {
-    color: var(--color-light) !important;
+    background: linear-gradient(135deg, #c084fc, #7dd3fc) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
 }
 
 .navbar .nav-link.glass-click {
-    background: linear-gradient(135deg,
-            rgba(236, 240, 241, 0.22) 0%,
-            rgba(52, 73, 94, 0.34) 50%,
-            rgba(44, 62, 80, 0.42) 100%) !important;
-    backdrop-filter: blur(12px) saturate(160%);
-    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    background: transparent !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
     border-radius: 12px;
-    box-shadow:
-        inset 0 0 0 1px rgba(236, 240, 241, 0.18),
-        inset 0 1px 0 rgba(236, 240, 241, 0.16),
-        0 4px 18px rgba(20, 25, 45, 0.22);
-    transition: background 0.4s ease-out, backdrop-filter 0.4s ease-out, box-shadow 0.4s ease-out;
+    box-shadow: inset 0 0 0 1px rgba(192, 132, 252, 0.22);
+    transition: box-shadow 0.3s ease;
 }
 
 [data-theme="light"] .navbar .nav-link.glass-click {
@@ -495,7 +514,15 @@ img {
 }
 
 [data-theme="light"] .navbar .nav-link:hover {
-    background: transparent !important;
+    background: linear-gradient(135deg, #9333ea, #2563eb) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+[data-theme="light"] .navbar .nav-link::after {
+    background: linear-gradient(90deg, #9333ea, #2563eb);
 }
 
 [data-theme="light"] .offcanvas-body .nav-link:hover {
@@ -2077,32 +2104,21 @@ footer {
     min-height: 100%;
 }
 
-/* Make all education cards equal height */
+/* Make education cards layout identical to experience section */
 #education .experience-cards {
     display: flex;
     flex-wrap: wrap;
 }
 
 #education .experience-cards .col-lg-10 {
-    margin-bottom: 0.75rem !important;
-    display: flex;
+    width: 100%;
+    max-width: 83.3333%;
+    flex: 0 0 83.3333%;
+    margin-bottom: 1rem;
 }
 
 #education .experience-cards .col-lg-10:last-child {
     margin-bottom: 0 !important;
-}
-
-/* Equal card height on larger screens */
-@media (min-width: 992px) {
-    #education .experience-cards .col-lg-10 {
-        flex: 1 0 calc(33.333% - 1rem);
-        max-width: calc(33.333% - 1rem);
-        margin-right: 1.5rem;
-    }
-
-    #education .experience-cards .col-lg-10:nth-child(3n) {
-        margin-right: 0;
-    }
 }
 
 #education .flip-face:not(.flip-back) {
@@ -2126,15 +2142,18 @@ footer {
 
 /* --- Offcanvas Drawer Mobile Navigation Menu --- */
 .offcanvas {
-    color: var(--color-light);
-    border-left: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-left: 1px solid rgba(192, 132, 252, 0.25);
     background: linear-gradient(145deg,
-            rgba(44, 62, 80, 0.72) 0%,
-            rgba(52, 73, 94, 0.62) 50%,
-            rgba(44, 62, 80, 0.76) 100%) !important;
-    backdrop-filter: blur(20px) saturate(160%);
-    -webkit-backdrop-filter: blur(20px) saturate(160%);
-    box-shadow: inset 0 1px 0 rgba(236, 240, 241, 0.14), -10px 0 40px rgba(20, 25, 45, 0.3);
+            rgba(11, 17, 32, 0.18) 0%,
+            rgba(44, 62, 80, 0.12) 50%,
+            rgba(11, 17, 32, 0.22) 100%) !important;
+    backdrop-filter: blur(40px) saturate(200%);
+    -webkit-backdrop-filter: blur(40px) saturate(200%);
+    box-shadow:
+        inset 0 0 0 1px rgba(192, 132, 252, 0.18),
+        inset 1px 0 0 rgba(125, 211, 252, 0.12),
+        -12px 0 48px rgba(10, 15, 35, 0.25);
     width: 280px !important;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1055 !important;
@@ -2144,13 +2163,24 @@ footer {
     height: 100vh !important;
 }
 
+
 [data-theme="light"] .offcanvas {
+    color: var(--color-text);
     background: linear-gradient(145deg,
-            rgba(255, 255, 255, 0.82) 0%,
-            rgba(235, 243, 250, 0.74) 50%,
-            rgba(203, 213, 225, 0.62) 100%) !important;
-    border-left: 1px solid rgba(15, 23, 42, 0.12);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), -10px 0 40px rgba(30, 41, 59, 0.16);
+            rgba(255, 255, 255, 0.18) 0%,
+            rgba(235, 243, 250, 0.12) 50%,
+            rgba(203, 213, 225, 0.15) 100%) !important;
+    border-left: 1px solid rgba(147, 51, 234, 0.2);
+    box-shadow:
+        inset 0 0 0 1px rgba(147, 51, 234, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        -12px 0 48px rgba(30, 41, 59, 0.06);
+}
+
+/* Remove Bootstrap's dark page-overlay behind drawer in light mode */
+[data-theme="light"] .offcanvas-backdrop {
+    background-color: transparent !important;
+    opacity: 0 !important;
 }
 
 @media (min-width: 992px) {
@@ -2167,12 +2197,6 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .offcanvas {
-        backdrop-filter: blur(16px) saturate(160%);
-        -webkit-backdrop-filter: blur(16px) saturate(160%);
-    }
-}
 
 .offcanvas-header {
     border-bottom: 1px solid var(--color-border) !important;
@@ -2217,6 +2241,11 @@ footer {
 .offcanvas-body .nav-link:hover {
     background: var(--badge-bg);
     transform: translateX(6px);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(135deg, #a855f7, #3b82f6);
+    background-color: transparent;
 }
 
 /* --- COMPREHENSIVE RESPONSIVENESS MEDIA QUERIES --- */
@@ -2483,6 +2512,45 @@ footer {
     .about-section .container.my-5 {
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
+    }
+
+    /* Journey card compact */
+    .about-journey-card {
+        padding: 1.4rem 1.25rem 1.25rem;
+    }
+
+    .about-journey-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.9rem;
+    }
+
+    .about-journey-text {
+        font-size: 0.85rem;
+        line-height: 1.65;
+        margin-bottom: 0.65rem;
+    }
+
+    /* Trait cards compact — keeps 2-per-row */
+    .about-trait-card {
+        padding: 1.1rem 1rem;
+    }
+
+    .about-trait-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 11px;
+        font-size: 1rem;
+        margin-bottom: 0.7rem;
+    }
+
+    .about-trait-title {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .about-trait-text {
+        font-size: 0.76rem;
+        line-height: 1.55;
     }
 
     #project .p-4,
