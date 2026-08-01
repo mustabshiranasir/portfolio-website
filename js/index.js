@@ -246,25 +246,32 @@
 
         // Trail light particles — pool of reusable glowing dots
         const TRAIL_COUNT = 35;
+        const TRAIL_COUNT_MOBILE = 60;
+        const isSmallScreen = window.matchMedia('(max-width: 576px)').matches;
+        const activeTrailCount = isSmallScreen ? TRAIL_COUNT_MOBILE : TRAIL_COUNT;
         const trailPool = [];
         let trailIdx = 0;
-        for (let i = 0; i < TRAIL_COUNT; i++) {
+        for (let i = 0; i < activeTrailCount; i++) {
             const t = document.createElement('div');
             t.className = 'ice-trail';
             document.body.appendChild(t);
             trailPool.push(t);
         }
 
+        const LERP_DESKTOP = 0.18;
+        const LERP_MOBILE = 0.15;
+        const lerpFactor = isSmallScreen ? LERP_MOBILE : LERP_DESKTOP;
+
         function spawnTrail(x, y) {
             const el = trailPool[trailIdx];
-            trailIdx = (trailIdx + 1) % TRAIL_COUNT;
+            trailIdx = (trailIdx + 1) % activeTrailCount;
             el.style.left = x + 'px';
             el.style.top = y + 'px';
             el.getAnimations().forEach(a => a.cancel());
             el.animate([
-                { opacity: 0.55, transform: 'translate(-50%, -50%) scale(1)' },
+                { opacity: isSmallScreen ? 0.7 : 0.55, transform: 'translate(-50%, -50%) scale(1)' },
                 { opacity: 0, transform: 'translate(-50%, -50%) scale(0.1)' }
-            ], { duration: 380, easing: 'ease-out', fill: 'forwards' });
+            ], { duration: isSmallScreen ? 450 : 380, easing: 'ease-out', fill: 'forwards' });
         }
 
         function lerp(current, target, factor) {
@@ -277,10 +284,14 @@
         }
 
         function updatePosition() {
-            ticking = false;
-            posX = targetX;
-            posY = targetY;
+            posX = lerp(posX, targetX, lerpFactor);
+            posY = lerp(posY, targetY, lerpFactor);
             cursor.style.transform = computeTransform();
+            if (Math.abs(posX - targetX) > 0.5 || Math.abs(posY - targetY) > 0.5) {
+                requestAnimationFrame(updatePosition);
+            } else {
+                ticking = false;
+            }
         }
 
         function onPointerMove(e) {

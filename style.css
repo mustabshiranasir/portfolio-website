@@ -2654,18 +2654,19 @@ html.use-ice-cursor *::after {
 @media (max-width: 576px) {
     :root {
         --cursor-size: 12px;
-        --cursor-trail: rgba(140, 190, 255, 0.85);
-        --cursor-glow-outer: rgba(120, 180, 255, 0.7);
+        --cursor-trail: rgba(160, 210, 255, 0.95);
+        --cursor-glow-outer: rgba(120, 180, 255, 0.85);
     }
     [data-theme="light"] {
-        --cursor-trail: rgba(60, 130, 230, 0.8);
-        --cursor-glow-outer: rgba(60, 130, 230, 0.7);
+        --cursor-trail: rgba(60, 130, 230, 0.92);
+        --cursor-glow-outer: rgba(60, 130, 230, 0.85);
     }
     .ice-trail {
-        width: 10px;
-        height: 10px;
+        width: 12px;
+        height: 12px;
         box-shadow:
-            0 0 8px 3px var(--cursor-trail),
-            0 0 16px 6px var(--cursor-glow-outer);
+            0 0 10px 4px var(--cursor-trail),
+            0 0 22px 8px var(--cursor-glow-outer),
+            0 0 30px 12px rgba(120, 180, 255, 0.25);
     }
 }
