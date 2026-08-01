@@ -1011,12 +1011,52 @@ img {
 
 /* Square skill card */
 .skill-card {
-    max-width: 500px;
+    max-width: 90%;
     margin: 0 auto;
     border-radius: 24px !important;
 }
-.skill-badges-row {
-    gap: 1.25rem;
+.skill-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: start;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1199px) {
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, 105px);
+        gap: 0.6rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, 100px);
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, 90px);
+        gap: 0.4rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, 80px);
+        gap: 0.35rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .skill-grid {
+        grid-template-columns: repeat(auto-fit, 70px);
+        gap: 0.3rem;
+    }
 }
 
 #contact form .form-control {
@@ -1228,7 +1268,7 @@ footer {
     height: 100%;
     width: 50%;
     border-radius: 999px;
-    background: linear-gradient(90deg, #8D59FF, #B26BFF);
+    background: var(--icon-color, linear-gradient(90deg, #8D59FF, #B26BFF));
 }
 
 .flip-bullets {
@@ -1257,22 +1297,24 @@ footer {
 
 /* Skill flip cards */
 .flip-skill {
-    width: 120px;
+    width: 100%;
     min-height: 150px;
-    flex-shrink: 0;
     cursor: pointer;
     outline: none;
+    margin: 0;
 }
 
 .flip-skill .flip-face:not(.flip-back) {
-    width: 100px;
-    height: 100px;
-    align-self: center;
-    justify-self: center;
+    width: 100%;
+    aspect-ratio: 1;
+    max-width: 100px;
+    margin: 0 auto;
     background: var(--badge-bg);
     border: 1px solid var(--color-border);
     border-radius: 20px;
     padding: 0;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -1317,9 +1359,11 @@ footer {
 }
 
 .flip-skill .flip-back {
-    align-items: flex-start;
-    text-align: left;
-    gap: 0.6rem;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1rem !important;
+    border-radius: 20px !important;
 }
 
 .flip-skill .flip-back .flip-card-label {
@@ -1770,12 +1814,14 @@ footer {
         max-width: 380px;
     }
     #skills .flip-skill {
-        width: 95px;
-        min-height: 120px;
+        width: 100%;
+        min-height: 110px;
     }
     #skills .flip-skill .flip-face:not(.flip-back) {
-        width: 75px;
-        height: 75px;
+        width: 100%;
+        aspect-ratio: 1;
+        max-width: 75px;
+        margin: 0 auto;
         padding: 0;
     }
     #skills .flip-skill .flip-face:not(.flip-back) i {
@@ -1783,6 +1829,17 @@ footer {
     }
     #skills .flip-skill .flip-face:not(.flip-back) .small {
         font-size: 0.55rem;
+    }
+    #skills .flip-skill .flip-back {
+        padding: 0.75rem !important;
+        border-radius: 16px !important;
+        gap: 0.4rem;
+    }
+    #skills .flip-skill .flip-back .flip-card-label {
+        font-size: 0.55rem;
+    }
+    #skills .flip-skill .flip-back .used-in {
+        font-size: 0.6rem;
     }
 
     #experience h4,
