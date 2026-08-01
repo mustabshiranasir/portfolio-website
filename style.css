@@ -2534,8 +2534,7 @@ footer {
         border-color 0.22s ease,
         border-radius 0.25s ease,
         background 0.25s ease,
-        box-shadow 0.22s ease,
-        transform 0.08s ease;
+        box-shadow 0.22s ease;
     will-change: transform;
     animation: crystalShimmer 4s ease-in-out infinite;
     /* faceted crystal shard (diamond) */
