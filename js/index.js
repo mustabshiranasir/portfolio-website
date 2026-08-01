@@ -279,8 +279,8 @@
 
         function updatePosition() {
             ticking = false;
-            posX = lerp(posX, targetX, 0.18);
-            posY = lerp(posY, targetY, 0.18);
+            posX = targetX;
+            posY = targetY;
             cursor.style.transform = computeTransform();
         }
 
