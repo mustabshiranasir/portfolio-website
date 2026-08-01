@@ -1930,6 +1930,27 @@ footer {
     min-height: 300px;
 }
 
+/* Reduce gap between education cards */
+#education .experience-cards .col-lg-10 {
+    margin-bottom: 0.75rem !important;
+}
+
+#education .experience-cards .col-lg-10:last-child {
+    margin-bottom: 0 !important;
+}
+
+@media (max-width: 575.98px) {
+    #education .experience-cards .col-lg-10 {
+        margin-bottom: 0.25rem !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    #education .experience-cards .col-lg-10 {
+        margin-bottom: 0.625rem !important;
+    }
+}
+
 #education .flip-face:not(.flip-back) {
     border-left: 4px solid var(--color-light);
 }
