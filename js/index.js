@@ -242,14 +242,18 @@
         let idleTimer = null;
         const IDLE_TIMEOUT = 100;
 
-        // Reveal the ice crystal cursor and hide the native pointer
-        document.documentElement.classList.add('use-ice-cursor');
-        cursor.classList.add('visible');
+        // Detect small screen once — must be declared before first use
+        const isSmallScreen = window.matchMedia('(max-width: 576px)').matches;
+
+        // Reveal the ice crystal cursor and hide the native pointer — desktop only
+        if (!isSmallScreen) {
+            document.documentElement.classList.add('use-ice-cursor');
+            cursor.classList.add('visible');
+        }
 
         // Trail light particles — pool of reusable glowing dots
         const TRAIL_COUNT = 35;
         const TRAIL_COUNT_MOBILE = 60;
-        const isSmallScreen = window.matchMedia('(max-width: 576px)').matches;
         const activeTrailCount = isSmallScreen ? TRAIL_COUNT_MOBILE : TRAIL_COUNT;
         const trailPool = [];
         let trailIdx = 0;
@@ -259,6 +263,7 @@
             document.body.appendChild(t);
             trailPool.push(t);
         }
+
 
         const LERP_DESKTOP = 0.35;
         const LERP_MOBILE = 0.30;
@@ -389,6 +394,60 @@
         initScrollToTop();
         initNavbarScroll();
         initIceCursor();
+
+        // ── About section scroll-reveal — replays every time section enters view ──
+        const revealEls = document.querySelectorAll('[data-reveal]');
+        if (revealEls.length && 'IntersectionObserver' in window) {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const el = entry.target;
+                    if (entry.isIntersecting) {
+                        // Remove no-transition guard, then stagger-in
+                        el.classList.remove('reveal-reset');
+                        const delay = parseInt(el.dataset.delay || '0', 10);
+                        setTimeout(() => el.classList.add('revealed'), delay);
+                    } else {
+                        // Reset instantly (no animation flash) so it can replay
+                        el.classList.add('reveal-reset');
+                        el.classList.remove('revealed');
+                    }
+                });
+            }, { threshold: 0.15 });
+            revealEls.forEach(el => revealObserver.observe(el));
+        } else {
+            revealEls.forEach(el => el.classList.add('revealed'));
+        }
+
+        // ── 3D mouse-tilt on trait cards ──
+        document.querySelectorAll('.about-trait-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const cx = rect.left + rect.width  / 2;
+                const cy = rect.top  + rect.height / 2;
+                const dx = (e.clientX - cx) / (rect.width  / 2);  // -1 to 1
+                const dy = (e.clientY - cy) / (rect.height / 2);  // -1 to 1
+                const rotX = -(dy * 10).toFixed(2);
+                const rotY =  (dx * 10).toFixed(2);
+                card.style.transform = `perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.03)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // ── Slide-left card tilt (journey card) ──
+        const journeyCard = document.querySelector('.about-journey-card');
+        if (journeyCard) {
+            journeyCard.addEventListener('mousemove', (e) => {
+                const rect = journeyCard.getBoundingClientRect();
+                const dx = (e.clientX - (rect.left + rect.width  / 2)) / (rect.width  / 2);
+                const dy = (e.clientY - (rect.top  + rect.height / 2)) / (rect.height / 2);
+                journeyCard.style.transform = `perspective(800px) rotateX(${-(dy * 6).toFixed(2)}deg) rotateY(${(dx * 6).toFixed(2)}deg) scale(1.02)`;
+            });
+            journeyCard.addEventListener('mouseleave', () => {
+                journeyCard.style.transform = '';
+            });
+        }
 
         const toggleBtn = document.getElementById('theme-toggle');
         if (toggleBtn) {

@@ -84,7 +84,7 @@
   <!-- navbar end -->
    
   <!-- Header section start -->
-  <header class="text-white py-5 my-3">
+  <header class="text-white py-5">
     <div class="container">
       <div class="row align-items-center justify-content-between g-4">
         <!-- Left Side: Hero Text & Content -->
@@ -254,7 +254,7 @@
 
   <!--  about section start -->
   <section id="about" class="about-section py-5">
-    <div class="container my-5">
+    <div class="container">
 
       <!-- Section Heading -->
       <div class="text-center mb-5 wow animate__animated animate__fadeInUp">
@@ -263,10 +263,10 @@
       </div>
 
       <!-- Two-column layout -->
-      <div class="row g-4 align-items-stretch wow animate__animated animate__fadeInUp">
+      <div class="row g-4 align-items-stretch">
 
         <!-- Left: My Journey Card -->
-        <div class="col-lg-5 col-md-12">
+        <div class="col-lg-5 col-md-12" data-reveal="slide-left" data-delay="0">
           <div class="about-journey-card h-100">
             <h4 class="about-journey-title">My Journey</h4>
             <p class="about-journey-text">
@@ -289,7 +289,7 @@
           <div class="row g-3 h-100">
 
             <!-- Card 1: Full-Stack Developer -->
-            <div class="col-6 col-sm-6 col-md-6">
+            <div class="col-6 col-sm-6 col-md-6" data-reveal="slide-up" data-delay="100">
               <div class="about-trait-card">
                 <div class="about-trait-icon" style="--icon-gradient: linear-gradient(135deg, #a855f7, #3b82f6);">
                   <i class="fa-solid fa-layer-group"></i>
@@ -300,7 +300,7 @@
             </div>
 
             <!-- Card 2: Clean Code Advocate -->
-            <div class="col-6 col-sm-6 col-md-6">
+            <div class="col-6 col-sm-6 col-md-6" data-reveal="slide-up" data-delay="200">
               <div class="about-trait-card">
                 <div class="about-trait-icon" style="--icon-gradient: linear-gradient(135deg, #3b82f6, #06b6d4);">
                   <i class="fa-solid fa-code"></i>
@@ -311,7 +311,7 @@
             </div>
 
             <!-- Card 3: Problem Solver -->
-            <div class="col-6 col-sm-6 col-md-6">
+            <div class="col-6 col-sm-6 col-md-6" data-reveal="slide-up" data-delay="300">
               <div class="about-trait-card">
                 <div class="about-trait-icon" style="--icon-gradient: linear-gradient(135deg, #06b6d4, #a855f7);">
                   <i class="fa-solid fa-lightbulb"></i>
@@ -322,7 +322,7 @@
             </div>
 
             <!-- Card 4: User-Focused -->
-            <div class="col-6 col-sm-6 col-md-6">
+            <div class="col-6 col-sm-6 col-md-6" data-reveal="slide-up" data-delay="400">
               <div class="about-trait-card">
                 <div class="about-trait-icon" style="--icon-gradient: linear-gradient(135deg, #8b5cf6, #3b82f6);">
                   <i class="fa-solid fa-users"></i>
@@ -341,13 +341,14 @@
   <!--   about section end -->
 
   <!-- Projects Section Start -->
-  <section id="project" class="text-white text-center py-5 my-5">
+  <section id="project" class="text-white text-center py-5 my-3">
     <div class="container">
-      <h2 class="mb-5">Professional Projects</h2>
+      <h2 class="mb-3">Professional <span class="gradient-text-purple">Projects</span></h2>
+      <div class="about-heading-underline mx-auto mb-4"></div>
       <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Hover (or tap) a card to flip it and see the impact each project delivered.</p>
       <div class="row justify-content-center">
         <!-- RepoGrok -->
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="0">
           <div class="flip-card" tabindex="0" aria-label="RepoGrok project details">
             <div class="flip-card-inner">
               <div class="flip-face">
@@ -373,7 +374,7 @@
           </div>
         </div>
         <!-- CodePilot AI -->
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="100">
           <div class="flip-card" tabindex="0" aria-label="CodePilot AI project details">
             <div class="flip-card-inner">
               <div class="flip-face">
@@ -399,7 +400,7 @@
           </div>
         </div>
         <!-- ClickTake Technologies -->
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="200">
           <div class="flip-card" tabindex="0" aria-label="ClickTake Technologies project details">
             <div class="flip-card-inner">
               <div class="flip-face">
@@ -425,7 +426,7 @@
           </div>
         </div>
         <!-- Autism Buddy -->
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="300">
           <div class="flip-card" tabindex="0" aria-label="Autism Buddy project details">
             <div class="flip-card-inner">
               <div class="flip-face">
@@ -451,7 +452,7 @@
           </div>
         </div>
         <!-- Smart Campus Canteen App -->
-        <div class="col-sm-6 mb-4">
+        <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="400">
           <div class="flip-card" tabindex="0" aria-label="Smart Campus Canteen App project details">
             <div class="flip-card-inner">
               <div class="flip-face">
@@ -482,9 +483,10 @@
   <!-- Projects Section End -->
 
   <!-- Experience Section -->
-  <section id="experience" class="text-white py-5 my-5">
+  <section id="experience" class="text-white py-5 my-3">
     <div class="container">
-      <h2 class="mb-2 text-center">Professional Experience</h2>
+      <h2 class="mb-3 text-center">Professional <span class="gradient-text-purple">Experience</span></h2>
+      <div class="about-heading-underline mx-auto mb-4"></div>
       <p class="text-muted text-center mb-5" style="max-width: 600px; margin-left: auto; margin-right: auto;">
         <span style="font-size: 0.9rem;">Hover (or tap) a card to flip it and see the impact each role delivered.</span><br>
         Roles where I've built real products, shipped features, and grown as a developer.
@@ -499,7 +501,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="ClickTake Technologies experience details">
+            <div class="flip-card" tabindex="0" aria-label="ClickTake Technologies experience details" data-reveal="slide-up" data-delay="0">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -542,7 +544,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="Pakistan Aeronautical Complex experience details">
+            <div class="flip-card" tabindex="0" aria-label="Pakistan Aeronautical Complex experience details" data-reveal="slide-up" data-delay="100">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -584,7 +586,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="CodeAlpha experience details">
+            <div class="flip-card" tabindex="0" aria-label="CodeAlpha experience details" data-reveal="slide-up" data-delay="200">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -625,7 +627,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="Codomax Digital Solutions experience details">
+            <div class="flip-card" tabindex="0" aria-label="Codomax Digital Solutions experience details" data-reveal="slide-up" data-delay="300">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -665,7 +667,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="Progree experience details">
+            <div class="flip-card" tabindex="0" aria-label="Progree experience details" data-reveal="slide-up" data-delay="400">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -706,12 +708,13 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="text-white text-center py-5 my-5">
+  <section id="skills" class="text-white text-center py-5 my-3">
     <div class="container">
-      <h2 class="mb-3">What I Do</h2>
+      <h2 class="mb-3">What I <span class="gradient-text-purple">Do</span></h2>
+      <div class="about-heading-underline mx-auto mb-4"></div>
       <p class="text-muted mb-5 mx-auto" style="max-width: 600px;">Full-stack developer crafting modern web and mobile applications with clean architecture and seamless user experiences.</p>
       <!-- Nav tabs: headings in a row -->
-      <ul class="nav skills-tabs justify-content-center flex-wrap gap-2 mb-4" role="tablist">
+      <ul class="nav skills-tabs justify-content-center flex-wrap gap-2 mb-4" role="tablist" data-reveal="slide-up" data-delay="0">
         <li class="nav-item" role="presentation">
           <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#skills-lang" type="button" role="tab" aria-selected="true"><span class="tab-flip-inner"><span class="tab-flip-text">Programming Languages</span></span></button>
         </li>
@@ -732,7 +735,7 @@
         </li>
       </ul>
       <!-- Tab panes -->
-      <div class="tab-content">
+      <div class="tab-content" data-reveal="slide-up" data-delay="150">
         <div class="tab-pane show active" id="skills-lang" role="tabpanel">
           <div class="p-4 bg-dark rounded shadow-sm border-top border-4 skill-card" style="border-color: var(--color-light) !important;">
             <p class="text-muted text-center mb-3" style="font-size: 0.85rem;">Hover (or tap) a card to flip it and see proficiency.</p>
@@ -1101,9 +1104,10 @@
 
 
   <!-- Education Section -->
-  <section id="education" class="text-white py-5 my-5">
+  <section id="education" class="text-white py-5 my-3">
     <div class="container">
-      <h2 class="mb-2 text-center">Education</h2>
+      <h2 class="mb-3 text-center">My <span class="gradient-text-purple">Education</span></h2>
+      <div class="about-heading-underline mx-auto mb-4"></div>
       <p class="text-muted text-center mb-5 mx-auto" style="max-width: 600px; font-size: 0.9rem;">Hover (or tap) a card to flip it and see the impact each role delivered.</p>
       <div class="experience-timeline">
         <div class="timeline-line-bg"></div>
@@ -1115,7 +1119,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="BS Computer Science details">
+            <div class="flip-card" tabindex="0" aria-label="BS Computer Science details" data-reveal="slide-up" data-delay="0">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -1156,7 +1160,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="ICS (Computer Science) details">
+            <div class="flip-card" tabindex="0" aria-label="ICS (Computer Science) details" data-reveal="slide-up" data-delay="150">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -1197,7 +1201,7 @@
               <div class="dot-hollow"></div>
               <div class="dot-fill"></div>
             </div>
-            <div class="flip-card" tabindex="0" aria-label="Matriculation details">
+            <div class="flip-card" tabindex="0" aria-label="Matriculation details" data-reveal="slide-up" data-delay="300">
               <div class="flip-card-inner">
                 <div class="flip-face">
                   <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
@@ -1238,42 +1242,13 @@
   </section>
 
   <!-- Contact section start -->
-  <section id="contact" class="text-white py-5 my-5 ">
+  <section id="contact" class="text-white py-5 my-3">
     <div class="container">
-      <h2 class="mb-4 text-center">Contact Me</h2>
-      <div class="row g-4 align-items-start">
-        <!-- Contact card / info -->
-        <div class="col-12 col-lg-5 animate__animated animate__backInLeft">
-          <div class="p-4 bg-dark rounded shadow-sm h-100">
-            <h5 class="mb-3">Get in touch</h5>
-            <p class="mb-2"><i class="fa-solid fa-envelope me-2"></i><a href="https://mail.google.com/mail/?view=cm&fs=1&to=fa23-bcs-063@cuiatk.edu.pk" target="_blank"
-                class="text-white text-decoration-none">fa23-bcs-063@cuiatk.edu.pk</a>
-            </p>
-            <p class="mb-2"><i class="fa-solid fa-phone me-2"></i><a href="tel:+923028948502"
-                class="text-white text-decoration-none">+92 302 8948502</a>
-            </p>
-            <p class="mb-3"><i class="fa-solid fa-location-dot me-2"></i>Fatehjang, Attock</p>
-
-<h6 class="mt-3">Follow</h6>
-            <div class="d-flex gap-3 mt-2">
-              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fa23-bcs-063@cuiatk.edu.pk" target="_blank" class="text-white fs-4" aria-label="Email">
-                <i class="fa-solid fa-envelope"></i>
-              </a>
-              <a href="https://wa.me/923028948502" target="_blank" class="text-white fs-4" aria-label="WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/mustabshira-nasir02" target="_blank" class="text-white fs-4"
-                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="https://github.com/mustabshiranasir" target="_blank" class="text-white fs-4"
-                aria-label="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-
-            <hr class="my-4 border-secondary">
-          </div>
-        </div>
-
-        <!-- Contact form -->
-        <div class="col-12 col-lg-7 animate__animated animate__backInRight">
+      <h2 class="mb-3 text-center">Contact <span class="gradient-text-purple">Me</span></h2>
+      <div class="about-heading-underline mx-auto mb-4"></div>
+      <div class="row justify-content-center">
+        <!-- Contact form (full width) -->
+        <div class="col-12 col-lg-8" data-reveal="slide-up" data-delay="0">
           <form id="contactForm" onsubmit="sendMail(event)" class="p-4 bg-dark rounded shadow-sm" novalidate
             aria-label="Contact Form">
             <div id="formAlert" class="alert alert-success d-none mb-3" role="alert"></div>
@@ -1328,9 +1303,81 @@
   <!-- Contact section end -->
 
   <!-- Footer section start -->
-  <footer class="text-center text-white py-4 mt-5">
-    <div class="container">
-      <p class="mb-0 text-muted">&copy; 2026 Mustabshira Nasir. All rights reserved.</p>
+  <footer class="site-footer">
+    <!-- Top glow line -->
+    <div class="footer-glow-line" aria-hidden="true"></div>
+
+    <div class="container footer-inner">
+      <div class="row gy-5 gx-4">
+
+        <!-- Col 1: Brand -->
+        <div class="col-12 col-md-4 col-lg-4">
+          <a href="#" class="footer-brand">Mustabshira<span class="footer-brand-dot">.</span></a>
+          <p class="footer-tagline">Full-Stack Developer crafting sleek, performant web &amp; mobile experiences with clean architecture and purposeful design.</p>
+          <div class="footer-social-row">
+            <a href="https://github.com/mustabshiranasir" target="_blank" rel="noopener" class="footer-social-btn" data-social="github" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/mustabshira-nasir02" target="_blank" rel="noopener" class="footer-social-btn" data-social="linkedin" aria-label="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/923028948502" target="_blank" rel="noopener" class="footer-social-btn" data-social="whatsapp" aria-label="WhatsApp">
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fa23-bcs-063@cuiatk.edu.pk" target="_blank" rel="noopener" class="footer-social-btn" data-social="email" aria-label="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="col-6 col-md-4 col-lg-2 offset-lg-1">
+          <h6 class="footer-col-title">Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#project">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Contact Info -->
+        <div class="col-6 col-md-4 col-lg-4 offset-lg-1">
+          <h6 class="footer-col-title">Get In Touch</h6>
+          <ul class="footer-contact-list">
+            <li>
+              <span class="footer-contact-icon"><i class="fa-solid fa-envelope"></i></span>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fa23-bcs-063@cuiatk.edu.pk" target="_blank" rel="noopener">fa23-bcs-063@cuiatk.edu.pk</a>
+            </li>
+            <li>
+              <span class="footer-contact-icon"><i class="fa-solid fa-phone"></i></span>
+              <a href="tel:+923028948502">+92 302 8948502</a>
+            </li>
+            <li>
+              <span class="footer-contact-icon"><i class="fa-solid fa-location-dot"></i></span>
+              <span>Fatehjang, Attock, Pakistan</span>
+            </li>
+            <li>
+              <span class="footer-contact-icon"><i class="fa-solid fa-briefcase"></i></span>
+              <span>Open to Opportunities</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Bottom copyright bar -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <span class="footer-copy">&copy; 2026 <strong>Mustabshira Nasir</strong>. All rights reserved.</span>
+        <span class="footer-made-with">
+          Built with <i class="fa-solid fa-code footer-code-icon"></i> &amp; passion
+        </span>
+      </div>
     </div>
   </footer>
   <!-- Footer section end -->
