@@ -2091,9 +2091,8 @@ footer {
 #contact .d-flex.gap-3 a[href*="mail.google.com"]:hover {
     transform: translateY(-2px);
 }
-#contact .d-flex.gap-3 a[aria-label="Email"]:hover svg path,
-#contact .d-flex.gap-3 a[href*="mail.google.com"]:hover svg path {
-    filter: brightness(1.2);
+#contact .d-flex.gap-3 a[aria-label="Email"]:hover img {
+    filter: brightness(1.1);
 }
 #contact .d-flex.gap-3 a[aria-label="WhatsApp"]:hover {
     color: #25D366 !important;
