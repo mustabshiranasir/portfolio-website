@@ -217,10 +217,106 @@
         });
     }
 
+    // Ice Crystal Custom Cursor
+    function initIceCursor() {
+        // Skip on reduced motion or coarse pointers (touch devices) for accessibility
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (window.matchMedia('(pointer: coarse)').matches) return;
+
+        const cursor = document.getElementById('ice-cursor');
+        if (!cursor) return;
+
+        const interactiveSelector =
+            'a, button, [role="button"], input, select, textarea, summary, ' +
+            '.orbit-item, .flip-card, .flip-skill, .flip-pill, .flip-linkedin-pill, ' +
+            '.flip-icon-link1, .flip-icon-link2, .project-link, .skills-tabs .nav-link, ' +
+            '.theme-toggle-btn, .scroll-top-btn, .navbar-toggler, .btn-close-tooltip';
+
+        const editableSelector = 'input[type="text"], input[type="email"], input[type="tel"], ' +
+            'textarea, [contenteditable="true"], [contenteditable=""]';
+
+        let posX = 0, posY = 0;
+        let targetX = 0, targetY = 0;
+        let ticking = false;
+        let isHoveringInteractive = false;
+        let isPressed = false;
+
+        // Reveal the ice crystal cursor and hide the native pointer
+        document.documentElement.classList.add('use-ice-cursor');
+        cursor.classList.add('visible');
+
+        function lerp(current, target, factor) {
+            return current + (target - current) * factor;
+        }
+
+        function computeTransform() {
+            const scale = isPressed ? 0.8 : (isHoveringInteractive ? 1.25 : 1);
+            const rotate = isHoveringInteractive ? 3 : 0;
+            return `translate(${posX}px, ${posY}px) translate(-50%, -50%) scale(${scale}) rotate(${rotate}deg)`;
+        }
+
+        function updatePosition() {
+            ticking = false;
+            posX = lerp(posX, targetX, 0.18);
+            posY = lerp(posY, targetY, 0.18);
+            cursor.style.transform = computeTransform();
+        }
+
+        function onPointerMove(e) {
+            if (e.type === 'touchmove') {
+                const t = e.touches[0];
+                targetX = t.clientX;
+                targetY = t.clientY;
+            } else {
+                targetX = e.clientX;
+                targetY = e.clientY;
+            }
+
+            const target = e.target;
+
+            if (target && target.matches(editableSelector)) {
+                // Let the native text caret appear on form fields
+                if (!cursor.classList.contains('hidden')) cursor.classList.add('hidden');
+            } else {
+                if (cursor.classList.contains('hidden')) cursor.classList.remove('hidden');
+                const interactive = target && target.matches(interactiveSelector);
+                if (interactive !== isHoveringInteractive) {
+                    isHoveringInteractive = interactive;
+                    cursor.classList.toggle('interact', interactive);
+                }
+            }
+
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(updatePosition);
+            }
+        }
+
+        function onPointerDown() {
+            isPressed = true;
+            cursor.style.transform = computeTransform();
+        }
+        function onPointerUp() {
+            isPressed = false;
+            cursor.style.transform = computeTransform();
+        }
+
+        // Initialize at screen center
+        posX = window.innerWidth / 2;
+        posY = window.innerHeight / 2;
+        cursor.style.transform = computeTransform();
+
+        document.addEventListener('mousemove', onPointerMove, { passive: true });
+        document.addEventListener('touchmove', onPointerMove, { passive: true });
+        document.addEventListener('mousedown', onPointerDown);
+        document.addEventListener('mouseup', onPointerUp);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         applyTheme(savedTheme);
         initScrollToTop();
         initNavbarScroll();
+        initIceCursor();
 
         const toggleBtn = document.getElementById('theme-toggle');
         if (toggleBtn) {
