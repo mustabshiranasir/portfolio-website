@@ -81,7 +81,8 @@
     </div>
   </nav>
   <!-- navbar end -->
-   
+
+  <main id="main-content">
   <!-- Header section start -->
   <header class="text-white py-5">
     <div class="container">
@@ -352,7 +353,7 @@
       <div class="row justify-content-center">
         <!-- RepoGrok -->
         <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="0">
-          <div class="flip-card" tabindex="0" aria-label="RepoGrok project details">
+          <article class="flip-card" tabindex="0" aria-label="RepoGrok project details">
             <div class="flip-card-inner">
               <div class="flip-face">
                 <div class="project-card-img-wrapper">
@@ -374,11 +375,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <!-- CodePilot AI -->
         <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="100">
-          <div class="flip-card" tabindex="0" aria-label="CodePilot AI project details">
+          <article class="flip-card" tabindex="0" aria-label="CodePilot AI project details">
             <div class="flip-card-inner">
               <div class="flip-face">
                 <div class="project-card-img-wrapper">
@@ -400,11 +401,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <!-- ClickTake Technologies -->
         <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="200">
-          <div class="flip-card" tabindex="0" aria-label="ClickTake Technologies project details">
+          <article class="flip-card" tabindex="0" aria-label="ClickTake Technologies project details">
             <div class="flip-card-inner">
               <div class="flip-face">
                 <div class="project-card-img-wrapper">
@@ -426,11 +427,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <!-- Autism Buddy -->
         <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="300">
-          <div class="flip-card" tabindex="0" aria-label="Autism Buddy project details">
+          <article class="flip-card" tabindex="0" aria-label="Autism Buddy project details">
             <div class="flip-card-inner">
               <div class="flip-face">
                 <div class="project-card-img-wrapper">
@@ -452,11 +453,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </article>
         </div>
         <!-- Smart Campus Canteen App -->
         <div class="col-sm-6 mb-4" data-reveal="slide-up" data-delay="400">
-          <div class="flip-card" tabindex="0" aria-label="Smart Campus Canteen App project details">
+          <article class="flip-card" tabindex="0" aria-label="Smart Campus Canteen App project details">
             <div class="flip-card-inner">
               <div class="flip-face">
                 <div class="project-card-img-wrapper">
@@ -1254,39 +1255,39 @@
         <div class="col-12 col-lg-8" data-reveal="slide-up" data-delay="0">
           <form id="contactForm" onsubmit="sendMail(event)" class="p-4 bg-dark rounded shadow-sm" novalidate
             aria-label="Contact Form">
-            <div id="formAlert" class="alert alert-success d-none mb-3" role="alert"></div>
+            <div id="formAlert" class="alert alert-info mb-3 d-none" role="status" aria-live="polite"></div>
             <div class="row g-3">
 
               <!-- Name -->
               <div class="col-md-6">
                 <label for="contactName" class="form-label">Name</label>
                 <input type="text" class="form-control" id="contactName" name="name" required aria-required="true"
-                  aria-invalid="false" aria-describedby="nameError">
-                <div id="nameError" class="invalid-feedback">Please enter your name.</div>
+                  aria-invalid="false" aria-describedby="contactNameError">
+                <div id="contactNameError" class="invalid-feedback">Please enter your name.</div>
               </div>
 
               <!-- Email -->
               <div class="col-md-6">
                 <label for="contactEmail" class="form-label">Email</label>
                 <input type="email" class="form-control" id="contactEmail" name="email" required aria-required="true"
-                  aria-invalid="false" aria-describedby="emailError">
-                <div id="emailError" class="invalid-feedback">Please enter a valid email.</div>
+                  aria-invalid="false" aria-describedby="contactEmailError">
+                <div id="contactEmailError" class="invalid-feedback">Please enter a valid email.</div>
               </div>
 
               <!-- Subject -->
               <div class="col-12">
                 <label for="contactSubject" class="form-label">Subject</label>
                 <input type="text" class="form-control" id="contactSubject" name="subject" required aria-required="true"
-                  aria-invalid="false" aria-describedby="subjectError">
-                <div id="subjectError" class="invalid-feedback">Please provide a subject.</div>
+                  aria-invalid="false" aria-describedby="contactSubjectError">
+                <div id="contactSubjectError" class="invalid-feedback">Please provide a subject.</div>
               </div>
 
               <!-- Message -->
               <div class="col-12">
                 <label for="contactMessage" class="form-label">Message</label>
                 <textarea class="form-control" id="contactMessage" name="message" rows="6" required aria-required="true"
-                  aria-invalid="false" aria-describedby="messageError"></textarea>
-                <div id="messageError" class="invalid-feedback">Please write a message.</div>
+                  aria-invalid="false" aria-describedby="contactMessageError"></textarea>
+                <div id="contactMessageError" class="invalid-feedback">Please write a message.</div>
               </div>
 
               <!-- Submit Button -->
@@ -1384,6 +1385,7 @@
     </div>
   </footer>
   <!-- Footer section end -->
+  </main>
 
   <!-- typing lib -->
   <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
@@ -1450,20 +1452,107 @@
     new WOW({ mobile: false }).init();
   </script>
   <script>
+    function showFormMessage(type, message) {
+      const alertBox = document.getElementById('formAlert');
+      if (!alertBox) return;
+      alertBox.className = `alert alert-${type} mb-3`;
+      alertBox.textContent = message;
+      alertBox.classList.remove('d-none');
+      alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function clearFormErrors() {
+      const alertBox = document.getElementById('formAlert');
+      if (alertBox) {
+        alertBox.classList.add('d-none');
+        alertBox.textContent = '';
+      }
+
+      ['contactName', 'contactEmail', 'contactSubject', 'contactMessage'].forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        const feedback = document.getElementById(`${fieldId}Error`);
+        if (field) {
+          field.classList.remove('is-invalid', 'is-valid');
+          field.setAttribute('aria-invalid', 'false');
+        }
+        if (feedback) {
+          feedback.style.display = 'none';
+        }
+      });
+    }
+
+    function validateFormFields() {
+      const fields = [
+        { id: 'contactName', message: 'Please enter your name.' },
+        { id: 'contactSubject', message: 'Please provide a subject.' },
+        { id: 'contactMessage', message: 'Please write a message.' }
+      ];
+
+      let isValid = true;
+
+      fields.forEach(({ id, message }) => {
+        const field = document.getElementById(id);
+        const feedback = document.getElementById(`${id}Error`);
+        if (!field || !feedback) return;
+
+        if (!field.value.trim()) {
+          field.classList.add('is-invalid');
+          field.setAttribute('aria-invalid', 'true');
+          feedback.textContent = message;
+          feedback.style.display = 'block';
+          isValid = false;
+        }
+      });
+
+      const emailField = document.getElementById('contactEmail');
+      const emailFeedback = document.getElementById('contactEmailError');
+      if (emailField && emailFeedback) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailField.value.trim()) {
+          emailField.classList.add('is-invalid');
+          emailField.setAttribute('aria-invalid', 'true');
+          emailFeedback.textContent = 'Please enter your email.';
+          emailFeedback.style.display = 'block';
+          isValid = false;
+        } else if (!emailRegex.test(emailField.value.trim())) {
+          emailField.classList.add('is-invalid');
+          emailField.setAttribute('aria-invalid', 'true');
+          emailFeedback.textContent = 'Please enter a valid email.';
+          emailFeedback.style.display = 'block';
+          isValid = false;
+        } else {
+          emailField.classList.add('is-valid');
+          emailField.setAttribute('aria-invalid', 'false');
+          emailFeedback.style.display = 'none';
+        }
+      }
+
+      return isValid;
+    }
+
     function sendMail(event) {
       event.preventDefault();
-      const name = document.getElementById('contactName').value;
-      const email = document.getElementById('contactEmail').value;
-      const subject = document.getElementById('contactSubject').value;
-      const message = document.getElementById('contactMessage').value;
+      clearFormErrors();
 
-      if (!name || !email || !subject || !message) {
-        alert("Please fill all the fields.");
+      const form = document.getElementById('contactForm');
+      const alertBox = document.getElementById('formAlert');
+      if (!form || !alertBox) return;
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const subject = document.getElementById('contactSubject').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if (!validateFormFields()) {
+        showFormMessage('danger', 'Please fix the highlighted fields and try again.');
         return;
       }
 
       const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=fa23-bcs-063@cuiatk.edu.pk&su=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\nMessage:\n" + message)}`;
       window.open(gmailLink, '_blank');
+      showFormMessage('success', 'Thanks! Your message is ready to send.');
+      form.reset();
+      clearFormErrors();
     }
 
     function showDegreeStatus(event) {

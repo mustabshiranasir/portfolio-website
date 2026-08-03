@@ -58,7 +58,21 @@ Then open `http://localhost:8000` in your web browser.
 
 ---
 
-## 📬 Contact & Links
+## � Deployment
+
+This project is set up for GitHub Pages deployment through the workflow in [.github/workflows/pages.yml](.github/workflows/pages.yml). Once the workflow runs successfully in GitHub Actions, the site will be published at:
+
+- https://mustabshiranasir.github.io/portfolio-website/
+
+To enable deployment in GitHub:
+1. Open the repository on GitHub.
+2. Go to Settings → Pages.
+3. Choose the GitHub Actions source.
+4. Push to the main branch to trigger the deployment workflow.
+
+---
+
+## �📬 Contact & Links
 
 - **LinkedIn**: [Mustabshira Nasir](https://www.linkedin.com/in/mustabshira-nasir02)
 - **GitHub**: [@mustabshiranasir](https://github.com/mustabshiranasir)
