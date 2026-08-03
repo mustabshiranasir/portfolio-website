@@ -105,6 +105,7 @@
 
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.classList.add('theme-transitioning');
         updateToggleIcon(theme);
         updateParticlesTheme(theme);
     }
@@ -165,16 +166,15 @@
 
         document.body.appendChild(burst);
 
-        setTimeout(() => {
-            localStorage.setItem(THEME_KEY, newTheme);
-            applyTheme(newTheme);
-        }, 220);
+        localStorage.setItem(THEME_KEY, newTheme);
+        applyTheme(newTheme);
 
         setTimeout(() => {
             if (burst && burst.parentNode) {
                 burst.parentNode.removeChild(burst);
             }
-        }, 1200);
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 700);
     }
 
     const savedTheme = getSavedTheme();
@@ -265,8 +265,8 @@
         }
 
 
-        const LERP_DESKTOP = 0.35;
-        const LERP_MOBILE = 0.30;
+        const LERP_DESKTOP = 0.16;
+        const LERP_MOBILE = 0.13;
         const lerpFactor = isSmallScreen ? LERP_MOBILE : LERP_DESKTOP;
 
         function spawnTrail(x, y) {
@@ -285,15 +285,17 @@
             return current + (target - current) * factor;
         }
 
-        function computeTransform() {
-            const scale = isPressed ? 0.85 : 1;
-            return `translate(${posX}px, ${posY}px) translate(-50%, -50%) scale(${scale})`;
+        function setCursorScale() {
+            const scale = isPressed ? '0.9' : isHoveringInteractive ? '1.08' : '1';
+            cursor.style.setProperty('--cursor-scale', scale);
         }
 
         function updatePosition() {
             posX = lerp(posX, targetX, lerpFactor);
             posY = lerp(posY, targetY, lerpFactor);
-            cursor.style.transform = computeTransform();
+            cursor.style.left = `${Math.round(posX)}px`;
+            cursor.style.top = `${Math.round(posY)}px`;
+            setCursorScale();
             if (Math.abs(posX - targetX) > 0.5 || Math.abs(posY - targetY) > 0.5) {
                 requestAnimationFrame(updatePosition);
             } else {
@@ -326,15 +328,17 @@
             }
 
             const target = e.target;
+            const targetEl = target instanceof Element ? target : target?.parentElement || null;
 
-            if (target && target.matches(editableSelector)) {
+            if (targetEl && targetEl.closest(editableSelector)) {
                 if (!cursor.classList.contains('hidden')) cursor.classList.add('hidden');
             } else {
                 if (cursor.classList.contains('hidden')) cursor.classList.remove('hidden');
-                const interactive = target && target.matches(interactiveSelector);
+                const interactive = Boolean(targetEl && targetEl.closest(interactiveSelector));
                 if (interactive !== isHoveringInteractive) {
                     isHoveringInteractive = interactive;
                     cursor.classList.toggle('interact', interactive);
+                    setCursorScale();
                 }
             }
 
@@ -349,18 +353,20 @@
         function onPointerDown() {
             isPressed = true;
             resetIdleTimer();
-            cursor.style.transform = computeTransform();
+            setCursorScale();
         }
         function onPointerUp() {
             isPressed = false;
             resetIdleTimer();
-            cursor.style.transform = computeTransform();
+            setCursorScale();
         }
 
         // Initialize at screen center
         posX = window.innerWidth / 2;
         posY = window.innerHeight / 2;
-        cursor.style.transform = computeTransform();
+        cursor.style.left = `${Math.round(posX)}px`;
+        cursor.style.top = `${Math.round(posY)}px`;
+        setCursorScale();
 
         // Mouse events
         document.addEventListener('mousemove', onPointerMove, { passive: true });
@@ -379,12 +385,12 @@
         document.addEventListener('touchstart', () => {
             cursor.classList.add('visible');
             isPressed = true;
-            cursor.style.transform = computeTransform();
+            setCursorScale();
         }, { passive: true });
         document.addEventListener('touchmove', onPointerMove, { passive: true });
         document.addEventListener('touchend', () => {
             isPressed = false;
-            cursor.style.transform = computeTransform();
+            setCursorScale();
             cursor.classList.remove('visible');
         }, { passive: true });
     }

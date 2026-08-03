@@ -53,6 +53,7 @@ html {
     overflow-x: hidden;
     width: 100%;
     font-family: var(--font-primary);
+    transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 body {
@@ -67,6 +68,7 @@ body {
     z-index: 0;
     padding-top: 70px;
     overflow-x: hidden;
+    transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 button, input, select, textarea, optgroup {
@@ -937,25 +939,41 @@ img {
     border-radius: 50%;
     pointer-events: none;
     z-index: 999999;
-    transform: translate(-50%, -50%) scale(0);
-    animation: themeBurstExpand 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transform: translate(-50%, -50%) scale(0.1);
+    animation: themeBurstExpand 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes themeBurstExpand {
     0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.1);
+        opacity: 0.95;
     }
 
-    70% {
-        opacity: 1;
+    60% {
+        opacity: 0.95;
     }
 
     100% {
-        transform: translate(-50%, -50%) scale(2.8);
+        transform: translate(-50%, -50%) scale(2.6);
         opacity: 0;
     }
+}
+
+.theme-transitioning .theme-toggle-btn,
+.theme-transitioning .navbar,
+.theme-transitioning .hero-badge,
+.theme-transitioning .info-card,
+.theme-transitioning .tech-orbit-core,
+.theme-transitioning .orbit-item,
+.theme-transitioning .project-card,
+.theme-transitioning .contact-card,
+.theme-transitioning .footer,
+.theme-transitioning .btn-dark,
+.theme-transitioning .btn-orange,
+.theme-transitioning .btn-outline-light,
+.theme-transitioning .btn-light {
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
 
 .btn-flip-wrapper {
@@ -3171,6 +3189,8 @@ img {
 }
 
 #ice-cursor {
+    --cursor-scale: 1;
+    --cursor-rotate: 0deg;
     position: fixed;
     top: 0;
     left: 0;
@@ -3178,7 +3198,7 @@ img {
     height: var(--cursor-size);
     margin: 0;
     padding: 0;
-    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    transform: translate3d(-50%, -50%, 0) scale(var(--cursor-scale)) rotate(var(--cursor-rotate));
     pointer-events: none;
     z-index: 9999999;
     visibility: hidden;
@@ -3189,8 +3209,10 @@ img {
         border-color 0.22s ease,
         border-radius 0.25s ease,
         background 0.25s ease,
-        box-shadow 0.22s ease;
-    will-change: transform;
+        box-shadow 0.22s ease,
+        transform 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform, left, top;
+    backface-visibility: hidden;
     animation: crystalShimmer 4s ease-in-out infinite;
     /* faceted crystal shard (diamond) */
     clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
@@ -3210,6 +3232,7 @@ img {
 
 /* Hover boost: transforms into a hollow crystal ring (scale/rotate driven by JS) */
 #ice-cursor.interact {
+    --cursor-scale: 1.08;
     clip-path: none;
     border-radius: 50%;
     background: transparent;
@@ -3228,9 +3251,9 @@ img {
 
 /* Subtle rotation oscillation for shiny facet-catch effect */
 @keyframes crystalShimmer {
-    0%, 100% { rotate: 0deg; }
-    25%      { rotate: 6deg; }
-    75%      { rotate: -6deg; }
+    0%, 100% { --cursor-rotate: 0deg; }
+    25%      { --cursor-rotate: 6deg; }
+    75%      { --cursor-rotate: -6deg; }
 }
 
 /* Moving specular highlight across the crystal surface */
