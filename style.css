@@ -25,27 +25,27 @@
 }
 
 [data-theme="light"] {
-    --color-bg: #EBF3FA;
+    --color-bg: #F2F8FF;
     --color-panel: #FFFFFF;
-    --color-border: #CBD5E1;
-    --color-muted: #475569;
+    --color-border: #CFE4F8;
+    --color-muted: #5B728A;
     --color-light: #0F172A;
-    --color-text: #1E293B;
-    --panel-shadow: 0 10px 30px rgba(30, 41, 59, 0.08);
-    --sticky-bg: rgba(235, 243, 250, 0.95);
-    --input-bg: rgba(255, 255, 255, 0.85);
-    --badge-bg: rgba(15, 23, 42, 0.06);
-    --footer-bg: rgba(255, 255, 255, 0.7);
-    --footer-border: rgba(203, 213, 225, 0.6);
-    --back-gradient: radial-gradient(circle at 0% 0%, rgba(199, 180, 250, 0.75) 0%, rgba(150, 110, 240, 0.32) 28%, rgba(150, 110, 240, 0.12) 48%, rgba(150, 110, 240, 0) 62%), #F7F6FB;
-    --back-border: rgba(15, 23, 42, 0.14);
+    --color-text: #15243A;
+    --panel-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+    --sticky-bg: rgba(242, 248, 255, 0.92);
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --badge-bg: rgba(15, 23, 42, 0.05);
+    --footer-bg: rgba(248, 251, 255, 0.9);
+    --footer-border: rgba(207, 228, 248, 0.9);
+    --back-gradient: radial-gradient(circle at 0% 0%, rgba(125, 211, 252, 0.35) 0%, rgba(59, 130, 246, 0.18) 30%, rgba(14, 165, 233, 0.08) 58%, rgba(14, 165, 233, 0) 74%), #F7FBFF;
+    --back-border: rgba(15, 23, 42, 0.1);
     --crystal-glass: linear-gradient(135deg,
-            rgba(255, 255, 255, 0.75) 0%,
-            rgba(235, 243, 250, 0.55) 50%,
-            rgba(203, 213, 225, 0.42) 100%);
-    --crystal-solid: rgba(255, 255, 255, 0.55);
+            rgba(255, 255, 255, 0.92) 0%,
+            rgba(238, 247, 255, 0.8) 48%,
+            rgba(214, 232, 248, 0.68) 100%);
+    --crystal-solid: rgba(255, 255, 255, 0.7);
     --crystal-edge: rgba(15, 23, 42, 0.12);
-    --crystal-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    --crystal-inset: inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
 html {
@@ -768,16 +768,22 @@ img {
 }
 
 [data-theme="light"] .info-card {
-    background: rgba(255, 255, 255, 0.85);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(240, 248, 255, 0.94) 45%, rgba(222, 239, 250, 0.95) 100%);
     border-color: rgba(15, 23, 42, 0.12);
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
 }
 
 [data-theme="light"] .info-card-glow {
-    background: radial-gradient(85% 110% at 50% -5%, rgba(141, 89, 255, 0.22) 0%, rgba(141, 89, 255, 0.08) 40%, transparent 68%);
+    background: radial-gradient(85% 110% at 50% -5%, rgba(56, 189, 248, 0.26) 0%, rgba(59, 130, 246, 0.12) 42%, transparent 70%);
+    opacity: 0;
+}
+
+[data-theme="light"] .info-card:hover .info-card-glow {
+    opacity: 0.9;
 }
 
 [data-theme="light"] .info-card-label {
-    color: rgba(15, 23, 42, 0.6);
+    color: rgba(30, 41, 59, 0.62);
 }
 
 [data-theme="light"] .info-card-stat {
@@ -785,12 +791,12 @@ img {
 }
 
 [data-theme="light"] .info-card-bottom {
-    color: rgba(15, 23, 42, 0.5);
+    color: rgba(15, 23, 42, 0.58);
 }
 
 [data-theme="light"] .info-card:hover {
-    border-color: rgba(141, 89, 255, 0.35);
-    box-shadow: 0 20px 40px -16px rgba(141, 89, 255, 0.35);
+    border-color: rgba(59, 130, 246, 0.28);
+    box-shadow: 0 20px 40px -16px rgba(59, 130, 246, 0.22);
 }
 
 @media (max-width: 640px) {
@@ -1036,6 +1042,27 @@ img {
     background-color: var(--color-light);
     color: var(--color-bg) !important;
     transform: perspective(400px) translateY(-3px) rotateY(180deg);
+}
+
+[data-theme="light"] .btn-dark,
+[data-theme="light"] .btn-orange,
+[data-theme="light"] .btn-outline-light,
+[data-theme="light"] .btn-light {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transform: perspective(400px) rotateY(0deg);
+}
+
+[data-theme="light"] .btn-flip-wrapper:hover .btn-dark,
+[data-theme="light"] .btn-flip-wrapper:hover .btn-orange,
+[data-theme="light"] .btn-flip-wrapper:hover .btn-outline-light,
+[data-theme="light"] .btn-flip-wrapper:hover .btn-light {
+    transform: perspective(400px) translateY(-3px) rotateY(180deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .btn-flip-wrapper:hover .btn span,
+[data-theme="light"] .btn-flip-wrapper:hover .btn i {
+    transform: rotateY(-180deg);
 }
 
 /* Counter-rotate button text and icons so they remain readable and don't spin 360 degrees */
