@@ -54,6 +54,11 @@ html {
     width: 100%;
     font-family: var(--font-primary);
     transition: background-color 0.35s ease, color 0.35s ease;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
 body {
@@ -657,12 +662,15 @@ img {
     position: relative;
     padding: 20px;
     overflow: hidden;
+    width: 100%;
+    min-width: 100%;
 }
 
 .info-grid-track {
     display: flex;
     flex-wrap: nowrap;
     width: max-content;
+    min-width: 100%;
     will-change: transform;
 }
 
@@ -2616,7 +2624,7 @@ img {
         inset 0 0 0 1px rgba(192, 132, 252, 0.18),
         inset 1px 0 0 rgba(125, 211, 252, 0.12),
         -12px 0 48px rgba(10, 15, 35, 0.25);
-    width: 280px !important;
+    width: min(280px, 100%) !important;
     transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     z-index: 1055 !important;
     position: fixed !important;
@@ -2737,7 +2745,7 @@ img {
 
     .hero-btn-group {
         justify-content: center;
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         gap: 10px !important;
     }
 
@@ -2886,6 +2894,57 @@ img {
 
     .hero-heading {
         font-size: 3.8rem;
+    }
+}
+
+/* Local animate.css replacements for existing wow/animate__ classes */
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.animate__fadeInLeft {
+    animation-name: fadeInLeft;
+}
+
+.animate__fadeInRight {
+    animation-name: fadeInRight;
+}
+
+.animate__fadeInUp {
+    animation-name: fadeInUp;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(50px, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
     }
 }
 
